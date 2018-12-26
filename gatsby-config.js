@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Blog Starter`,
-    description: `A Blog starter`,
+    title: `The Mindless`,
+    description: `A technology blog`,
     author: `Boy with Silver Wings`,
     authorTagline: 'Engineer. Driven by Passion',
     social: {
@@ -55,19 +55,19 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-86549623-3`,
       },
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-blog-starter`,
-        short_name: `starter`,
+        name: `Mindless`,
+        short_name: `Mindless`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
     },
     'gatsby-plugin-offline',
