@@ -8,15 +8,21 @@ const Container = styled.div`
   text-align: center;
 `;
 
-const Smiley = styled.p`
-  font-size: 10rem;
-`;
-
 const NotFoundPage = () => (
   <Layout>
     <SEO title="404: Not found" />
     <Container>
-      <Smiley>🤦🏻‍♂️</Smiley>
+      <span
+        css={`
+          font-size: 10rem;
+          margin: 20vmin 0;
+          display: block;
+        `}
+        role="img"
+        aria-label="facepalm emoji"
+      >
+        🤦🏻‍♂️
+      </span>
       <h1>NOT FOUND</h1>
       <p>I have not added this page yet.</p>
       <p>
