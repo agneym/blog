@@ -3,16 +3,12 @@ title: 'Detecting if an element is in the viewport - Javascript'
 date: '2018-05-30T22:12:03.284Z'
 ---
 
-# Detecting if an element is in viewport: Javascript
-
 This method uses the [Intersection Observer](https://w3c.github.io/IntersectionObserver/) which is relatively the new kid in town, so be sure to check out [Browser Support](https://caniuse.com/#feat=intersectionobserver). Also [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill).
 
 #### Show me the Code!
 
 <iframe height='300' scrolling='no' title='Intersection Observer Demo' src='//codepen.io/BoyWithSilverWings/embed/bKgopr/?height=300&theme-id=32843&default-tab=js,result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/BoyWithSilverWings/pen/bKgopr/'>Intersection Observer Demo</a> by Boy with Silver Wings (<a href='https://codepen.io/BoyWithSilverWings'>@BoyWithSilverWings</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-The Code is Here
 
 But let’s go into why first? Why use Intersection Observer and not [getBoundingClientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)? I have an article doing that with jQuery [here](https://medium.com/talk-like/detecting-if-an-element-is-in-the-viewport-jquery-a6a4405a3ea2). **So Why?**
 
