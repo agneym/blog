@@ -10,7 +10,7 @@ import media from '../utils/media';
 
 const Title = styled.h3`
   font-weight: 800;
-  font-size: 2.6 rem;
+  font-size: 2.6rem;
   margin: 6 rem 0 0;
 
   ${media.phone`
