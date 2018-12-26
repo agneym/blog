@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-minimal-blog",
+  "name": "the-mindless",
   "private": true,
   "description": "A simple minimal starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "author": "Boy with Silver Wings <agney@outlook.in>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
@@ -35,8 +35,6 @@
     "typeface-oswald": "0.0.54"
   },
   "keywords": [
-    "gatsby",
-    "styled-components",
     "blog",
     "minimal"
   ],
@@ -65,9 +63,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/BoyWithSilverWings/gatsby-blog-starter"
-  },
-  "bugs": {
-    "url": "https://github.com/BoyWithSilverWings/gatsby-blog-starter/issues"
+    "url": "https://github.com/BoyWithSilverWings/blog"
   }
 }
