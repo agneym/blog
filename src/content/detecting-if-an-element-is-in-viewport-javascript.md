@@ -30,7 +30,9 @@ function callback(entries) {
 Intersection Observer takes two arguments, first one being `callback` function and the second takes an object with different kinds of options. These options are:
 
 - `root`: root element to which the intersection observer compares the visibility to.
+
 - `rootMargin`: This one let’s your choose margins for the root element. This is a CSS type margin string, `10px 20px 30px 40px`.
+
 - `threshold` : This might be the most prominent one among the options. List of threshold(s) at which to trigger callback. callback will be invoked when intersectionRect’s area changes from greater than or equal to any threshold to less than that threshold, and vice versa. This option defaults to 0, which means it fires when a small part of element becomes visible.
 
 In our example, we have used:
