@@ -1,6 +1,7 @@
 ---
 title: 'Detecting if an element is in the viewport - Javascript'
 date: '2018-05-30T22:12:03.284Z'
+published: true
 ---
 
 This method uses the [Intersection Observer](https://w3c.github.io/IntersectionObserver/) which is relatively the new kid in town, so be sure to check out [Browser Support](https://caniuse.com/#feat=intersectionobserver). Also [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill).
