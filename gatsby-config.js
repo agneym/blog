@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `The Mindless`,
-    description: `A technology blog`,
+    description: `A techxploration.`,
     author: `Boy with Silver Wings`,
     authorTagline: 'Engineer. Driven by Passion',
     social: {
