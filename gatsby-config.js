@@ -64,8 +64,8 @@ module.exports = {
         name: `Mindless`,
         short_name: `Mindless`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#CA3C25`,
+        theme_color: `#CA3C25`,
         display: `minimal-ui`,
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
