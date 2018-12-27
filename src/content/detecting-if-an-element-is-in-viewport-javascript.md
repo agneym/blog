@@ -1,6 +1,14 @@
 ---
 title: 'Detecting if an element is in the viewport - Javascript'
 date: '2018-05-30T22:12:03.284Z'
+tags:
+  [
+    'javascript',
+    'detecting div',
+    'viewport relative',
+    'on scroll',
+    'intersection observer',
+  ]
 published: true
 ---
 

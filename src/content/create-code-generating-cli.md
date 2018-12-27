@@ -1,6 +1,7 @@
 ---
 title: 'Create a Code Generating CLI'
 date: '2018-12-26T22:12:03.284Z'
+tags: ['code generating cli', 'gluegun', 'creating a cli', 'tutorial']
 published: true
 ---
 
