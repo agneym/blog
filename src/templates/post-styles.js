@@ -13,6 +13,11 @@ export const Container = styled.article`
     line-height: 1.5;
   }
 
+  ul,
+  ol {
+    padding-left: 1rem;
+  }
+
   blockquote {
     margin-left: 0.25rem;
     font-size: 1.6rem;
