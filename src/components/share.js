@@ -67,7 +67,7 @@ class Share extends Component {
               url={url}
               subject={`Read ${post.title} by ${post.author}`}
               body={`${post.excerpt}
-                Read more at ${this.url}
+                Read more at ${url}
               `}
               className="social-icon"
             >
