@@ -24,7 +24,10 @@ class BlogIndex extends Component {
     const posts = data.allMarkdownRemark.edges;
     return (
       <Layout>
-        <SEO title="All Posts" keywords={[`gatsby`, `blog`, `react`]} />
+        <SEO
+          title="All Posts"
+          keywords={[`mindless`, `blog`, `javascript`, `boy with silver wings`]}
+        />
         <Bio />
         <main>
           <Title>Latest Posts</Title>
@@ -46,7 +49,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { published: { eq: true } } }
+    ) {
       edges {
         node {
           id

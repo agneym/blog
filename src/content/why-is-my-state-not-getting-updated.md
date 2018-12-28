@@ -1,6 +1,8 @@
 ---
 title: 'Why is my state not getting updated'
 date: '2018-04-14T22:12:03.284Z'
+tags: ['react', 'javascript', 'state', 'not getting updated', 'one step back']
+published: true
 ---
 
 Probably because you are using it wrong.

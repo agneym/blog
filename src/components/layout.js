@@ -60,6 +60,9 @@ const GlobalStyles = createGlobalStyle`
     background-color: transparent;
     color: inherit;
     font-size: medium;
+    text-shadow: none;
+    box-shadow: none;
+    border: 0;
   }
 `;
 

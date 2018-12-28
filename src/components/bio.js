@@ -12,7 +12,7 @@ const Container = styled.div`
   justify-content: space-between;
   margin: 5rem 0;
 
-  ${media.tablet`
+  ${media.phone`
     flex-direction: column;
     text-align: center;
   `}
