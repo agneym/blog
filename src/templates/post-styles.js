@@ -44,7 +44,7 @@ export const Container = styled.article`
   }
 
   h1 {
-    font-size: 48px;
+    font-size: 40px;
     text-align: left;
     margin-bottom: 8px;
   }
