@@ -19,16 +19,13 @@ export const Container = styled.article`
   }
 
   blockquote {
-    font-family: 'Playfair Display', serif;
-    font-size: 30px;
+    font-size: 25px;
     font-style: italic;
-    letter-spacing: -0.36px;
     line-height: 44.4px;
     overflow-wrap: break-word;
-    margin: 55px 0 33px 0;
-    /* text-align: center; */
-    color: rgba(0, 0, 0, 0.68);
-    padding: 0 0 0 50px;
+    margin: 3rem 0 3rem 0;
+    color: rgba(0, 0, 0, 0.98);
+    padding: 0 0 0 2rem;
   }
 
   pre {
@@ -59,14 +56,18 @@ export const Container = styled.article`
     letter-spacing: -0.45px;
   }
 
+  h3 {
+    margin: 5rem 0 2rem;
+  }
+
   p,
   i,
   a {
     margin-top: 21px;
-    font-family: 'Lora';
-    font-size: 21px;
+    font-size: 18px;
     letter-spacing: -0.03px;
     line-height: 1.58;
+    color: inherit;
   }
 
   hr {
