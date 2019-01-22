@@ -23,7 +23,6 @@ export const Container = styled.article`
     font-size: 1.6rem;
     color: inherit;
     font-style: italic;
-    border-left: 0.2rem solid rgb(0, 0, 0);
     padding-left: 1rem;
     margin: 1rem 0;
   }

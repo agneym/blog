@@ -14,19 +14,19 @@ published: true
 
 [Carlo](https://github.com/GoogleChromeLabs/carlo) is a headful Node app framework for building desktop applications.
 
-#### How is it different from Electron, Proton Native?
+### How is it different from Electron, Proton Native?
 
 While these other frameworks, bring their own runtime into the equation, Carlo uses the Chrome instance already installed on a users computer.
 
-#### Why would you want it on a web server?
+### Why would you want it on a web server?
 
 Using webpack to bundle all your files makes it easier to use the developer ecosystem that the javascript community already provides. Like Babel, SCSS or ESLint.
 
-#### What is about to be assumed?
+### What is about to be assumed?
 
 You already know how to setup a normal webpack server.
 
-#### Is there a shortcut?
+### Is there a shortcut?
 
 Yes, [Electrojet CLI](https://github.com/BoyWithSilverWings/create-electrojet) provides a single command to setup a carlo project using webpack:
 
@@ -34,7 +34,7 @@ Yes, [Electrojet CLI](https://github.com/BoyWithSilverWings/create-electrojet) p
 npm init electrojet <project-name> --template=carlo
 ```
 
-#### How do I set Carlo to listen to the webpack dev server?
+### How do I set Carlo to listen to the webpack dev server?
 
 Carlo has an API [`serveOrigin`](https://github.com/GoogleChromeLabs/carlo/blob/master/API.md#appserveoriginbase-prefix) to listen to a particular web address as origin. You can use that with:
 
@@ -48,7 +48,7 @@ carlo.launch().then(async app => {
 
 But then, you would soon find that your javascript bundle is not loading.
 
-#### What is the problem?
+### What is the problem?
 
 Carlo, currently on version 0.9, allows to serve origin contents only when they are from secure origins, which means if you try to setup a normal webpack server to serve the application you would end up with:
 
