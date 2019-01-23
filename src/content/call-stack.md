@@ -118,4 +118,10 @@ But most of JavaScript engines haven't implemented this yet, and there hasn't be
 
 To read more about Tail Call Optimisation, read [Axel Rauschmayer blog](http://2ality.com/2015/06/tail-call-optimization.html)
 
+### Does this change the way I write code?
+
+It doesn't have to. Call Stack as we have talked about is a model for single threaded JavaScript to execute functions and manage context of execution. It does not have to change code that you write.
+
+But together with the knowledge of event loop, this concept is a starter to altering the way you think about JavaScript code.
+
 That's about it about call stack for now. Is there something I missed? Something wrong? Something good? Ping me on [Twitter](https://twitter.com/agneymenon)
