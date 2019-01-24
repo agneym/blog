@@ -21,12 +21,18 @@ const Title = styled.h3`
 class BlogIndex extends Component {
   render() {
     const { data } = this.props;
-    const posts = data.allMarkdownRemark.edges;
+    const posts = data.allMdx.edges;
     return (
       <Layout>
         <SEO
           title="All Posts"
-          keywords={[`mindless`, `blog`, `javascript`, `boy with silver wings`]}
+          keywords={[
+            `mindless`,
+            `blog`,
+            `javascript`,
+            `agney`,
+            `boy with silver wings`,
+          ]}
         />
         <Bio />
         <main>
@@ -49,7 +55,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { published: { eq: true } } }
     ) {
@@ -59,9 +65,6 @@ export const pageQuery = graphql`
           excerpt(pruneLength: 160)
           fields {
             slug
-            readingTime {
-              text
-            }
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
