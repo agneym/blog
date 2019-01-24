@@ -10,17 +10,13 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-            allMarkdownRemark(
-              sort: { fields: [frontmatter___date], order: DESC }
-              limit: 1000
-            ) {
+            allMdx {
               edges {
                 node {
+                  id
                   fields {
-                    slug
-                  }
-                  frontmatter {
                     title
+                    slug
                     published
                   }
                 }
@@ -35,7 +31,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         // Create blog posts pages.
-        const posts = result.data.allMarkdownRemark.edges;
+        const posts = result.data.allMdx.edges;
 
         posts.forEach((post, index) => {
           const previous =
@@ -43,12 +39,13 @@ exports.createPages = ({ graphql, actions }) => {
           const next = index === 0 ? null : posts[index - 1].node;
 
           createPage({
-            path: post.node.fields.slug,
+            path: post.fields.slug,
             component: blogPost,
             context: {
               slug: post.node.fields.slug,
               previous,
               next,
+              id: post.id,
             },
           });
         });
