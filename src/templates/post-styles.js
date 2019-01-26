@@ -87,7 +87,7 @@ export const Pre = styled.pre`
 
   &[class*='language-'] {
     border: 0;
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: 0;
   }
 `;

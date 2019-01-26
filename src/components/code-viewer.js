@@ -3,17 +3,13 @@ import { Pre, LineNo } from '../templates/post-styles';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/nightOwl';
 
-const exampleCode = `
-(function someDemo() {
-  var test = "Hello World!";
-  console.log(test);
-})();
-
-return () => <App />;
-`.trim();
-
-const Basic = () => (
-  <Highlight {...defaultProps} theme={theme} code={exampleCode} language="jsx">
+const Basic = ({ code, language = 'js' }) => (
+  <Highlight
+    {...defaultProps}
+    theme={theme}
+    code={code.trim()}
+    language={language}
+  >
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
       <Pre className={className} style={style}>
         {tokens.map((line, i) => (
