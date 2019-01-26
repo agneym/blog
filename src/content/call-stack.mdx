@@ -10,6 +10,7 @@ tags:
   ]
 published: true
 ---
+import dev from "./call-stack/devtools.gif";
 
 This is part of a series where I try to explain through each of [33 JS Concepts](https://github.com/leonardomso/33-js-concepts).
 
@@ -17,9 +18,7 @@ This part corresponds to the JavaScript Call Stack.
 
 Let's get started without further ado.
 
-<div align="center">
-  <img src="./call-stack/memory-model.svg" width="80%" />
-</div>
+![Memory Model](./call-stack/memory-model.svg)
 
 This is the memory model taken from [MDN here](https://developer.mozilla.org/bm/docs/Web/JavaScript/EventLoop). Also note that this is only a visual representation, javascript engines can optimise the representation for performance reasons.
 
@@ -70,7 +69,7 @@ Under the _Source_ panel in devtools, you can find the call stack by setting a b
 The call stack is among the tabs on the right.
 
 <div align="center">
-  <img src="./call-stack/devtools.gif" width="100%">
+  <img src={dev} width="100%" />
 </div>
 
 Did you know you can click on a call stack function to go to corresponding function?
