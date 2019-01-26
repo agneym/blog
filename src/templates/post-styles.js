@@ -46,7 +46,7 @@ export const Container = styled.article`
     font-size: 26px;
     font-weight: 700;
     padding: 0;
-    margin: 56px 0 -13px -1.883px;
+    margin: 30px 0 -10px -1.883px;
     text-align: left;
     line-height: 34.5px;
     letter-spacing: -0.45px;
