@@ -55,15 +55,6 @@ const GlobalStyles = createGlobalStyle`
   pre code {
     word-break: normal;
   }
-
-  :not(pre) > code[class*="language-"], pre[class*="language-text"] {
-    background-color: transparent;
-    color: inherit;
-    font-size: medium;
-    text-shadow: none;
-    box-shadow: none;
-    border: 0;
-  }
 `;
 
 const Content = styled.div`

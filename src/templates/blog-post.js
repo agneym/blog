@@ -5,13 +5,15 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { Container, Title, LinkList, Header } from './post-styles';
 import Share from '../components/share';
+import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark;
+    const post = this.props.data.mdx;
     const siteTitle = this.props.data.site.siteMetadata.title;
     const author = this.props.data.site.siteMetadata.author;
     const { previous, next } = this.props.pageContext;
+    console.log(post);
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -30,15 +32,9 @@ class BlogPostTemplate extends React.Component {
             >
               <span>Posted on {post.frontmatter.date}</span>
               <span>&nbsp; - &nbsp;</span>
-              <span>{post.fields.readingTime.text}</span>
             </sub>
           </Header>
-          <div
-            css={`
-              margin: 5rem 0;
-            `}
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          <MDXRenderer>{post.code.body}</MDXRenderer>
           <Share
             post={{
               title: post.frontmatter.title,
@@ -78,14 +74,11 @@ export const pageQuery = graphql`
         author
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt
-      html
-      fields {
-        readingTime {
-          text
-        }
+      code {
+        body
       }
       frontmatter {
         title

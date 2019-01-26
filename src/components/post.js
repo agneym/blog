@@ -31,7 +31,6 @@ const Post = ({ node }) => (
       <sub>
         <span>on {node.frontmatter.date}</span>
         <span>&nbsp; - &nbsp;</span>
-        <span>{node.fields.readingTime.text}</span>
       </sub>
       <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
     </Container>
