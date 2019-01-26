@@ -3,7 +3,7 @@ import { Pre, LineNo } from '../templates/post-styles';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/nightOwl';
 
-const Basic = ({ code, language = 'js' }) => (
+const CodeViewer = ({ code, language = 'js' }) => (
   <Highlight
     {...defaultProps}
     theme={theme}
@@ -25,4 +25,4 @@ const Basic = ({ code, language = 'js' }) => (
   </Highlight>
 );
 
-export default Basic;
+export default CodeViewer;
