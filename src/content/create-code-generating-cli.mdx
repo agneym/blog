@@ -5,6 +5,8 @@ tags: ['code generating cli', 'gluegun', 'creating a cli', 'tutorial']
 published: true
 ---
 
+import CodeViewer from "../components/code-viewer"
+
 Today I would like to walk through the procedure to create a code generating CLI. This is not a step by step tutorial, although we will be looking at the concepts involved.
 
 What is a _Code generating CLI_, you ask? You might have surely used one in your career, some of the examples being [create-react-app](https://facebook.github.io/create-react-app/docs/getting-started), [express-generator](https://expressjs.com/en/starter/generator.html), [vue-cli](https://cli.vuejs.org/guide/) or the amazing [ng-cli](https://cli.angular.io/).
@@ -21,9 +23,9 @@ https://twitter.com/bitandbang/status/1075473070368919552
 
 I have a ready made CLI [here](https://github.com/BoyWithSilverWings/create-profile-card) that you can run with:
 
-```bash
-npm init profile-card card-name
-```
+<CodeViewer code={`
+  npm init profile-card card-name
+`} language="bash" />
 
 > Tip: npm allows you to skip the `create` part in your package name with `npm init`. For eg. `npm init react-app`
 
@@ -31,16 +33,16 @@ npm init profile-card card-name
 
 Before we start on Gluegun, we need to take a quick recap of `ejs` that we will be using for templating.
 
-```html
+<CodeViewer code={`
 <!-- Substitutes h2 contents with user.name value -->
 <h2><%= user.name %></h2>
-
+ 
 <!-- Includes user/show.ejs file and supplies user to it -->
 <%- include('user/show', {user: user}); %>
-
+ 
 <!-- enters the unescaped value into the tag-->
 <%- JSON.stringify(user) -%>
-```
+`} language="html" />
 
 There is a lot [more](https://ejs.co/#docs) to it than that, but that is what we will be using for this tutorial.
 
@@ -50,12 +52,12 @@ There is a lot [more](https://ejs.co/#docs) to it than that, but that is what we
 
 Gluegun comes with a CLI (which _Surprise!_ uses the Gluegun package) that helps us bootstrap a project really fast.
 
-```bash
+<CodeViewer code={`
 npx gluegun@next new create-card
 cd create-card
 npm link
 create-card
-```
+`} language="bash" />
 
 ### What's inside
 
@@ -88,17 +90,16 @@ Let's looks inside the `src` now.
 
 The `commands` folder contain the commands you want the cli app to run. In our example, we will only have a single command, that also corresponds to the name of the app.
 
-```js
+<CodeViewer code={`
 // src/commands/create-card.js
 module.exports = {
   name: 'create-card',
   run: async toolbox => {
     const { print } = toolbox;
-
     print.info('Welcome to your CLI');
   },
 };
-```
+`} />
 
 The `run` function actually contains the code that will execute when you type in `create-card` in the console. Inside, you see that `print` is taken out of something called the toolbox. What all does this toolbox actually have? Well, a lot of things. We will look at some along the way. What `print` command does is to print whatever text you give it to the console. There are variety of formats for use, like `print.info`, `print.warning`, `print.error` etc. (just like `console`, you get the idea)
 
@@ -108,7 +109,7 @@ But you can see that writing all the code inside these `run` functions can get v
 
 Extensions are how we can create reusable functions and attach them to the toolbox.
 
-```js
+<CodeViewer code={`
 module.exports = toolbox => {
   // A function to install packages present in package.json
   function installPackages(props) {
@@ -116,19 +117,18 @@ module.exports = toolbox => {
       system: { which, spawn },
       print: { info },
     } = toolbox;
-
+     
     info('Starting package installation');
-
-    // get the path of npm installation, you can also run `which npm` in terminal to see the output
+    // get the path of npm installation, you can also run \`which npm\` in terminal to see the output
     const npmPath = which('npm');
-
+     
     /* 
       1. Spawn a shell process that will navigate to the folder
       2. Run npm install
       3. Run npm run format (which is also defined in package.json)
     */
     return spawn(
-      `cd ${props.name} && ${npmPath} install && ${npmPath} run --quiet format`,
+      \`cd \${props.name} && \${npmPath} install && \${npmPath} run --quiet format\`,
       {
         shell: true,
         stdio: 'inherit',
@@ -136,15 +136,14 @@ module.exports = toolbox => {
       }
     );
   }
-
   // Put the function into the toolbox
   toolbox.installPackages = installPackages;
 };
-```
+`} />
 
 You can now invoke an extension from inside a `command` like:
 
-```js
+<CodeViewer code={`
 // src/commands/create-card.js
 module.exports = {
   name: 'create-card',
@@ -162,17 +161,15 @@ module.exports = {
     }
     // Get name of the folder to be created, accessible with parameters.first
     const name = parameters.first;
-
     /*
       This is a custom extension that prompts for details from the user
       https://github.com/BoyWithSilverWings/create-profile-card/blob/master/src/extensions/prompt-details.js
     */
     const details = await promptDetails({ name });
-
     const props = { name, config };
   }
 }
-```
+`} />
 
 > Not a fan of this technique, but may be it gets better with types.
 
@@ -184,7 +181,7 @@ Now, all these files may not need content injection, for example `.gitignore`, b
 
 Here is an example of a file that needs injection:
 
-```json
+<CodeViewer code={`
 {
   "name": "<%= props.name %>",
   "version": "0.0.1",
@@ -207,11 +204,12 @@ Here is an example of a file that needs injection:
     "jest": "^23.6.0"
   }
 }
-```
+`} language="json" />
+
 
 You can see that this files requires us to fill in the name with `props.name` where `props` is supposed to be passed into this function. This is same as the name that the user has already entered with create command. How do we pass this in?
 
-```js
+<CodeViewer code={`
 // Continuing src/commands/create-card.js
 const files = [
   'bin/card.js.ejs',
@@ -220,13 +218,11 @@ const files = [
   'config.json.ejs',
   '.gitignore.ejs',
 ];
-
+ 
 const filesCopy = files.reduce((acc, file) => {
-  const template = `/${file}`;
-
+  const template = \`/\${file}\`;
   // Where to copy this file to.
-  const target = `${props.name}/${file.replace('.ejs', '')}`;
-
+  const target = \`\${props.name}/\${file.replace('.ejs', '')}\`;
   /* 
     First argument is the template,
     Second is the target, where to put the file
@@ -236,16 +232,14 @@ const filesCopy = files.reduce((acc, file) => {
   const gen = generate({ template, target, props });
   return acc.concat([gen]);
 }, []);
-
+ 
 // Wait for all promises to resolve
 await Promise.all(filesCopy);
-
 // Set permissions for cli to execute
-filesystem.chmodSync(`${props.name}/bin/card.js`, '755');
-
+filesystem.chmodSync(\`\${props.name}/bin/card.js\`, '755');
 // Wait for installing packages, this is the custom extension written above
 await installPackages(props);
-```
+`} />
 
 Once this is complete, you will have all the files copied to the directory of preference and ready.
 

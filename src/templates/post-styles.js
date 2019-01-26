@@ -73,6 +73,13 @@ export const Container = styled.article`
     height: 1rem;
     padding: 0;
   }
+
+  code[class*='language-'],
+  pre[class*='language-'] {
+    background-color: #000000;
+    display: block;
+    padding: 1rem 0;
+  }
 `;
 
 export const Pre = styled.pre`
