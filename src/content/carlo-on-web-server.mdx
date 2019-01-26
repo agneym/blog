@@ -12,6 +12,8 @@ tags:
 published: true
 ---
 
+import CodeViewer from "../components/code-viewer";
+
 [Carlo](https://github.com/GoogleChromeLabs/carlo) is a headful Node app framework for building desktop applications.
 
 ### How is it different from Electron, Proton Native?
@@ -30,21 +32,21 @@ You already know how to setup a normal webpack server.
 
 Yes, [Electrojet CLI](https://github.com/BoyWithSilverWings/create-electrojet) provides a single command to setup a carlo project using webpack:
 
-```bash
-npm init electrojet <project-name> --template=carlo
-```
+<CodeViewer code={`
+  npm init electrojet <project-name> --template=carlo
+`} language="bash" />
 
 ### How do I set Carlo to listen to the webpack dev server?
 
 Carlo has an API [`serveOrigin`](https://github.com/GoogleChromeLabs/carlo/blob/master/API.md#appserveoriginbase-prefix) to listen to a particular web address as origin. You can use that with:
 
-```js
+<CodeViewer code={`
 carlo.launch().then(async app => {
   app.on('exit', () => process.exit());
   app.serveOrigin('http://localhost:8080'); // Point to webpack url here
   await app.load('index.html');
 });
-```
+`} />
 
 But then, you would soon find that your javascript bundle is not loading.
 
@@ -60,25 +62,25 @@ in the console while serving the application.
 
 Fortunately, if you are using webpack dev server, the solution to this is easy. Inside the configuration object for `devServer` provide:
 
-```js
+<CodeViewer code={`
 {
   devServer: {
     ...otherOptions
     http: true,
   }
 }
-```
+`} />
 
 But this would pull up the nasty `Your webpack is not secure` screen for you, when you are not even running it on a webpage.
 
 Luckily, Carlo provides an API to escape this dreaded screen. On launching the carlo server, you can provide `args: ["--allow-insecure-localhost"],` to avoid seeing the screen ever again.
 
-```js
+<CodeViewer code={`
 carlo.launch({
   ...otherOptions
   args: ["--allow-insecure-localhost"],
 })
-```
+`} />
 
 You should have your server up and running now.
 
