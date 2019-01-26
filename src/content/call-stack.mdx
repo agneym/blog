@@ -11,6 +11,7 @@ tags:
 published: true
 ---
 import dev from "./call-stack/devtools.gif";
+import CodeEditor from "../components/code-editor";
 
 This is part of a series where I try to explain through each of [33 JS Concepts](https://github.com/leonardomso/33-js-concepts).
 
@@ -108,6 +109,8 @@ function fact_h(n, acc) {
   return fact_h(n - 1, acc * n);
 }
 ```
+
+<CodeEditor />
 
 You can see the last statement in this function is to return result of another function, so there is no use returning to this function anymore.
 

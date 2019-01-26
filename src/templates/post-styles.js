@@ -28,10 +28,6 @@ export const Container = styled.article`
     padding: 0 0 0 2rem;
   }
 
-  pre {
-    margin-bottom: 2rem;
-  }
-
   h2,
   h3,
   h4,
@@ -77,6 +73,30 @@ export const Container = styled.article`
     height: 1rem;
     padding: 0;
   }
+`;
+
+export const Pre = styled.pre`
+  text-align: left;
+  margin: 1em 0;
+  padding: 0.5em;
+
+  & .token-line {
+    line-height: 1.3em;
+    height: 1.3em;
+  }
+
+  &[class*='language-'] {
+    border: 0;
+    padding: 1rem;
+    border-radius: 0;
+  }
+`;
+
+export const LineNo = styled.span`
+  display: inline-block;
+  width: 2em;
+  user-select: none;
+  opacity: 0.3;
 `;
 
 export const Header = styled.header`
