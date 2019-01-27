@@ -57,7 +57,7 @@ plugins: [
 -    allMarkdownRemark \{
 +    allMdx \{
   \}
-`} />
+`.trim()} />
 
     2. Getting the data from query, use:
 
@@ -69,6 +69,16 @@ result.data.allMdx.edges;
 
 <CodeViewer code={`
 if (node.internal.type === \`Mdx\`) {
+`} />
+
+    4. At the places where you get data, (the listing page and blog post page), 
+    repeat Step 2.
+
+<CodeViewer code={`
+  \{
+-    allMarkdownRemark \{
++    allMdx \{
+  \}
 `} />
 
 ## What about remark plugins? Can I still use them?
