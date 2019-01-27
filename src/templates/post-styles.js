@@ -74,6 +74,11 @@ export const Container = styled.article`
     padding: 0;
   }
 
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
   code[class*='language-'],
   pre[class*='language-'] {
     background-color: #000000;
@@ -86,6 +91,12 @@ export const Pre = styled.pre`
   text-align: left;
   margin: 1em 0;
   padding: 0.5em;
+  overflow-x: auto;
+
+  && {
+    white-space: nowrap;
+    word-wrap: normal;
+  }
 
   & .token-line {
     line-height: 1.3em;
