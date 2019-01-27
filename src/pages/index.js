@@ -37,6 +37,7 @@ class BlogIndex extends Component {
           ]}
         />
         <main>
+          <Bio />
           <Title>Latest Posts</Title>
           {posts.map(({ node }) => {
             return <Post key={node.id} node={node} />;

@@ -11,10 +11,12 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 5rem 0;
+  display: none;
 
   ${media.phone`
     flex-direction: column;
     text-align: center;
+    display: block;
   `}
 `;
 
