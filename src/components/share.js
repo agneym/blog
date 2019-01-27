@@ -58,7 +58,8 @@ class Share extends Component {
             </FacebookShareButton>
             <TwitterShareButton
               url={url}
-              title={`Read ${post.title} by ${post.author}`}
+              title={`Read ${post.title}`}
+              via={`agneymenon`}
               className="social-icon"
             >
               <TwitterIcon size={32} round />
