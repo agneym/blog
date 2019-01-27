@@ -1,1 +1,1 @@
-import 'typeface-oswald';
+import 'typeface-aleo';

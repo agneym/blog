@@ -9,9 +9,11 @@ import Post from '../components/post';
 import media from '../utils/media';
 
 const Title = styled.h3`
-  font-weight: 800;
-  font-size: 2.6rem;
+  font-weight: 400;
+  font-size: 2.2rem;
+  letter-spacing: 0.1rem;
   margin: 6rem 0 0;
+  text-transform: uppercase;
 
   ${media.phone`
     margin: 3rem 0 0;
