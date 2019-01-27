@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import media from '../utils/media';
 
 export const Container = styled.article`
-  margin-top: 8rem;
+  margin-top: 6rem;
 
   ${media.phone`
     margin-top: 4rem;

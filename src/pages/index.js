@@ -34,7 +34,6 @@ class BlogIndex extends Component {
             `boy with silver wings`,
           ]}
         />
-        <Bio />
         <main>
           <Title>Latest Posts</Title>
           {posts.map(({ node }) => {

@@ -13,7 +13,6 @@ class BlogPostTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title;
     const author = this.props.data.site.siteMetadata.author;
     const { previous, next } = this.props.pageContext;
-    console.log(post);
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -31,7 +30,6 @@ class BlogPostTemplate extends React.Component {
               `}
             >
               <span>Posted on {post.frontmatter.date}</span>
-              <span>&nbsp; - &nbsp;</span>
             </sub>
           </Header>
           <MDXRenderer>{post.code.body}</MDXRenderer>
