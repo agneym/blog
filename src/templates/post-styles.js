@@ -74,6 +74,24 @@ export const Container = styled.article`
     padding: 0;
   }
 
+  ol {
+    margin-left: 1rem;
+    list-style: none;
+    counter-reset: custom-counter;
+  }
+
+  ol li {
+    counter-increment: custom-counter;
+    line-height: 1.5;
+  }
+
+  ol li::before {
+    content: counter(custom-counter) '. ';
+    font-size: small;
+    color: gray;
+    margin-right: 0.6rem;
+  }
+
   pre {
     white-space: pre-wrap;
     word-wrap: break-word;

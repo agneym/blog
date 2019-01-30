@@ -1,6 +1,6 @@
 ---
-title: 'Value vs Reference - Javascript Concepts 2'
-date: '2019-01-27T22:12:03.284Z'
+title: 'Value vs Reference - Javascript Concepts 3'
+date: '2019-01-30T22:12:03.284Z'
 tags:
   [
     'value vs reference',
@@ -16,4 +16,68 @@ import CodeViewer from "../components/code-viewer";
 This is part of a series where I try to explain through each of [33 JS Concepts](https://github.com/leonardomso/33-js-concepts).
 
 This part corresponds to the Pass by Value vs Pass by Reference.
+
+Before we go into JavaScript of things, let's look at what _Pass by Value_ and _Pass by Reference_ actually means.
+
+Quoting [this](https://stackoverflow.com/a/430958/4374566) answer on stackoverflow,
+
+* When a parameter is passed by reference, the caller and the callee use the same variable for the parameter. If the callee modifies the parameter variable, the effect is visible to the caller's variable.
+
+* When a parameter is passed by value, the caller and callee have two independent variables with the same value. If the callee modifies the parameter variable, the effect is not visible to the caller.
+
+In essence, when you are passing a variable by reference, you are allowing a function to change the variable and hence bear the weight of side effects whatever that function did to your variable. 
+
+When passing by value, you give the function much lesser control. You will take into account only what is returned by the function. They can change the variables you pass in but that will not affect your variables.
+
+But this concept is mostly outdated today. It is taught in colleges and for introductory classes but most modern languages choose to implement this way differently. Talking about modern languages, so does JavaScript.
+
+JavaScript implements this concept with two types of data types: Primitives and Objects.
+
+Instead of introducing two ways of passing variables to functions, we have two types of variables. The type of variable defines whether it is passed by value or by reference.
+
+## Primitives
+
+There are 6 primitive data types in JavaScript: 
+
+1. string
+2. number
+3. boolean
+4. null
+5. undefined
+6. symbol
+
+These data types are represented at the lowest level and are immutable. 
+
+> Immutability means that their properties cannot be altered at run time. Like,
+
+<CodeViewer code={`
+let stringVar = "this is one long string";
+stringVar[4] = "v";   // This is not possible
+stringVar = "this is another string"; // This is not barred by the datatype
+`} />
+
+### But I thought JavaScript did not have types
+
+Yes, JavaScript is a loosely typed language. This still means that JavaScript has data types. But these data types are not bound to any variable. 
+
+<CodeViewer code={`
+let variable = "one";
+variable = 1;
+variable = true; // Totally fine executions
+`} />
+
+### How does this relate to Value vs Reference?
+
+Primitives are always passed by value in the truest form.
+
+<CodeViewer code={`
+function crazy(data) {
+  data = "_*.!@!!@(U!())";  // let this function do what it ever it wants, it wouldn't hurt out primitive
+}
+ 
+const impData = "this is data as a string";
+crazy(impData); // rest assured, impData (primitive) is safe from manipulation by crazy()
+`} />
+
+
 
