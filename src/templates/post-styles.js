@@ -99,7 +99,7 @@ export const Container = styled.article`
   pre[class*='language-'] {
     background-color: #000000;
     display: block;
-    padding: 1rem;
+    padding: 1.5rem 1rem;
   }
 `;
 
