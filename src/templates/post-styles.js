@@ -37,8 +37,6 @@ export const Container = styled.article`
   }
 
   h1 {
-    font-size: 40px;
-    text-align: left;
     margin-bottom: 8px;
   }
 
@@ -143,7 +141,12 @@ export const Header = styled.header`
 
 export const Title = styled.h1`
   margin-bottom: 1rem;
-  font-size: 3rem;
+  font-size: 4.2rem;
+
+  ${media.phone`
+    font-size: 2.8rem;
+    text-align: center;
+  `}
 `;
 
 export const LinkList = styled.ul`
