@@ -6,6 +6,7 @@ import SEO from '../components/seo';
 import { Container, Title, LinkList, Header } from './post-styles';
 import Share from '../components/share';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import 'react-js-live/build/main.css';
 
 class BlogPostTemplate extends React.Component {
   render() {
