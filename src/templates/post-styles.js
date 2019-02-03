@@ -81,6 +81,11 @@ export const Container = styled.article`
   ol li {
     counter-increment: custom-counter;
     line-height: 1.5;
+    margin: 0.5rem 0;
+  }
+
+  ol li > p {
+    display: inline;
   }
 
   ol li::before {
