@@ -105,6 +105,7 @@ export const Container = styled.article`
     background-color: #000000;
     display: block;
     padding: 1.5rem 1rem;
+    color: #ffffff;
   }
 `;
 

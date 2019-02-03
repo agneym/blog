@@ -5,7 +5,7 @@ tags: ['code generating cli', 'gluegun', 'creating a cli', 'tutorial']
 published: true
 ---
 
-import CodeViewer from "../components/code-viewer"
+import CodeViewer from '../components/code-viewer';
 
 Today I would like to walk through the procedure to create a code generating CLI. This is not a step by step tutorial, although we will be looking at the concepts involved.
 
@@ -17,15 +17,27 @@ Gluegun defines itself as a delightful toolkit for building Node-powered CLIs. I
 
 ## What we are going to build
 
-https://twitter.com/bitandbang/status/1075473070368919552
+<blockquote class="twitter-tweet" data-lang="en">
+  <p lang="en" dir="ltr">
+    Updated my business card 😎{' '}
+    <a href="https://t.co/psqZQ9pj4L">pic.twitter.com/psqZQ9pj4L</a>
+  </p>
+  &mdash; Tierney Cyren (@bitandbang){' '}
+  <a href="https://twitter.com/bitandbang/status/1075473070368919552?ref_src=twsrc%5Etfw">
+    December 19, 2018
+  </a>
+</blockquote>
 
 [Tierney Cyren](https://twitter.com/bitandbang) had tweeted this and things went out of control very soon with lots and lots of people creating their own cards. (Even I have my own, with `npx boywithsilverwings`) What we are trying to create today is a CLI to create your own `npx` card, because why the hell not!
 
 I have a ready made CLI [here](https://github.com/BoyWithSilverWings/create-profile-card) that you can run with:
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
   npm init profile-card card-name
-`} language="bash" />
+`}
+  language="bash"
+/>
 
 > Tip: npm allows you to skip the `create` part in your package name with `npm init`. For eg. `npm init react-app`
 
@@ -33,7 +45,8 @@ I have a ready made CLI [here](https://github.com/BoyWithSilverWings/create-prof
 
 Before we start on Gluegun, we need to take a quick recap of `ejs` that we will be using for templating.
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
 <!-- Substitutes h2 contents with user.name value -->
 <h2><%= user.name %></h2>
  
@@ -42,7 +55,9 @@ Before we start on Gluegun, we need to take a quick recap of `ejs` that we will 
  
 <!-- enters the unescaped value into the tag-->
 <%- JSON.stringify(user) -%>
-`} language="html" />
+`}
+  language="html"
+/>
 
 There is a lot [more](https://ejs.co/#docs) to it than that, but that is what we will be using for this tutorial.
 
@@ -52,12 +67,15 @@ There is a lot [more](https://ejs.co/#docs) to it than that, but that is what we
 
 Gluegun comes with a CLI (which _Surprise!_ uses the Gluegun package) that helps us bootstrap a project really fast.
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
 npx gluegun@next new create-card
 cd create-card
 npm link
 create-card
-`} language="bash" />
+`}
+  language="bash"
+/>
 
 ### What's inside
 
@@ -90,7 +108,8 @@ Let's looks inside the `src` now.
 
 The `commands` folder contain the commands you want the cli app to run. In our example, we will only have a single command, that also corresponds to the name of the app.
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
 // src/commands/create-card.js
 module.exports = {
   name: 'create-card',
@@ -99,7 +118,8 @@ module.exports = {
     print.info('Welcome to your CLI');
   },
 };
-`} />
+`}
+/>
 
 The `run` function actually contains the code that will execute when you type in `create-card` in the console. Inside, you see that `print` is taken out of something called the toolbox. What all does this toolbox actually have? Well, a lot of things. We will look at some along the way. What `print` command does is to print whatever text you give it to the console. There are variety of formats for use, like `print.info`, `print.warning`, `print.error` etc. (just like `console`, you get the idea)
 
@@ -109,7 +129,8 @@ But you can see that writing all the code inside these `run` functions can get v
 
 Extensions are how we can create reusable functions and attach them to the toolbox.
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
 module.exports = toolbox => {
   // A function to install packages present in package.json
   function installPackages(props) {
@@ -139,11 +160,13 @@ module.exports = toolbox => {
   // Put the function into the toolbox
   toolbox.installPackages = installPackages;
 };
-`} />
+`}
+/>
 
 You can now invoke an extension from inside a `command` like:
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
 // src/commands/create-card.js
 module.exports = {
   name: 'create-card',
@@ -169,7 +192,8 @@ module.exports = {
     const props = { name, config };
   }
 }
-`} />
+`}
+/>
 
 > Not a fan of this technique, but may be it gets better with types.
 
@@ -181,7 +205,8 @@ Now, all these files may not need content injection, for example `.gitignore`, b
 
 Here is an example of a file that needs injection:
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
 {
   "name": "<%= props.name %>",
   "version": "0.0.1",
@@ -204,12 +229,14 @@ Here is an example of a file that needs injection:
     "jest": "^23.6.0"
   }
 }
-`} language="json" />
-
+`}
+  language="json"
+/>
 
 You can see that this files requires us to fill in the name with `props.name` where `props` is supposed to be passed into this function. This is same as the name that the user has already entered with create command. How do we pass this in?
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
 // Continuing src/commands/create-card.js
 const files = [
   'bin/card.js.ejs',
@@ -239,7 +266,8 @@ await Promise.all(filesCopy);
 filesystem.chmodSync(\`\${props.name}/bin/card.js\`, '755');
 // Wait for installing packages, this is the custom extension written above
 await installPackages(props);
-`} />
+`}
+/>
 
 Once this is complete, you will have all the files copied to the directory of preference and ready.
 
