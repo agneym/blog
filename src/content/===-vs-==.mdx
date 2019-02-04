@@ -1,0 +1,186 @@
+---
+title: 'Double Equal vs Triple Equal'
+date: '2019-02-04T22:12:03.284Z'
+tags:
+  [
+    'double equal',
+    'triple equal',
+    'must learn javascript concepts',
+    'which to use',
+  ]
+published: false
+---
+
+import JSLive from 'react-js-live';
+
+This is part of a series where I try to explain through each of [33 JS Concepts](https://github.com/leonardomso/33-js-concepts).
+
+This part corresponds to the Double Equal vs Triple Equal.
+
+### Prerequisites
+
+1. [Type Coercion in JavaScript](https://blog.agney.in/type-coercion/)
+
+> That is all you need to know. No, I'm just kidding!
+> But you do need to know that.
+
+`==` is known as loose equality.
+
+`===` is known as strict equality.
+
+### What is difference between loose and strict?
+
+Loose Equality performs Coercion.
+
+Strict Equality _does_ not perform Coercion.
+
+Coercion is defined here follows the rules specified in the Abstract Equality Comparison Algorithm as defined in the ES Spec.
+
+### Case 1 - Both of the operands are of same types
+
+<JSLive
+  id="same-types"
+  snippets={{
+    html: ``,
+    css: ``,
+    js: `console.log(
+  undefined == undefined,
+  null == null,
+  NaN == 1,
+  1 == NaN,
+  NaN == NaN,
+  +0 == -0,
+  2 == 2,
+  -2 == 2
+);`,
+  }}
+/>
+
+Take Aways from here:
+
+1. `NaN` is **not** equal to itself or anything else.
+2. `+0` is equal to `-0` (_not that anyone uses them_)
+
+### Case 2 - The operands are null and undefined
+
+<JSLive
+  id="null-undefined"
+  snippets={{
+    html: ``,
+    css: ``,
+    js: `console.log(
+  undefined == null,
+  null == undefined,
+)`,
+  }}
+/>
+
+These people are very special and they are coerced to be equal to each other.
+
+Unlike others this is something that has constant applications. There might be functions that you want others to write and take the result from. You have instructed them to return `null` if the result is falsy but they forget. You have not got `null`, but you have got `undefined` in you hands. Instead of writing these an `||` to compare them you can compare the result with `==` to get the exact result you want.
+
+This also means that they are not equal to anything else. If you try `undefined == false`, you are ought to get `false` out of it.
+
+> Don't believe me? Try it out yourself.
+
+### Case 3 - One is string and the other number
+
+<JSLive
+  id="string-number"
+  snippets={{
+    html: ``,
+    css: ``,
+    js: `console.log(
+  12 == "12",
+  "12" == 12
+)`,
+  }}
+/>
+
+The string is being converted into a number here. If it is not a number, you will get an `NaN`, which is not equal to anything else anyway (not even itself as we mentioned)
+
+### Case 4 - Boolean and something else
+
+<JSLive
+  id="boolean-and-else"
+  snippets={{
+    html: ``,
+    css: ``,
+    js: `console.log(
+  12 == true,
+  true == 12
+)`,
+  }}
+/>
+
+> Huh? Where is the coercion I was promised?
+
+Coercion is still happening, we are not just looking at it the way compiler is. If compiler sees a boolean on either side of the `==`, it converts the boolean into a number and repeats the algorithm. So in our case, `true` gets converted to `1` and Is `12 == 1`, No; and hence `false`
+
+You know what would be right though? `1 == true`, try it.
+
+What if the other side is not a number? Say `"12" == true`, let's break it down:
+
+1. Compiler sees a boolean: `"12" == toNumber(true)` --> `"12" == 1`
+2. Compiler sees a string: `toNumber("12") == 1` --> `12 == 1` (Case 3)
+3. `false`
+
+### Case 5 - String/Number vs an Object
+
+<JSLive
+  id="object-and-else"
+  snippets={{
+    html: ``,
+    css: ``,
+    js: `console.log(
+  {} == false,
+  [] == false,  // Okay
+  [[]] == false,  // Hmm..
+  [[0]] == false,  // definitely wierd
+);
+ 
+const a = {
+  valueOf: () => 0,
+}
+const b = {
+  toString: () => "string",
+} 
+console.log(
+  a == false,
+  b == "string"
+);
+ 
+const c = {
+  valueOf: () => 0,
+  toString: () => "string",
+}
+console.log(
+  c == 0,
+  c == "string", // What?! I was just getting the hang of this.
+);`,
+  }}
+/>
+
+Lots of things here, let's break them down one by one.
+
+If we find an object on either sides of the `==` operator, we try converting it to a primitive.
+
+#### How might we do that?
+
+Objects have two methods defined to do this:
+
+1. `toString()`
+2. `valueOf()`
+
+`valueOf` by default returns the object itself, `toString` says `[object Object]`
+
+> More like I'm Groot. But this time, annoying.
+
+Rule 1: These two methods can only return primitives.
+
+> There are no errors if they return other stuff. It just ignores the value.
+
+> I mean, Common! `valueOf` just broke their only rule with it's default value.
+
+1. Empty object is not a falsy value, no coercion here.
+2. We have
