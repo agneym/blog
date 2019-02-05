@@ -8,7 +8,7 @@ tags:
     'must learn javascript concepts',
     'which to use',
   ]
-published: false
+published: true
 ---
 
 import JSLive from 'react-js-live';
@@ -183,4 +183,110 @@ Rule 1: These two methods can only return primitives.
 > I mean, Common! `valueOf` just broke their only rule with it's default value.
 
 1. Empty object is not a falsy value, no coercion here.
-2. We have
+2.
+
+As we had mentioned in our Coercion article, arrays have a `toString()` function defined by default.
+
+As `==` is a nuetral (default) case, compiler calls upon `toString()` on the array. which is `join(',')`. What happens when we apply that function to an empty array? We get `""`, which is falsy.
+
+Let's recount the step the steps now:
+
+1. `false` gets converted to number (case 4)
+   [] == 0
+2. `[]` toPrimitive called, `toString` is invoked
+   "" == 0
+3. String and number (Case 3)
+   0 == 0 --> `true`
+
+The same explanation explains 3, 4, 5 cases, so we will skip those.
+
+6 asks the important question:
+
+#### What if object has both `valueOf` and `toString`?
+
+The compiler first makes some guesses about it.
+
+Is it someplace a string would make sense? Like say, as an object key? Then prefer `toString()`
+
+Is it somewhere a number would make sense? Like in a mathematical expression? Then `valueOf`
+
+Is it someplace where both could exist? Like `==`? Then `valueOf` anyway.
+
+This is how the last one turns out to be false.
+
+#### Can I get this hint the compiler makes and take a decision on it?
+
+With ES6 and some magic with [Symbols](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), yes you can.
+
+<JSLive
+  id="to-primitives"
+  snippets={{
+    html: ``,
+    css: ``,
+    js: `const object1 = {
+  [Symbol.toPrimitive](hint) {
+    if (hint == 'number') {
+      return 42;
+    }
+    return null;
+  }
+};`,
+  }}
+/>
+
+[See how it works](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toPrimitive)
+
+### Case 6: Object vs Object
+
+If the two objects compared are of same [reference](https://blog.agney.in/value-vs-reference/), then `true` otherwise `false`.
+
+This is actually same for both `==` and `===`, just making the point.
+
+<JSLive
+  id="references"
+  snippets={{
+    html: ``,
+    css: ``,
+    js: `const person = {
+ name: 'john',
+ skills: ['hiking'],
+}
+const developer = person;
+/* == comparison operator for objects just compares references */
+console.log(person === developer) // true
+const anotherPerson = {
+  name: 'john',
+  skills: ['hiking'],
+}
+console.log(anotherPerson == person)`,
+  }}
+/>
+
+## Does this change the way I code?
+
+There is a choice to be made here. Stalwarts like Douglas Crockford, recommend that you should always use `===` instead of `==`. There are people like Kyle Simpson who thinks understanding `==` would be a far better option.
+
+There is an interesting conversation between Kyle Simpson and Brendan Eich on twitter about this:
+
+<blockquote className="twitter-tweet" data-lang="en">
+  <p lang="en" dir="ltr">
+    also, defaulting to === could be *slightly* less performant.
+    <br />
+    <br />
+    when the types are different, the behavioral equiv of x == y (allowing coercion)
+    actually requires two or more === usages. one == usage is faster than two ===
+    usages.
+  </p>
+  &mdash; getify (@getify){' '}
+  <a href="https://twitter.com/getify/status/1092614585704697856?ref_src=twsrc%5Etfw">
+    February 5, 2019
+  </a>
+</blockquote>
+
+To quote a [Stackoverflow answer](https://stackoverflow.com/a/5447170/4374566) on the topic,
+
+> Douglas Crockford makes a lot of recommendations, but you don't have to take them as gospel. :)
+
+Have your opinion, have a team hustle, decide and code.
+
+That's about it about call stack for now. Is there something I missed? Something wrong? Something good? Ping me on [Twitter](https://twitter.com/agneymenon)
