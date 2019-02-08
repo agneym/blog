@@ -1,24 +1,10 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Bio from '../components/bio';
-import Post from '../components/post';
-import media from '../utils/media';
-
-const Title = styled.h3`
-  font-weight: 400;
-  font-size: 2.2rem;
-  letter-spacing: 0.1rem;
-  margin: 6rem 0 0;
-  text-transform: uppercase;
-
-  ${media.phone`
-    margin: 3rem 0 0;
-  `}
-`;
+import PostsSection from '../components/posts-section';
 
 class BlogIndex extends Component {
   render() {
@@ -38,10 +24,7 @@ class BlogIndex extends Component {
         />
         <main>
           <Bio />
-          <Title>Latest Posts</Title>
-          {posts.map(({ node }) => {
-            return <Post key={node.id} node={node} />;
-          })}
+          <PostsSection title={`Latest Posts`} posts={posts} />
         </main>
       </Layout>
     );
