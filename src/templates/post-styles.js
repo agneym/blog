@@ -84,6 +84,12 @@ export const Container = styled.article`
     margin: 0.5rem 0;
   }
 
+  ul li {
+    line-height: 1.5;
+    margin: 0.5rem 0;
+    font-size: 1.8rem;
+  }
+
   ol li > p {
     display: inline;
   }
