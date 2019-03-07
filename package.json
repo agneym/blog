@@ -1,7 +1,7 @@
 {
   "name": "the-mindless",
   "private": true,
-  "description": "A simple minimal starter to get up and developing quickly with Gatsby",
+  "description": "A simple minimal Gatsby powered blog",
   "version": "0.0.1",
   "author": "Boy with Silver Wings <agney@outlook.in>",
   "dependencies": {
