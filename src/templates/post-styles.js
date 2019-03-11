@@ -104,6 +104,8 @@ export const Container = styled.article`
   pre {
     white-space: pre-wrap;
     word-wrap: break-word;
+    background-color: #f6f8fa;
+    padding: 1rem;
   }
 
   code[class*='language-'],

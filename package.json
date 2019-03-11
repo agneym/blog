@@ -45,7 +45,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "start": "npm run develop",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
