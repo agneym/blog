@@ -20,7 +20,7 @@ Planned Workflow:
 />
 
 1. We create the application locally in different branches.
-2. We merge to `develop` branch.
+2. We merge to `master` branch.
 3. CircleCI runs lint and test on these branches.
 4. CircleCI runs the NextJS build. (Also, run custom server build if you have one)
 5. CircleCI creates a ZIP file with necessary folders and pushed it to Elastic Beanstalk.
@@ -127,6 +127,14 @@ Now we have to provide permissions for Circle CI to deploy to Elastic Beanstalk.
 4. Set a group name and search for the AWSElasticBeanstalkFullAccess policy type and select it
 5. Create the group so it's assigned to your new user
 6. Review and create the user.
+
+## Add IAM User to CircleCI
+
+Add deployment user environment variables to CircleCi
+
+- Project Settings > Environment Variables
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
 
 ## Deploying NextJS
 
