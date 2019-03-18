@@ -106,6 +106,10 @@ export const Container = styled.article`
     word-wrap: break-word;
     background-color: #f6f8fa;
     padding: 1rem;
+
+    &[aria-hidden] {
+      background-color: inherit;
+    }
   }
 
   code[class*='language-'],
@@ -126,6 +130,7 @@ export const Pre = styled.pre`
   && {
     white-space: nowrap;
     word-wrap: normal;
+    background-color: #000000 !important;
   }
 
   & .token-line {
