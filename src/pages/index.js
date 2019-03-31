@@ -5,6 +5,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Bio from '../components/bio';
 import PostsSection from '../components/posts-section';
+import Subscribe from '../components/subscribe';
 
 class BlogIndex extends Component {
   render() {
@@ -25,6 +26,7 @@ class BlogIndex extends Component {
         <main>
           <Bio />
           <PostsSection title={`Latest Posts`} posts={posts} />
+          <Subscribe />
         </main>
       </Layout>
     );
