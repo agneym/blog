@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Post from './post';
 import media from '../utils/media';
 
-const Title = styled.h3`
+const Title = styled.h2`
   font-weight: 400;
   font-size: 2.2rem;
   letter-spacing: 0.1rem;
