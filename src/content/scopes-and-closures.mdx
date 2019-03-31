@@ -3,7 +3,7 @@ title: 'Scopes and Closures'
 date: '2019-02-15T22:12:03.284Z'
 tags:
   ['scopes', 'closure', 'javascript', 'types', 'must learn javascript concepts']
-published: false
+published: true
 ---
 
 import CodeViewer from '../components/code-viewer';
@@ -76,6 +76,7 @@ function action() {
 Wherever you declare a variable, JavaScript would proceed to hoist these upto the top of their scope. But let us be semantically correct here. JavaScript does not move the variables physically all your code remains the same. The compiler just picks the variables in it's current scope and declares them in compiler time with the value `undefined`.
 
 <JSLive
+  id="hoisting"
   snippets={{
     html: ``,
     css: ``,
@@ -108,12 +109,12 @@ Note that functions also form block scope.
   code={`
 function action(limit) {
   const a = 10;   // a can only be used inside this function
-  if(a < limit) {
+  if(a < limit) {      
     const b = a + 2;  // b can only be used inside this if block, a can also be used here as this block is inside the execution context of a's block
     return b;
   }
 }
-  `}
+`}
 />
 
 #### Hoisting
@@ -126,4 +127,133 @@ To get ahead of this question, JavaScript spec defines something known as a Temp
 
 ## Closures
 
-## Execution Context
+JavaScript is a language that treats functions as [first class citizens](https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function). This is a part and parcel of the functional languages. Functions are just objects in JavaScript and they can be assigned to variables, pass them to functions or return them from functions itself.
+
+Let's look at these conditions one by one:
+
+1. Assigned to variables
+
+<CodeViewer
+  id="assign-function"
+  code={`
+const foo = function(a) {
+  return a++;
+}
+  `}
+/>
+
+Here function is assigned to variable `foo`, to invoke this function we have call `foo()`. `foo` here is a reference to the function and can be reassigned or assigned to some other variable.
+
+2. Pass them to functions
+
+We just saw that functions can be assigned to variables. This is essentially an easy by product of the same. You can pass these references around as you would do with any other object.
+
+<JSLive
+  id="pass-function"
+  snippets={{
+    html: ``,
+    css: ``,
+    js: `
+function inc(num) {
+  return num+1;
+}
+function counter(num, incFun) {
+  return incFun(num);
+}
+let number = 1;
+number = counter(number, inc);
+console.log(number);
+// What happens on decrement action?
+`,
+  }}
+/>
+
+Here, you can see that `inc` is being passed into the `counter` function which in turn is invoking it. You might wonder why we have to take this approach instead of just calling `inc` directly from `counter`. The difference is that now we can control the factor of how much the `counter` is going to increment by from the outside. That is, we can pass another function that increments by 2 and Boom! we have a counter that adds by a factor of 2 instead of 1. We can do this without changing the function at all.
+
+> We are not invoking it when write `inc`, the incrementing is only when the brackets are attached to it.
+
+3. Return functions
+
+This is going to be longer than the other ones, but bear with me here.
+
+With the last example, we discussed how we can change the `counter` function by passing in different functions. Let us look at how we might achieve that result:
+
+<JSLive
+  id="return-function-1"
+  snippets={{
+    html: ``,
+    css: ``,
+    js: `
+function inc(num) {
+  return num+1;
+}
+function incBy2(num) {
+  return num+2;
+}
+function counter(num, incFun) {
+  return incFun(num);
+}
+let number = 1;
+number = counter(number, inc);
+console.log(number);
+number = counter(number, incBy2);
+console.log(number);
+`,
+  }}
+/>
+
+We just created two functions: `inc` and `incBy2`. The first function increments by 1 and second increments by 2. But I guess we can agree that this is not the most elegant approach. If we had to create a function that adds by 3, then we would require a third function. How can we create a single function for this purpose?
+
+Let us look at the simplest approach first:
+
+<JSLive
+  snippets={{
+    html: ``,
+    css: ``,
+    js: `
+function inc(num, factor) {
+  return num+factor;
+}
+function counter(num, factor, incFun) {
+  return incFun(num, factor);
+}
+let number = 1;
+number = counter(number, 1, inc);
+console.log(number);
+number = counter(number, 2, inc);
+console.log(number);
+`,
+  }}
+/>
+
+Well, this does the work. But this is breaking the expectation we had set for ourselves. The whole objective of passing a funtion to `counter` was the fact that `counter` did not need to know the factor which was being increment or any operation being performed. By passing `factor` into `counter`, we have broken that encapsulation. We need better ways to create dynamic functions that we can pass into `counter`.
+
+<JSLive
+  snippets={{
+    html: ``,
+    css: ``,
+    js: `
+function createInc(factor) {
+  return function(num) {
+    return num + factor;
+  }
+}
+function counter(num, incFun) {
+  return incFun(num);
+}
+let number = 1;
+number = counter(number, createInc(1));
+console.log(number);
+number = counter(number, createInc(2));
+console.log(number);
+`,
+  }}
+/>
+
+If this seems natural for you, then Congrats! 🎉🍾 You have successfully understood closures. If it doesn't read on:
+
+`createInc` is a function that returns a function, let that sync in; A function that returns a function.
+
+What we have to be concerned here is the variable `factor` that is passed in. If you look of the [call stack](http://localhost:8000/call-stack/) of this program, you can see that `createInc` is added to the stack and is popped as soon as the function inside it is returned. But the returned function is still using `factor` in runtime. How is that retained?
+
+When a function is created, the function stores both it's local function and the context the function was created in. This context is known as the closure environment. A function when it is created, it stores the local variables and the closure scope it was created in. This closure scope is garbage collected only when the function itself is collected. This is part execution context of the function.
