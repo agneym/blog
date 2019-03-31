@@ -74,6 +74,7 @@ module.exports = {
         background_color: `#CA3C25`,
         theme_color: `#CA3C25`,
         display: `minimal-ui`,
+        gcm_sender_id: '482941778795',
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
     },
