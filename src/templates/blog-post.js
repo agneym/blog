@@ -7,6 +7,7 @@ import { Container, Title, LinkList, Header } from './post-styles';
 import Share from '../components/share';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 import 'react-js-live/build/main.css';
+import Subscribe from '../components/subscribe';
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -58,6 +59,7 @@ class BlogPostTemplate extends React.Component {
             </li>
           </LinkList>
         </Container>
+        <Subscribe />
       </Layout>
     );
   }
