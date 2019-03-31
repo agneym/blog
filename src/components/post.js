@@ -30,7 +30,6 @@ const Post = ({ node }) => (
       <Title>{node.frontmatter.title}</Title>
       <sub>
         <span>on {node.frontmatter.date}</span>
-        <span>&nbsp; - &nbsp;</span>
       </sub>
       <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
     </Container>
