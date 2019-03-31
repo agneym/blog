@@ -32,19 +32,23 @@ var length = 1;
 var length = 1; // Nope!`}
 />
 
-You know how this can be problematic.
-
-But we absolutely should not use the same variables for different purposes. It there are no boundaries, it becomes confusing for people who read your code. This becomes more problematic when there are lots of people on the team. How does anyone know if someone else has already declared the variable?
+But we absolutely cannot not use the same variables for different purposes. If there are no boundaries, it becomes confusing for people who read your code. This becomes more problematic when there are lots of people on the team. How does anyone know if someone else has already declared the variable?
 
 Clear boundaries on where you can access a variable makes it easier for all developers in the project to avoid conflcits.
 
 #### 2. Garbage Collection
 
-Say you have lots of API calls going on and data coming from all sides. What if all the results are retained in the memory all the time. Do we want that?
-
 When we complete the usage of a variable, we want the variable and the data it is holding to be garbage collected. In dynamic languages, we expect this to happen automatically. But if we don't have any boundaries on where the variable can be accessed it would happen that the compiler does not have any hint on when to collect the garbage. Except may be at the end.
 
 Having clear boundaries on where variables can be accessed can tell the compiler, that at the end of this scope it is safe to garbage collect these variables.
+
+### 3. Ownership
+
+If all our variables are global, it means that anyone can change them.
+
+For eg. in one of the maintanence projects I had to make a [Custom Event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) to broadcast an event to another part of the application itself. But whatever I did, I could not get the custom event to fire. What happened was that someone else had already declared a class named `CustomEvent` (they wanted to customise the `Event` class, so be it!) on the global window and it was overriding my interpretation. Except the other person (git blame) who did it, did not even know that a function named `CustomEvent` actually existed in JavaScript.
+
+Imagine this happening to your variables, randomly at runtime. This is what happens if we do have some sort off ownership for the variables and functions that we write.
 
 JavaScript has two kinds of scope:
 
