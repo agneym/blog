@@ -257,3 +257,9 @@ If this seems natural for you, then Congrats! 🎉🍾 You have successfully und
 What we have to be concerned here is the variable `factor` that is passed in. If you look of the [call stack](http://localhost:8000/call-stack/) of this program, you can see that `createInc` is added to the stack and is popped as soon as the function inside it is returned. But the returned function is still using `factor` in runtime. How is that retained?
 
 When a function is created, the function stores both it's local function and the context the function was created in. This context is known as the closure environment. A function when it is created, it stores the local variables and the closure scope it was created in. This closure scope is garbage collected only when the function itself is collected. This is part execution context of the function.
+
+## Does this change the way I write code?
+
+Well, it should. Scopes and Closures are some of the most integral cornerstones of the language. It can and should influence the way you think about the language and declarations.
+
+Is there something I missed? Something wrong? Something good? Ping me on [Twitter](https://twitter.com/agneymenon)
