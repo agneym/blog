@@ -207,6 +207,7 @@ We just created two functions: `inc` and `incBy2`. The first function increments
 Let us look at the simplest approach first:
 
 <JSLive
+  id="return-function-2"
   snippets={{
     html: ``,
     css: ``,
@@ -229,6 +230,7 @@ console.log(number);
 Well, this does the work. But this is breaking the expectation we had set for ourselves. The whole objective of passing a funtion to `counter` was the fact that `counter` did not need to know the factor which was being increment or any operation being performed. By passing `factor` into `counter`, we have broken that encapsulation. We need better ways to create dynamic functions that we can pass into `counter`.
 
 <JSLive
+  id="return-function-3"
   snippets={{
     html: ``,
     css: ``,
