@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import media from '../utils/media';
+
 const Container = styled.div`
   margin: 2rem 0 5rem;
   padding: 2rem;
@@ -8,6 +10,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  ${media.phone`
+    padding: 1rem;
+  `}
 `;
 
 const Title = styled.h2`
@@ -15,11 +21,20 @@ const Title = styled.h2`
   font-size: 2.2rem;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
+  text-align: center;
+
+  ${media.phone`
+    font-size: 1.8rem;
+  `}
 `;
 
 const Form = styled.form`
   width: 80%;
   margin: 1rem;
+
+  ${media.phone`
+    width: 100%;
+  `}
 `;
 
 const EmailInput = styled.input`
