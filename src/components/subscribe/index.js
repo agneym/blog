@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import media from '../utils/media';
+import media from '../../utils/media';
+import NotificationsForm from './notifications-form';
 
 const Container = styled.div`
   margin: 2rem 0 4rem;
@@ -105,6 +106,7 @@ function Subscribe() {
       <sub>No Spam. Just JavaScript.</sub>
       <sub>Unsubscribe anytime you want.</sub>
       <Splitter>
+        <NotificationsForm />
         <Form as="div">
           <SubSection>
             <Subtitle>Notifications</Subtitle>
