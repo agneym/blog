@@ -22,7 +22,7 @@ class NotificationsForm extends PureComponent {
           <sub>As it Happens.</sub>
         </S.SubSection>
         <S.SubmitBtn as="button" onClick={this.onSubscriptionBtnClick}>
-          {!isPushEnabled && isOptedOut ? 'Subscribe' : 'Unsubscribe'}
+          Subscribe
         </S.SubmitBtn>
       </div>
     );
