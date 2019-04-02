@@ -40,7 +40,6 @@ class NewsLetterForm extends PureComponent {
           <S.Subtitle>Newsletter</S.Subtitle>
           <sub>Prefer a digest of information every week?</sub>
         </S.SubSection>
-        <br />
         <Label htmlFor="bd-email">Email</Label>
         <EmailInput
           type="email"
