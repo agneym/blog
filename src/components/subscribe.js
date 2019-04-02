@@ -4,11 +4,10 @@ import styled from 'styled-components';
 import media from '../utils/media';
 
 const Container = styled.div`
-  margin: 2rem 0 5rem;
+  margin: 2rem 0 4rem;
   padding: 2rem;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
 
   ${media.phone`
@@ -21,26 +20,20 @@ const Title = styled.h2`
   font-size: 2.2rem;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
-  text-align: center;
 
   ${media.phone`
     font-size: 1.8rem;
   `}
 `;
 
-const Form = styled.form`
-  width: 80%;
-  margin: 1rem;
-
-  ${media.phone`
-    width: 100%;
-  `}
-`;
+const Form = styled.form``;
 
 const EmailInput = styled.input`
   padding: 1rem;
   display: block;
-  width: 100%;
+  margin: auto;
+  width: 76%;
+  font-size: 1.2rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.1);
 
   &:focus {
@@ -49,10 +42,45 @@ const EmailInput = styled.input`
   }
 `;
 
+const SubSection = styled.div`
+  margin-bottom: 1rem;
+  text-align: center;
+`;
+
+const Subtitle = styled.h3`
+  margin-bottom: 0;
+`;
+
+const Splitter = styled.div`
+  margin: 1rem;
+  width: 80%;
+
+  ${media.phone`
+    width: 95%;
+  `}
+`;
+
 const Label = styled.label`
   font-size: small;
-  margin-bottom: 0.5rem;
-  display: inline-block;
+  margin: 0.5rem auto;
+  display: block;
+  text-align: left;
+  width: 80%;
+`;
+
+const Seperator = styled.p`
+  width: 60%;
+  font-size: small;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  line-height: 0.1em;
+  margin: 5rem auto;
+  color: rgba(0, 0, 0, 0.8);
+
+  span {
+    background: #fff;
+    padding: 0 1rem;
+  }
 `;
 
 const SubmitBtn = styled.input`
@@ -73,27 +101,44 @@ const SubmitBtn = styled.input`
 function Subscribe() {
   return (
     <Container>
-      <Title>Join the Newsletter</Title>
+      <Title>Join the Squad</Title>
       <sub>No Spam. Just JavaScript.</sub>
       <sub>Unsubscribe anytime you want.</sub>
-      <Form
-        action="https://buttondown.email/api/emails/embed-subscribe/agney"
-        method="post"
-        target="popupwindow"
-        onsubmit="window.open('https://buttondown.email/agney', 'popupwindow')"
-        class="embeddable-buttondown-form"
-      >
-        <Label for="bd-email">Email</Label>
-        <EmailInput
-          type="email"
-          name="email"
-          id="bd-email"
-          required
-          placeholder="johndoe@gmail.com"
-        />
-        <input type="hidden" value="1" name="embed" />
-        <SubmitBtn type="submit" value="Subscribe" />
-      </Form>
+      <Splitter>
+        <Form as="div">
+          <SubSection>
+            <Subtitle>Notifications</Subtitle>
+            <sub>As it Happens.</sub>
+          </SubSection>
+          <SubmitBtn as="button">Subscribe</SubmitBtn>
+        </Form>
+        <Seperator>
+          <span>OR</span>
+        </Seperator>
+        <Form
+          action="https://buttondown.email/api/emails/embed-subscribe/agney"
+          method="post"
+          target="popupwindow"
+          onsubmit="window.open('https://buttondown.email/agney', 'popupwindow')"
+          class="embeddable-buttondown-form"
+        >
+          <SubSection>
+            <Subtitle>Newsletter</Subtitle>
+            <sub>Prefer a digest of information every week?</sub>
+          </SubSection>
+          <br />
+          <Label for="bd-email">Email</Label>
+          <EmailInput
+            type="email"
+            name="email"
+            id="bd-email"
+            required
+            placeholder="johndoe@gmail.com"
+          />
+          <input type="hidden" value="1" name="embed" />
+          <SubmitBtn type="submit" value="Subscribe" />
+        </Form>
+      </Splitter>
     </Container>
   );
 }
