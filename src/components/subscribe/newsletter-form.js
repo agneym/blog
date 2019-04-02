@@ -25,21 +25,23 @@ const EmailInput = styled.input`
 `;
 
 class NewsLetterForm extends PureComponent {
+  submitForm = () => {
+    window.open('https://buttondown.email/agney', 'popupwindow');
+  };
   render() {
     return (
       <form
         action="https://buttondown.email/api/emails/embed-subscribe/agney"
         method="post"
         target="popupwindow"
-        onsubmit="window.open('https://buttondown.email/agney', 'popupwindow')"
-        class="embeddable-buttondown-form"
+        onSubmit={this.submitForm}
       >
         <S.SubSection>
           <S.Subtitle>Newsletter</S.Subtitle>
           <sub>Prefer a digest of information every week?</sub>
         </S.SubSection>
         <br />
-        <Label for="bd-email">Email</Label>
+        <Label htmlFor="bd-email">Email</Label>
         <EmailInput
           type="email"
           name="email"
