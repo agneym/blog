@@ -27,8 +27,6 @@ const Title = styled.h2`
   `}
 `;
 
-const Form = styled.form``;
-
 const EmailInput = styled.input`
   padding: 1rem;
   display: block;
@@ -41,15 +39,6 @@ const EmailInput = styled.input`
     border: 0.1rem solid #000000;
     outline: none;
   }
-`;
-
-const SubSection = styled.div`
-  margin-bottom: 1rem;
-  text-align: center;
-`;
-
-const Subtitle = styled.h3`
-  margin-bottom: 0;
 `;
 
 const Splitter = styled.div`
@@ -84,21 +73,6 @@ const Seperator = styled.p`
   }
 `;
 
-const SubmitBtn = styled.input`
-  background-color: transparent;
-  box-shadow: none;
-  border: 0.1rem solid #000000;
-  padding: 0.8rem 1rem;
-  text-transform: uppercase;
-  width: 80%;
-  margin: 2rem auto;
-  display: block;
-  text-align: center;
-  cursor: pointer;
-  font-weight: 400;
-  font-size: 1.2rem;
-`;
-
 function Subscribe() {
   return (
     <Container>
@@ -107,17 +81,10 @@ function Subscribe() {
       <sub>Unsubscribe anytime you want.</sub>
       <Splitter>
         <NotificationsForm />
-        <Form as="div">
-          <SubSection>
-            <Subtitle>Notifications</Subtitle>
-            <sub>As it Happens.</sub>
-          </SubSection>
-          <SubmitBtn as="button">Subscribe</SubmitBtn>
-        </Form>
         <Seperator>
           <span>OR</span>
         </Seperator>
-        <Form
+        <form
           action="https://buttondown.email/api/emails/embed-subscribe/agney"
           method="post"
           target="popupwindow"
@@ -139,7 +106,7 @@ function Subscribe() {
           />
           <input type="hidden" value="1" name="embed" />
           <SubmitBtn type="submit" value="Subscribe" />
-        </Form>
+        </form>
       </Splitter>
     </Container>
   );
