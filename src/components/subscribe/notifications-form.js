@@ -28,7 +28,7 @@ class NotificationsForm extends PureComponent {
     );
   }
   onSubscriptionBtnClick = event => {
-    this.getSubscriptionState().then(function(state) {
+    this.getSubscriptionState().then(state => {
       if (state.isPushEnabled) {
         /* Subscribed, opt them out */
         this.OneSignal.setSubscription(false);
@@ -52,7 +52,7 @@ class NotificationsForm extends PureComponent {
       this.OneSignal.init({
         appId: '1a5a3a21-f5d1-4a88-a3ab-f8219fbbacea',
         notifyButton: {
-          enable: true,
+          enable: false,
         },
       });
       this.updateManageWebPushSubscriptionButton();
