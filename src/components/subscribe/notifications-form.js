@@ -14,7 +14,7 @@ class NotificationsForm extends PureComponent {
     this.setupOneSignal();
   }
   render() {
-    const { isPushEnabled } = this.state;
+    const { isPushEnabled, isOptedOut } = this.state;
     return (
       <div>
         <S.SubSection>
