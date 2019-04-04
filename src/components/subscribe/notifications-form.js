@@ -5,29 +5,56 @@ class NotificationsForm extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      isPushEnabled: false,
-      isOptedOut: true,
+      permission: 'default',
     };
   }
   componentDidMount() {
     this.OneSignal = window.OneSignal || [];
     this.setupOneSignal();
   }
+  /**
+   * Render subscribe button
+   * @param {('default'|'denied'|'granted')} permission - permission level
+   * @returns {import('react').ReactElement} React Node
+   */
+  renderBtn = permission => {
+    if (permission === 'default') {
+      return (
+        <S.SubmitBtn as="button" onClick={this.onSubscriptionBtnClick}>
+          Subscribe
+        </S.SubmitBtn>
+      );
+    } else if (permission === 'granted') {
+      return (
+        <h5>
+          Already part of Notification Squad{' '}
+          <span role="img" aria-label="relieved face">
+            🎉
+          </span>
+        </h5>
+      );
+    } else if (permission === 'denied') {
+      return (
+        <h5>
+          Thank You for your time.{' '}
+          <span role="img" aria-label="relieved face">
+            😌
+          </span>
+        </h5>
+      );
+    } else {
+      console.warn('Unrecognised permission', permission);
+    }
+  };
   render() {
-    const { isPushEnabled, isOptedOut } = this.state;
+    const { permission } = this.state;
     return (
       <div>
         <S.SubSection>
           <S.Subtitle>Notifications</S.Subtitle>
           <sub>As it Happens.</sub>
         </S.SubSection>
-        <S.SubmitBtn as="button" onClick={this.onSubscriptionBtnClick}>
-          {isPushEnabled
-            ? 'Subscribe'
-            : isOptedOut
-            ? 'Subscribe'
-            : 'Unsubscribe'}
-        </S.SubmitBtn>
+        {this.renderBtn(permission)}
       </div>
     );
   }
@@ -68,10 +95,9 @@ class NotificationsForm extends PureComponent {
   };
   updateManageWebPushSubscriptionButton = async () => {
     try {
-      const state = await this.getSubscriptionState();
+      const state = await this.OneSignal.getNotificationPermission();
       this.setState({
-        isOptedOut: state.isOptedOut,
-        isPushEnabled: state.isPushEnabled,
+        permission: state,
       });
     } catch (error) {
       console.error('Error getting notification status', error);
