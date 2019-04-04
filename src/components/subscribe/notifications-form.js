@@ -14,7 +14,7 @@ class NotificationsForm extends PureComponent {
     this.setupOneSignal();
   }
   render() {
-    const { isPushEnabled, isOptedOut } = this.state;
+    const { isPushEnabled } = this.state;
     return (
       <div>
         <S.SubSection>
@@ -22,7 +22,11 @@ class NotificationsForm extends PureComponent {
           <sub>As it Happens.</sub>
         </S.SubSection>
         <S.SubmitBtn as="button" onClick={this.onSubscriptionBtnClick}>
-          Subscribe
+          {isPushEnabled
+            ? 'Subscribe'
+            : isOptedOut
+            ? 'Subscribe'
+            : 'Unsubscribe'}
         </S.SubmitBtn>
       </div>
     );
