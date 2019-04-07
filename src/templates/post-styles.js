@@ -62,6 +62,7 @@ export const Container = styled.article`
     letter-spacing: -0.03px;
     line-height: 1.58;
     color: inherit;
+    word-break: break-all;
   }
 
   hr {
