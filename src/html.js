@@ -12,6 +12,7 @@ export default class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
+          <title>The Mindless - Boy with Silver Wings</title>
           {this.props.headComponents}
           <script
             src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
