@@ -36,7 +36,7 @@ class BlogIndex extends Component {
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query {
+  query blogListQuery($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -45,6 +45,8 @@ export const pageQuery = graphql`
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { published: { eq: true } } }
+      limit: $limit
+      skip: $skip
     ) {
       edges {
         node {
