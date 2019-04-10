@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 
 import Post from './post';
 import media from '../utils/media';
+import AnimatedLink from '../utils/animated-link';
 
 const Title = styled.h2`
   font-weight: 400;
@@ -43,16 +43,16 @@ class PostsSection extends Component {
         <BottomNav>
           <li>
             {!isFirst && (
-              <Link to={prevPage} rel="prev">
+              <AnimatedLink to={prevPage} rel="prev" direction="rtl">
                 ← New Posts
-              </Link>
+              </AnimatedLink>
             )}
           </li>
           <li>
             {!isLast && (
-              <Link to={nextPage} rel="next">
+              <AnimatedLink to={nextPage} rel="next" direction="ltr">
                 Older Posts →
-              </Link>
+              </AnimatedLink>
             )}
           </li>
         </BottomNav>
