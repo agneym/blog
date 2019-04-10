@@ -11,6 +11,7 @@ class BlogIndex extends Component {
   render() {
     const { data } = this.props;
     const posts = data.allMdx.edges;
+    const { currentPage, numPages } = this.props.pageContext;
     return (
       <Layout>
         <SEO
@@ -25,7 +26,12 @@ class BlogIndex extends Component {
         />
         <main>
           <Bio />
-          <PostsSection title={`Latest Posts`} posts={posts} />
+          <PostsSection
+            title={`Latest Posts`}
+            posts={posts}
+            currentPage={currentPage}
+            numPages={numPages}
+          />
           <Subscribe />
         </main>
       </Layout>
@@ -36,7 +42,7 @@ class BlogIndex extends Component {
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query {
+  query blogListQuery($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -45,6 +51,8 @@ export const pageQuery = graphql`
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { published: { eq: true } } }
+      limit: $limit
+      skip: $skip
     ) {
       edges {
         node {

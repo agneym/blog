@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Post from './post';
 import media from '../utils/media';
+import AnimatedLink from '../utils/animated-link';
 
 const Title = styled.h2`
   font-weight: 400;
@@ -17,15 +18,44 @@ const Title = styled.h2`
   `}
 `;
 
+const BottomNav = styled.ul`
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+`;
+
 class PostsSection extends Component {
   render() {
-    const { title, posts } = this.props;
+    const { title, posts, currentPage, numPages } = this.props;
+    const isFirst = currentPage === 1;
+    const isLast = currentPage === numPages;
+    const prevPage = currentPage - 1 === 1 ? '/' : (currentPage - 1).toString();
+    const nextPage = (currentPage + 1).toString();
+
     return (
       <section>
         <Title>{title}</Title>
         {posts.map(({ node }) => {
           return <Post key={node.id} node={node} />;
         })}
+        <BottomNav>
+          <li>
+            {!isFirst && (
+              <AnimatedLink to={prevPage} rel="prev" direction="rtl">
+                ← New Posts
+              </AnimatedLink>
+            )}
+          </li>
+          <li>
+            {!isLast && (
+              <AnimatedLink to={nextPage} rel="next" direction="ltr">
+                Older Posts →
+              </AnimatedLink>
+            )}
+          </li>
+        </BottomNav>
       </section>
     );
   }
@@ -34,10 +64,14 @@ class PostsSection extends Component {
 PostsSection.defaultProps = {
   title: '',
   posts: [],
+  currentPage: 1,
+  numPages: 1,
 };
 
 PostsSection.propTypes = {
   title: PropTypes.string,
+  currentPage: PropTypes.number,
+  numPages: PropTypes.number,
   posts: PropTypes.arrayOf(
     PropTypes.shape({
       node: PropTypes.shape({
