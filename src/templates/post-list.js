@@ -11,6 +11,7 @@ class BlogIndex extends Component {
   render() {
     const { data } = this.props;
     const posts = data.allMdx.edges;
+    const { currentPage, numPages } = this.props.pageContext;
     return (
       <Layout>
         <SEO
@@ -25,7 +26,12 @@ class BlogIndex extends Component {
         />
         <main>
           <Bio />
-          <PostsSection title={`Latest Posts`} posts={posts} />
+          <PostsSection
+            title={`Latest Posts`}
+            posts={posts}
+            currentPage={currentPage}
+            numPages={numPages}
+          />
           <Subscribe />
         </main>
       </Layout>
