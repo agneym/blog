@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -8,6 +8,7 @@ import Share from '../components/share';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 import 'react-js-live/build/main.css';
 import Subscribe from '../components/subscribe';
+import AnimatedLink from '../utils/animated-link';
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -45,16 +46,20 @@ class BlogPostTemplate extends React.Component {
           <LinkList>
             <li>
               {previous && (
-                <Link to={previous.fields.slug} rel="prev">
+                <AnimatedLink
+                  to={previous.fields.slug}
+                  rel="prev"
+                  direction="rtl"
+                >
                   ← {previous.frontmatter.title}
-                </Link>
+                </AnimatedLink>
               )}
             </li>
             <li>
               {next && (
-                <Link to={next.fields.slug} rel="next">
+                <AnimatedLink to={next.fields.slug} rel="next" direction="ltr">
                   {next.frontmatter.title} →
-                </Link>
+                </AnimatedLink>
               )}
             </li>
           </LinkList>

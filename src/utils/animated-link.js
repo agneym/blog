@@ -5,8 +5,8 @@ import StyledLink from './styled-link';
 const AnimatedLink = styled(StyledLink)`
   position: relative;
 
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     content: '';
     position: absolute;
     bottom: -0.5rem;
@@ -21,11 +21,31 @@ const AnimatedLink = styled(StyledLink)`
     background-color: black;
   }
 
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+
   &:hover {
-    &:after {
-      width: 82%;
-      opacity: 1;
-    }
+    ${props =>
+      props.direction === 'rtl' &&
+      `
+      &::after {
+        width: 84%;
+        opacity: 1;
+      }
+    `}
+    ${props =>
+      props.direction === 'ltr' &&
+      `
+      &::before {
+        width: 84%;
+        opacity: 1;
+      }
+    `}
   }
 `;
 
