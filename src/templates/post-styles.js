@@ -106,9 +106,9 @@ export const Container = styled.article`
   }
 
   pre {
-    white-space: pre-wrap;
+    overflow-x: auto;
     word-wrap: break-word;
-    background-color: #f6f8fa;
+    background-color: #000000;
     padding: 1rem;
 
     &[aria-hidden] {

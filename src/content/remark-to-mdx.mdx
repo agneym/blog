@@ -11,13 +11,13 @@ tags:
 published: true
 ---
 
-import CodeViewer from "../components/code-viewer";
+import CodeViewer from '../components/code-viewer';
 
 Moving my blog from Remark to MDX.
 
 ## Why?
 
-[MDX](https://github.com/mdx-js/mdx) means that you can use JSX components in your markdown. 
+[MDX](https://github.com/mdx-js/mdx) means that you can use JSX components in your markdown.
 
 This means that blog posts down the road can have any type of content. Embed tweets, iframes without wandering around for a remark plugin, use live, editable snapshots, provide beautiful chart based visualisations, showcase some animations, bounded only by imagination (instead of remark plugins)
 
@@ -25,19 +25,26 @@ This means that blog posts down the road can have any type of content. Embed twe
 
 1. Start with installing `mdx` on your project with:
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
 npm install @mdx-js/mdx @mdx-js/tag
-`} language="bash" />
+`}
+  language="bash"
+/>
 
 2. Add to it the `gatsby` plugin for `mdx`:
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
 gatsby-mdx
-`} language="bash" />
+`}
+  language="bash"
+/>
 
 3. Add the plugin to `gatsby-config.js`
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
 plugins: [
   {
     resolve: \`gatsby-mdx\`,
@@ -46,40 +53,49 @@ plugins: [
     },
   },
 ]
-`} />
+`}
+/>
 
 4. Change the `gatsby-node` page generation algorithm for `mdx`:
 
-    1. Redo the query to:
+   1. Redo the query to:
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
   \{
 -    allMarkdownRemark \{
 +    allMdx \{
   \}
-`.trim()} />
+`.trim()}
+/>
 
     2. Getting the data from query, use:
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
 result.data.allMdx.edges;
-`} />
+`}
+/>
 
     3. Inside the function `onCreateNode`, when checking for `node.internal.type`:
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
 if (node.internal.type === \`Mdx\`) {
-`} />
+`}
+/>
 
-    4. At the places where you get data, (the listing page and blog post page), 
+    4. At the places where you get data, (the listing page and blog post page),
     repeat Step 2.
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
   \{
 -    allMarkdownRemark \{
 +    allMdx \{
   \}
-`} />
+`}
+/>
 
 ## What about remark plugins? Can I still use them?
 
@@ -87,7 +103,8 @@ Sure you can. That's the beauty.
 
 Gatsby MDX provides an option for `gatsbyRemarkPlugins` to be included. You can use it like:
 
-<CodeViewer code={`
+<CodeViewer
+  code={`
 options: {
   defaultLayouts: {
     default: path.resolve('./src/templates/blog-post.js'),
@@ -105,7 +122,8 @@ options: {
     },
   ]
 }
-`} />
+`}
+/>
 
 Caution: It does not work with the \`\` format just yet. So you will always have to use an object with `resolve` key to put it in there.
 
@@ -117,7 +135,7 @@ Now, you can rename all files to `mdx` and restart the server.
 
 I got lots and lots.
 
-```
+```bash
 SyntaxError: unknown: Expected corresponding JSX closing tag for <img>
 ```
 
@@ -129,17 +147,14 @@ Once this is fixed, you can restart the server (I had to delete the cache and tr
 
 ## How is the experience so far?
 
-Not so good. But I'm hoping for it to get better. 
+Not so good. But I'm hoping for it to get better.
 
-There were several times during this when I had to stop and start the server to have it working. Worse, there were times when deleting the cache and restarting was the only way to fix the issue. 
+There were several times during this when I had to stop and start the server to have it working. Worse, there were times when deleting the cache and restarting was the only way to fix the issue.
 
 MDX isn't very good at errors either. If you make an import error, which you will obviously do, MDX throws a cryptic error (with bright red background) and you have to restart the server to make it go away.
 
-The editor support is not very good. Unlike remark, there is no output directly from VS Code. You can install the MDX language support to get more syntax highlighting. But it might stop working when there is a space or tab extra. So barely working! Because of the support, writing articles becomes a pain with editor showing off unnecessary suggestions when typing. 
+The editor support is not very good. Unlike remark, there is no output directly from VS Code. You can install the MDX language support to get more syntax highlighting. But it might stop working when there is a space or tab extra. So barely working! Because of the support, writing articles becomes a pain with editor showing off unnecessary suggestions when typing.
 
-I'm also moving from `remark-prismjs` to `prism-react-renderer` now that I can write JSX components. That has been smooth and hope to have more customisations working on how code is being shown. There has been a bug bothering me, with `prism-react-renderer` and `mdx` renderer not allowing any blank lines in between code. Currently that is hotfixed with spaces on those lines, but that is not going to be pretty to copy. Have to get that fixed. 
-
-
+I'm also moving from `remark-prismjs` to `prism-react-renderer` now that I can write JSX components. That has been smooth and hope to have more customisations working on how code is being shown. There has been a bug bothering me, with `prism-react-renderer` and `mdx` renderer not allowing any blank lines in between code. Currently that is hotfixed with spaces on those lines, but that is not going to be pretty to copy. Have to get that fixed.
 
 Is there something I missed? Something wrong? Something good? Ping me on [Twitter](https://twitter.com/agneymenon)
-

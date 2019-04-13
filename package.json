@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "author": "Boy with Silver Wings <agney@outlook.in>",
   "dependencies": {
+    "@mapbox/rehype-prism": "^0.3.1",
     "@mdx-js/mdx": "^0.16.6",
     "@mdx-js/tag": "^0.16.6",
     "babel-plugin-styled-components": "^1.10.0",
@@ -46,7 +47,7 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
-    "start": "npm run develop",
+    "start": "npm run dev",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "devDependencies": {

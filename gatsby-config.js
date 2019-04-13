@@ -57,6 +57,7 @@ module.exports = {
           },
         ],
       },
+      rehypePlugins: [require('@mapbox/rehype-prism')],
     },
     `gatsby-plugin-catch-links`,
     {
