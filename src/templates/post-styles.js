@@ -108,34 +108,17 @@ export const Container = styled.article`
   pre {
     overflow-x: auto;
     word-wrap: break-word;
-    background-color: #000000;
-    padding: 1rem;
 
     &[aria-hidden] {
       background-color: inherit;
     }
-  }
-
-  code[class*='language-'],
-  pre[class*='language-'] {
-    background-color: #000000;
-    display: block;
-    padding: 1.5rem 1rem;
-    color: #ffffff;
   }
 `;
 
 export const Pre = styled.pre`
   text-align: left;
   margin: 1em 0;
-  padding: 0.5em;
   overflow-x: auto;
-
-  && {
-    white-space: nowrap;
-    word-wrap: normal;
-    background-color: #000000 !important;
-  }
 
   & .token-line {
     line-height: 1.3em;

@@ -6,11 +6,17 @@ import SEO from '../components/seo';
 import { Container, Title, LinkList, Header } from './post-styles';
 import Share from '../components/share';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
-import 'react-js-live/build/main.css';
+import { MDXProvider } from '@mdx-js/tag';
 import Subscribe from '../components/subscribe';
 import AnimatedLink from '../utils/animated-link';
+import 'react-js-live/build/main.css';
+import CodeViewer from '../components/code-viewer';
 
-class BlogPostTemplate extends React.Component {
+const components = {
+  code: CodeViewer,
+};
+
+class BlogPostTemplate extends React.PureComponent {
   render() {
     const post = this.props.data.mdx;
     const siteTitle = this.props.data.site.siteMetadata.title;
@@ -35,7 +41,9 @@ class BlogPostTemplate extends React.Component {
               <span>Posted on {post.frontmatter.date}</span>
             </sub>
           </Header>
-          <MDXRenderer>{post.code.body}</MDXRenderer>
+          <MDXProvider components={components}>
+            <MDXRenderer>{post.code.body}</MDXRenderer>
+          </MDXProvider>
           <Share
             post={{
               title: post.frontmatter.title,
