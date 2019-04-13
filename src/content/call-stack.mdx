@@ -10,8 +10,8 @@ tags:
   ]
 published: true
 ---
-import dev from "./call-stack/devtools.gif";
-import CodeViewer from "../components/code-viewer";
+
+import dev from './call-stack/devtools.gif';
 
 This is part of a series where I try to explain through each of [33 JS Concepts](https://github.com/leonardomso/33-js-concepts).
 
@@ -85,17 +85,17 @@ This is what helps you when there is an error in a library inside `node_modules`
 
 The call stack has practical limits that are implemented differently on different JavaScript engines. To see the limit on a NodeJS running v8, you can run the following command in the terminal.
 
-<CodeViewer code={`
+```bash
   node --v8-options | grep stack-size -A 1
-`} language="bash" />
+```
 
 If you exceed the stack trace limit, you will run across a Stackoverflow error (not the website) with message _Maximum Stack size exceeded_ Now you know why your recursive function did not work.
 
 Also, stack traces have limits. You can change these limits from your respective browsers. If you use Chrome, your stack trace limit might be set to 10. To see this limit, run following command in console.
 
-<CodeViewer code={`
+```bash
   Error.stackTraceLimit
-`} language="bash" />
+```
 
 ### What is TCO I keep hearing about?
 
@@ -103,12 +103,12 @@ You might have heard that JavaScript opted in to use Tail Call Opimisation by de
 
 This means that if the tail call (let's put it to last statement for now) of a function is to return result from another function, then we can skip the parent stack frame.
 
-<CodeViewer code={`
+```js
 function fact_h(n, acc) {
   if (n === 0) return acc;
   return fact_h(n - 1, acc * n);
 }
-`} />
+```
 
 You can see the last statement in this function is to return result of another function, so there is no use returning to this function anymore.
 
