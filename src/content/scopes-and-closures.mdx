@@ -6,7 +6,6 @@ tags:
 published: true
 ---
 
-import CodeViewer from '../components/code-viewer';
 import JSLive from 'react-js-live';
 
 This is part of a series where I try to explain through each of [33 JS Concepts](https://github.com/leonardomso/33-js-concepts).
@@ -25,12 +24,11 @@ Scope in programming stands for visibility and usage. For reasons considered obv
 
 We cannot declare two variables with the same name. This would throw a reference error.
 
-<CodeViewer
-  code={`
+```js
 var length = 1;
 // some operation going on, after sometime you think
 var length = 1; // Nope!`}
-/>
+```
 
 But we absolutely cannot not use the same variables for different purposes. If there are no boundaries, it becomes confusing for people who read your code. This becomes more problematic when there are lots of people on the team. How does anyone know if someone else has already declared the variable?
 
@@ -61,15 +59,13 @@ We will talk about function scope first.
 
 Function Scope means that any variable declared would be available inside the function. This has existed and was widely used from olden times in JavaScript.
 
-<CodeViewer
-  code={`
+```js
 function action() {
   var a = 2;
   ... // actions
   // a can be accessed anywhere in this function.
 }
-  `}
-/>
+```
 
 #### Hoisting
 
@@ -105,17 +101,15 @@ Block Scope means that the variables defined inside a `{}` can only be used insi
 
 Note that functions also form block scope.
 
-<CodeViewer
-  code={`
+```js
 function action(limit) {
-  const a = 10;   // a can only be used inside this function
-  if(a < limit) {      
-    const b = a + 2;  // b can only be used inside this if block, a can also be used here as this block is inside the execution context of a's block
+  const a = 10; // a can only be used inside this function
+  if (a < limit) {
+    const b = a + 2; // b can only be used inside this if block, a can also be used here as this block is inside the execution context of a's block
     return b;
   }
 }
-`}
-/>
+```
 
 #### Hoisting
 
@@ -133,14 +127,11 @@ Let's look at these conditions one by one:
 
 1. Assigned to variables
 
-<CodeViewer
-  id="assign-function"
-  code={`
+```js
 const foo = function(a) {
   return a++;
-}
-  `}
-/>
+};
+```
 
 Here function is assigned to variable `foo`, to invoke this function we have call `foo()`. `foo` here is a reference to the function and can be reassigned or assigned to some other variable.
 

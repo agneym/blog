@@ -5,21 +5,18 @@ tags: ['react', 'javascript', 'state', 'not getting updated', 'one step back']
 published: true
 ---
 
-import CodeViewer from "../components/code-viewer";
-
 Probably because you are using it wrong.
 
 If you browse Stackoverflow for React questions, this is one of the most common questions that you will find. Well, it is this or other versions of the same question. All this after Stackoverflow marks questions as duplicates.
 
-<CodeViewer code={`
+```js
 function handleChange(value) {
   this.setState({
     value: newValue,
   });
   console.log(this.state.value); //Why is my state not updated?
 }
-`}
-/>
+```
 
 Why is your state not getting updated?
 
@@ -27,10 +24,10 @@ Straight out of [React docs](https://reactjs.org/docs/state-and-lifecycle.html#s
 
 Let’s find out.
 
-<CodeViewer code={`
+```js
 setTimeout(() => console.log('foo'), 0);
 console.log('bar');
-`} />
+```
 
 What is the output?
 
@@ -42,7 +39,7 @@ Same is the case with `setState` Because of it’s asynchronous state, the state
 
 ### How do we fix this?
 
-<CodeViewer code={`
+```js
 function handleChange(value) {
   this.setState(
     {
@@ -53,7 +50,7 @@ function handleChange(value) {
     }
   );
 }
-`} />
+```
 
 `setState` actually comes with a callback version. All you have to do is provide the function to be run after the `setState` is executed. Here, you can give whatever action you wanted to perform once the setState is done.
 

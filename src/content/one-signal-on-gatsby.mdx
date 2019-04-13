@@ -6,8 +6,6 @@ tags:
 published: true
 ---
 
-import CodeViewer from '../components/code-viewer';
-
 Notifications are now an integral part of the web ecosystem. It increases the user engagement rate and your site can organically have people coming back day after day with fresh content.
 
 [Gatsby](https://www.gatsbyjs.org/) is the most popular Blog React Framework in town and that is what we will be pairing up with popular free (mostly) notification service [One Signal](https://onesignal.com).
@@ -55,11 +53,9 @@ cp .cache/default-html.js src/html.js
 
 In the new HTML file, add:
 
-<CodeViewer
-  code={`
+```html
 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="" />
-`}
-/>
+```
 
 to the head.
 
@@ -67,9 +63,7 @@ to the head.
 
 Adding a react component with link.
 
-<CodeViewer
-  language="jsx"
-  code={`
+```jsx
 import React, { PureComponent } from 'react';
 import * as S from './layout';
 class NotificationsForm extends PureComponent {
@@ -190,8 +184,7 @@ class NotificationsForm extends PureComponent {
   }
 }
 export default NotificationsForm;
-`}
-/>
+```
 
 [Find the file here](https://github.com/BoyWithSilverWings/blog/blob/master/src/components/subscribe/notifications-form.js)
 

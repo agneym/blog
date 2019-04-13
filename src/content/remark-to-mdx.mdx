@@ -11,8 +11,6 @@ tags:
 published: true
 ---
 
-import CodeViewer from '../components/code-viewer';
-
 Moving my blog from Remark to MDX.
 
 ## Why?
@@ -25,77 +23,61 @@ This means that blog posts down the road can have any type of content. Embed twe
 
 1. Start with installing `mdx` on your project with:
 
-<CodeViewer
-  code={`
+```bash
 npm install @mdx-js/mdx @mdx-js/tag
-`}
-  language="bash"
-/>
+```
 
 2. Add to it the `gatsby` plugin for `mdx`:
 
-<CodeViewer
-  code={`
+```
 gatsby-mdx
-`}
-  language="bash"
-/>
+```
 
 3. Add the plugin to `gatsby-config.js`
 
-<CodeViewer
-  code={`
+```js
 plugins: [
   {
-    resolve: \`gatsby-mdx\`,
+    resolve: `gatsby-mdx`,
     options: {
       defaultLayouts: { default: path.resolve('./src/components/layout.js') },
     },
   },
-]
-`}
-/>
+];
+```
 
 4. Change the `gatsby-node` page generation algorithm for `mdx`:
 
    1. Redo the query to:
 
-<CodeViewer
-  code={`
-  \{
--    allMarkdownRemark \{
-+    allMdx \{
-  \}
-`.trim()}
-/>
+```js
+  {
+-    allMarkdownRemark {
++    allMdx {
+  }
+```
 
-    2. Getting the data from query, use:
+2. Getting the data from query, use:
 
-<CodeViewer
-  code={`
+```js
 result.data.allMdx.edges;
-`}
-/>
+```
 
-    3. Inside the function `onCreateNode`, when checking for `node.internal.type`:
+3. Inside the function `onCreateNode`, when checking for `node.internal.type`:
 
-<CodeViewer
-  code={`
-if (node.internal.type === \`Mdx\`) {
-`}
-/>
+```js
+if (node.internal.type === `Mdx`) {
+```
 
-    4. At the places where you get data, (the listing page and blog post page),
-    repeat Step 2.
+4. At the places where you get data, (the listing page and blog post page),
+   repeat Step 2.
 
-<CodeViewer
-  code={`
-  \{
--    allMarkdownRemark \{
-+    allMdx \{
-  \}
-`}
-/>
+```js
+  {
+-    allMarkdownRemark {
++    allMdx {
+  }
+```
 
 ## What about remark plugins? Can I still use them?
 
@@ -103,27 +85,25 @@ Sure you can. That's the beauty.
 
 Gatsby MDX provides an option for `gatsbyRemarkPlugins` to be included. You can use it like:
 
-<CodeViewer
-  code={`
+```js
 options: {
   defaultLayouts: {
     default: path.resolve('./src/templates/blog-post.js'),
   },
   gatsbyRemarkPlugins: [
     {
-      resolve: \`gatsby-remark-images\`,
+      resolve: `gatsby-remark-images`,
       options: {
         maxWidth: 590,
         showCaptions: true,
       },
     },
     {
-      resolve: \`gatsby-remark-external-links\`,
+      resolve: `gatsby-remark-external-links`,
     },
   ]
 }
-`}
-/>
+```
 
 Caution: It does not work with the \`\` format just yet. So you will always have to use an object with `resolve` key to put it in there.
 
