@@ -18,6 +18,10 @@ export const Container = styled.article`
     padding-left: 1rem;
   }
 
+  img {
+    max-width: 100%;
+  }
+
   blockquote {
     font-size: 25px;
     font-style: italic;
