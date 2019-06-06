@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -26,40 +26,38 @@ const BottomNav = styled.ul`
   justify-content: space-between;
 `;
 
-class PostsSection extends Component {
-  render() {
-    const { title, posts, currentPage, numPages } = this.props;
-    const isFirst = currentPage === 1;
-    const isLast = currentPage === numPages;
-    const prevPage = currentPage - 1 === 1 ? '/' : (currentPage - 1).toString();
-    const nextPage = (currentPage + 1).toString();
+const PostsSection = props => {
+  const { title, posts, currentPage, numPages } = props;
+  const isFirst = currentPage === 1;
+  const isLast = currentPage === numPages;
+  const prevPage = currentPage - 1 === 1 ? '/' : (currentPage - 1).toString();
+  const nextPage = (currentPage + 1).toString();
 
-    return (
-      <section>
-        <Title>{title}</Title>
-        {posts.map(({ node }) => {
-          return <Post key={node.id} node={node} />;
-        })}
-        <BottomNav>
-          <li>
-            {!isFirst && (
-              <AnimatedLink to={prevPage} rel="prev" direction="rtl">
-                ← New Posts
-              </AnimatedLink>
-            )}
-          </li>
-          <li>
-            {!isLast && (
-              <AnimatedLink to={nextPage} rel="next" direction="ltr">
-                Older Posts →
-              </AnimatedLink>
-            )}
-          </li>
-        </BottomNav>
-      </section>
-    );
-  }
-}
+  return (
+    <section>
+      <Title>{title}</Title>
+      {posts.map(({ node }) => {
+        return <Post key={node.id} node={node} />;
+      })}
+      <BottomNav>
+        <li>
+          {!isFirst && (
+            <AnimatedLink to={prevPage} rel="prev" direction="rtl">
+              ← New Posts
+            </AnimatedLink>
+          )}
+        </li>
+        <li>
+          {!isLast && (
+            <AnimatedLink to={nextPage} rel="next" direction="ltr">
+              Older Posts →
+            </AnimatedLink>
+          )}
+        </li>
+      </BottomNav>
+    </section>
+  );
+};
 
 PostsSection.defaultProps = {
   title: '',
