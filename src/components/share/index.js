@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   FacebookShareButton,
@@ -11,8 +11,9 @@ import {
   RedditIcon,
 } from 'react-share';
 import styled from 'styled-components';
+import useWebShare from 'react-use-web-share';
 
-import useWebShare from './use-web-share';
+import ShareBtn from './share-btn';
 
 const Container = styled.div`
   margin: 1rem 0 5rem;
@@ -25,12 +26,12 @@ const Container = styled.div`
 `;
 
 const Share = ({ post }) => {
-  const {
-    loading,
-    isSupported,
-    config: { url },
-    share,
-  } = useWebShare();
+  const { loading, isSupported, share } = useWebShare();
+  const [url, setUrl] = useState('');
+  useEffect(() => {
+    const currentUrl = window.location.href;
+    setUrl(currentUrl);
+  }, []);
   return (
     <Container>
       <p
@@ -73,7 +74,7 @@ const Share = ({ post }) => {
           </RedditShareButton>
         </>
       ) : (
-        <button onClick={share}>Share</button>
+        <ShareBtn shareFn={share} />
       )}
     </Container>
   );
