@@ -71,6 +71,14 @@ class BlogPostTemplate extends React.PureComponent {
               )}
             </li>
           </LinkList>
+          <script
+            async
+            src="https://comments.app/js/widget.js?2"
+            data-comments-app-website="V2EyRovY"
+            data-limit="5"
+            data-color="343638"
+            data-colorful="1"
+          ></script>
         </Container>
         <Subscribe />
       </Layout>
