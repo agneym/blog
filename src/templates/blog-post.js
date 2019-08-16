@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
@@ -17,6 +17,24 @@ const components = {
 };
 
 class BlogPostTemplate extends React.PureComponent {
+  containerRef = createRef();
+  componentDidMount() {
+    this.loadComments();
+  }
+  loadComments = () => {
+    const script = document.createElement('script');
+
+    script.src = 'https://comments.app/js/widget.js?2';
+    script.async = true;
+    script.setAttribute('data-comments-app-website', 'V2EyRovY');
+    script.setAttribute('data-color', '343638');
+    script.setAttribute('data-colorful', '1');
+    script.setAttribute('data-limit', 5);
+
+    if (this.containerRef.current) {
+      this.containerRef.current.appendChild(script);
+    }
+  };
   render() {
     const post = this.props.data.mdx;
     const siteTitle = this.props.data.site.siteMetadata.title;
@@ -30,7 +48,7 @@ class BlogPostTemplate extends React.PureComponent {
           description={post.excerpt}
           keywords={post.frontmatter.tags}
         />
-        <Container>
+        <Container ref={this.containerRef}>
           <Header>
             <Title>{post.frontmatter.title}</Title>
             <sub
@@ -71,14 +89,6 @@ class BlogPostTemplate extends React.PureComponent {
               )}
             </li>
           </LinkList>
-          <script
-            async
-            src="https://comments.app/js/widget.js?2"
-            data-comments-app-website="V2EyRovY"
-            data-limit="5"
-            data-color="343638"
-            data-colorful="1"
-          ></script>
         </Container>
         <Subscribe />
       </Layout>
