@@ -11,31 +11,13 @@ import Subscribe from '../components/subscribe';
 import AnimatedLink from '../utils/animated-link';
 import 'react-js-live/build/main.css';
 import CodeViewer from '../components/code-viewer';
+import Comments from '../components/comments';
 
 const components = {
   code: CodeViewer,
 };
 
 class BlogPostTemplate extends React.PureComponent {
-  containerRef = createRef();
-  componentDidMount() {
-    this.loadComments();
-  }
-  loadComments = () => {
-    const script = document.createElement('script');
-
-    script.src = 'https://comments.app/js/widget.js?2';
-    script.async = true;
-    script.setAttribute('data-comments-app-website', 'V2EyRovY');
-    script.setAttribute('data-color', '343638');
-    script.setAttribute('data-colorful', '1');
-    script.setAttribute('data-limit', 5);
-    script.setAttribute('data-outlined', 1);
-
-    if (this.containerRef.current) {
-      this.containerRef.current.appendChild(script);
-    }
-  };
   render() {
     const post = this.props.data.mdx;
     const siteTitle = this.props.data.site.siteMetadata.title;
@@ -90,6 +72,7 @@ class BlogPostTemplate extends React.PureComponent {
               )}
             </li>
           </LinkList>
+          <Comments />
         </Container>
         <Subscribe />
       </Layout>
