@@ -30,6 +30,7 @@ class BlogPostTemplate extends React.PureComponent {
     script.setAttribute('data-color', '343638');
     script.setAttribute('data-colorful', '1');
     script.setAttribute('data-limit', 5);
+    script.setAttribute('data-outlined', 1);
 
     if (this.containerRef.current) {
       this.containerRef.current.appendChild(script);
