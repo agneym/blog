@@ -63,7 +63,7 @@ const Content = styled.div`
   margin: 0 auto;
 
   ${media.tablet`
-    width: 80%;
+    width: 85%;
   `}
 `;
 
