@@ -23,23 +23,27 @@ class BlogPostTemplate extends React.PureComponent {
     const siteTitle = this.props.data.site.siteMetadata.title;
     const author = this.props.data.site.siteMetadata.author;
     const { previous, next } = this.props.pageContext;
+    const {
+      frontmatter: { title, ogImage, tags, date },
+    } = post;
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
-          title={post.frontmatter.title}
+          title={title}
           description={post.excerpt}
-          keywords={post.frontmatter.tags}
+          keywords={tags}
+          filename={ogImage ? ogImage.filename : null}
         />
         <Container ref={this.containerRef}>
           <Header>
-            <Title>{post.frontmatter.title}</Title>
+            <Title>{title}</Title>
             <sub
               css={`
                 color: rgba(0, 0, 0, 0.8);
               `}
             >
-              <span>Posted on {post.frontmatter.date}</span>
+              <span>Posted on {date}</span>
             </sub>
           </Header>
           <MDXProvider components={components}>
@@ -100,6 +104,9 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         tags
+        ogImage {
+          filename
+        }
       }
     }
   }
