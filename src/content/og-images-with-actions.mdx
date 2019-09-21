@@ -1,14 +1,15 @@
 ---
 title: 'OG Images with Github Actions'
 date: '2019-09-20T22:12:03.284Z'
-tags: ['github', 'actions', '']
+tags: ['github', 'actions', 'open graph image', 'gatsby']
 published: true
 ogImage:
-  title: 'Generate OG Images with Github Actions'
+  title: 'Generate _OG Images_ with Github Actions'
   subtitle: 'For your blog'
-  background: 'linear-gradient(to right, #000428, #004e92)'
+  background: 'linear-gradient(to right, #6a11cb 0%, #2575fc 100%)'
+  imageUrl: '🥳'
   fontColor: '#ffffff'
-  filename: github-actions
+  filename: 'github-actions'
 ---
 
 import withoutOg from './og-image-with-actions/without-og.png';
@@ -64,7 +65,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Generate Image
-        uses: BoyWithSilverWings/generate-og-image@1.0.0-beta
+        uses: BoyWithSilverWings/generate-og-image@1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_CONTEXT: ${{ toJson(github) }}
