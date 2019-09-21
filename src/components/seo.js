@@ -57,7 +57,7 @@ function SEO({ description, lang, meta, keywords, title, filename }) {
               {
                 name: 'og:image',
                 content: filename
-                  ? `/post-images/${filename}.jpg`
+                  ? `https://blog.agney.dev/post-images/${filename}.jpg`
                   : '/icons/icon-72x72.png',
               },
             ]
