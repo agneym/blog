@@ -14,9 +14,9 @@ const CodeViewer = ({ code, children, className = '' }) => {
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>
-          {tokens.map((line, i) => (
+          {tokens.map((line, i, { length }) => (
             <div {...getLineProps({ line, key: i })}>
-              <LineNo>{i + 1}</LineNo>
+              {length > 7 && <LineNo>{i + 1}</LineNo>}
               {line.map((token, key) => (
                 <span {...getTokenProps({ token, key })} />
               ))}
