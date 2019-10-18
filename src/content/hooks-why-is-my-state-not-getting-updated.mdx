@@ -14,6 +14,8 @@ ogImage:
 
 Probably because you are using it wrong.
 
+> Find class based version [here](https://blog.agney.dev/why-is-my-state-not-getting-updated/)
+
 ```js
 const [value, setValue] = useState('');
 function handleChange(newValue) {
@@ -58,7 +60,7 @@ function App() {
 
 But in real world react components, there would be multiple states (and props) and this would trigger the `console.log` every time any one of these is updated. Instead, a more effective approach would be:
 
-```
+```js
 function App() {
   const [value, setValue] = useState("");
   useEffect(() => {
