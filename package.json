@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "author": "Boy with Silver Wings <agney@outlook.in>",
   "dependencies": {
-    "@agney/playground": "^0.2.9",
+    "@agney/playground": "^0.2.10",
     "@babel/runtime": "^7.7.2",
     "@mapbox/rehype-prism": "^0.3.1",
     "@mdx-js/mdx": "^0.16.6",
