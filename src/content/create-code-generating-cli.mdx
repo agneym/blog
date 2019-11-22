@@ -25,7 +25,7 @@ Gluegun defines itself as a delightful toolkit for building Node-powered CLIs. I
 
 [Tierney Cyren](https://twitter.com/bitandbang) had tweeted this and things went out of control very soon with lots and lots of people creating their own cards. (Even I have my own, with `npx boywithsilverwings`) What we are trying to create today is a CLI to create your own `npx` card, because why the hell not!
 
-I have a ready made CLI [here](https://github.com/BoyWithSilverWings/create-profile-card) that you can run with:
+I have a ready made CLI [here](https://github.com/agneym/create-profile-card) that you can run with:
 
 ```bash
   npm init profile-card card-name
@@ -167,7 +167,7 @@ module.exports = {
     const name = parameters.first;
     /*
       This is a custom extension that prompts for details from the user
-      https://github.com/BoyWithSilverWings/create-profile-card/blob/master/src/extensions/prompt-details.js
+      https://github.com/agneym/create-profile-card/blob/master/src/extensions/prompt-details.js
     */
     const details = await promptDetails({ name });
     const props = { name, config };
@@ -246,8 +246,8 @@ await installPackages(props);
 
 Once this is complete, you will have all the files copied to the directory of preference and ready.
 
-[`bin/card.js`](https://github.com/BoyWithSilverWings/create-profile-card/blob/master/src/templates/bin/card.js.ejs) contains the javascript that will be suppled to the user. It uses boxen to draw a box and chalk to output text in colors for the console. It reads user details from `config.json` and creates console output.
+[`bin/card.js`](https://github.com/agneym/create-profile-card/blob/master/src/templates/bin/card.js.ejs) contains the javascript that will be suppled to the user. It uses boxen to draw a box and chalk to output text in colors for the console. It reads user details from `config.json` and creates console output.
 
-You can find the complete application [here](https://github.com/BoyWithSilverWings/create-profile-card) for reference.
+You can find the complete application [here](https://github.com/agneym/create-profile-card) for reference.
 
 Feel free to ping me at [@agneymenon](https://twitter.com/agneymenon) if you get stuck.
