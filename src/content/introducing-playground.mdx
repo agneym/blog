@@ -11,4 +11,27 @@ ogImage:
   filename: 'introducing-playground'
 ---
 
+import ReactPlayground from '@agney/playground';
+
 [Playground](https://github.com/BoyWithSilverWings/playground) is a React Component that can be used for demonstrating HTML, CSS and JavaScript code.
+
+<ReactPlayground
+  initialSnippet={{
+    markup: `<div id=app />`,
+    css: `h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: dodgerblue;
+    }`,
+    javascript: `import { h, Component, render } from 'preact';
+import htm from 'htm';
+const html = htm.bind(h);
+const app = html\`<h1>Hello World from Playground!</h1>\`
+render(app, document.getElementById('app'));`,
+  }}
+  defaultEditorTab="javascript"
+  transformJs
+/>

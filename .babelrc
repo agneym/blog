@@ -1,0 +1,21 @@
+{
+  "plugins": [
+    ["@babel/plugin-transform-runtime", {
+      "regenerator": true
+    }]
+  ],
+  "presets": [
+    [
+      "babel-preset-gatsby",
+      {
+        "targets": {
+          "browsers": [
+            ">1%",
+            "not dead"
+          ]
+        },
+        "useBuildIns": "usage"
+      }
+    ]
+  ]
+}
