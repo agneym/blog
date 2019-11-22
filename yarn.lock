@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@agney/playground@^0.2.9":
-  version "0.2.9"
-  resolved "https://registry.yarnpkg.com/@agney/playground/-/playground-0.2.9.tgz#b4006653a737afb9acc0327bf5b263c4b18a9ca0"
-  integrity sha512-+HeQs0wnI5ElDK9RI6qMzUp+qsIYmZQKGavVwKAs7Q9ZpQRWpedMWYp4F2YOCcgreZfa9e45Tkysd1dJkDQzRA==
+"@agney/playground@^0.2.10":
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/@agney/playground/-/playground-0.2.10.tgz#5a2ce8e3c30b5432f30c262965719ad35b2633b5"
+  integrity sha512-RSQy+CWVt3OwA1UH8bCa0hWiCtwzMfAUaTWhmEqJDKW30M3/u3kvChDPqMPebx42LZEwziKa3ONahwSlsGvUBg==
   dependencies:
     "@agney/react-inspector" "^4.0.0"
     "@reach/auto-id" "^0.6.1"
