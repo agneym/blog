@@ -3,8 +3,9 @@
   "private": true,
   "description": "A simple minimal Gatsby powered blog",
   "version": "0.0.1",
-  "author": "Boy with Silver Wings <agney@outlook.in>",
+  "author": "Agney Menon <agney@outlook.in>",
   "dependencies": {
+    "@agney/gatsby-theme-advent": "^1.0.3",
     "@agney/playground": "^0.2.10",
     "@babel/runtime": "^7.7.2",
     "@mapbox/rehype-prism": "^0.3.1",

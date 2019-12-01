@@ -67,6 +67,14 @@ module.exports = {
       },
     },
     {
+      resolve: `@agney/gatsby-theme-advent`,
+      options: {
+        contentPath: 'src/december', // Tell the theme where your markdown files are.
+        assetPath: 'src/images', // Tell the theme where your cover image is.
+        basePath: '/december', // Tell the theme which URL to render the theme at.
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Mindless`,
