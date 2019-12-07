@@ -10,15 +10,15 @@ const AnimatedLink = styled(StyledLink)`
     content: '';
     position: absolute;
     bottom: -0.5rem;
-    width: 0;
+    width: 100%;
+    transform: scaleX(0);
     height: 0.2rem;
     margin: 0.5rem 0 0;
-    transition: width 0.45s ease-in-out, opacity 0.45s ease-out;
+    transition: transform 0.45s ease-in-out, opacity 0.45s ease-out;
     opacity: 0;
-    ${props => props.direction === 'ltr' && `left: 0;`}
-    ${props =>
-      props.direction === 'rtl' && `right: 0;`}
     background-color: black;
+    transform-origin: ${props =>
+      props.direction === 'ltr' ? 'left' : 'right'};
   }
 
   &::before {
@@ -34,7 +34,7 @@ const AnimatedLink = styled(StyledLink)`
       props.direction === 'rtl' &&
       `
       &::after {
-        width: 84%;
+        transform: scaleX(1);
         opacity: 1;
       }
     `}
@@ -42,7 +42,7 @@ const AnimatedLink = styled(StyledLink)`
       props.direction === 'ltr' &&
       `
       &::before {
-        width: 84%;
+        transform: scaleX(1);
         opacity: 1;
       }
     `}
