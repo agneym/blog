@@ -66,7 +66,7 @@ function SEO({
         },
         datePublished: date,
         publisher: {
-          '@type': 'Organization',
+          '@type': 'Person',
           name: data.site.siteMetadata.title,
           logo: '/icons/icon-512x512.png',
           url,
