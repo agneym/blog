@@ -6,7 +6,7 @@ tags:
 published: true
 ---
 
-import JSLive from 'react-js-live';
+import Playground from '@agney/playground';
 
 This is part of a series where I try to explain through each of [33 JS Concepts](https://github.com/leonardomso/33-js-concepts).
 
@@ -71,12 +71,13 @@ function action() {
 
 Wherever you declare a variable, JavaScript would proceed to hoist these upto the top of their scope. But let us be semantically correct here. JavaScript does not move the variables physically all your code remains the same. The compiler just picks the variables in it's current scope and declares them in compiler time with the value `undefined`.
 
-<JSLive
+<Playground
   id="hoisting"
-  snippets={{
-    html: ``,
+  defaultEditorTab="javascript"
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `
+    javascript: `
 function init() {
   console.log(a);
   var a = 1;
@@ -139,12 +140,13 @@ Here function is assigned to variable `foo`, to invoke this function we have cal
 
 We just saw that functions can be assigned to variables. This is essentially an easy by product of the same. You can pass these references around as you would do with any other object.
 
-<JSLive
+<Playground
   id="pass-function"
-  snippets={{
-    html: ``,
+  defaultEditorTab="javascript"
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `
+    javascript: `
 function inc(num) {
   return num+1;
 }
@@ -169,12 +171,13 @@ This is going to be longer than the other ones, but bear with me here.
 
 With the last example, we discussed how we can change the `counter` function by passing in different functions. Let us look at how we might achieve that result:
 
-<JSLive
+<Playground
   id="return-function-1"
-  snippets={{
-    html: ``,
+  defaultEditorTab="javascript"
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `
+    javascript: `
 function inc(num) {
   return num+1;
 }
@@ -197,12 +200,13 @@ We just created two functions: `inc` and `incBy2`. The first function increments
 
 Let us look at the simplest approach first:
 
-<JSLive
+<Playground
   id="return-function-2"
-  snippets={{
-    html: ``,
+  defaultEditorTab="javascript"
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `
+    javascript: `
 function inc(num, factor) {
   return num+factor;
 }
@@ -220,12 +224,13 @@ console.log(number);
 
 Well, this does the work. But this is breaking the expectation we had set for ourselves. The whole objective of passing a funtion to `counter` was the fact that `counter` did not need to know the factor which was being increment or any operation being performed. By passing `factor` into `counter`, we have broken that encapsulation. We need better ways to create dynamic functions that we can pass into `counter`.
 
-<JSLive
+<Playground
   id="return-function-3"
-  snippets={{
-    html: ``,
+  defaultEditorTab="javascript"
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `
+    javascript: `
 function createInc(factor) {
   return function(num) {
     return num + factor;
