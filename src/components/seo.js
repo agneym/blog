@@ -111,7 +111,11 @@ function SEO({ description, lang, meta, keywords, title, filename, type }) {
             : []
         )
         .concat(meta)}
-    />
+    >
+      <script type="application/ld+json">
+        {JSON.stringify(schemaOrgJSONLD)}
+      </script>
+    </Helmet>
   );
 }
 
