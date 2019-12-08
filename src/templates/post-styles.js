@@ -82,12 +82,9 @@ export const Container = styled.article`
 
   ol {
     margin-left: 1rem;
-    list-style: none;
-    counter-reset: custom-counter;
   }
 
   ol li {
-    counter-increment: custom-counter;
     line-height: 1.5;
     margin: 0.5rem 0;
   }
@@ -103,7 +100,6 @@ export const Container = styled.article`
   }
 
   ol li::before {
-    content: counter(custom-counter) '. ';
     font-size: small;
     color: gray;
     margin-right: 0.6rem;
@@ -116,6 +112,69 @@ export const Container = styled.article`
     &[aria-hidden] {
       background-color: inherit;
     }
+  }
+
+  code[class*='language-'],
+  pre[class*='language-'] {
+    color: white;
+    background: none;
+    font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New,
+      monospace;
+    font-feature-settings: normal;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    margin-bottom: 0;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  /* Code blocks */
+  pre[class*='language-'] {
+    overflow: auto;
+    padding: 1.3125rem;
+  }
+
+  pre[class*='language-']::-moz-selection {
+    /* Firefox */
+    background: hsl(207, 4%, 16%);
+  }
+
+  pre[class*='language-']::selection {
+    /* Safari */
+    background: hsl(207, 4%, 16%);
+  }
+
+  /* Text Selection colour */
+  pre[class*='language-']::-moz-selection,
+  pre[class*='language-'] ::-moz-selection {
+    text-shadow: none;
+    background: hsla(0, 0%, 100%, 0.15);
+  }
+
+  pre[class*='language-']::selection,
+  pre[class*='language-'] ::selection {
+    text-shadow: none;
+    background: hsla(0, 0%, 100%, 0.15);
+  }
+
+  /* Inline code */
+  :not(pre) > code[class*='language-'] {
+    border-radius: 0.3em;
+    background: rgba(255, 229, 100, 0.2);
+    color: #1a1a1a;
+    padding: 0.15em 0.2em 0.05em;
+    white-space: normal;
   }
 `;
 

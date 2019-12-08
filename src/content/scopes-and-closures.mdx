@@ -77,8 +77,7 @@ Wherever you declare a variable, JavaScript would proceed to hoist these upto th
   initialSnippet={{
     markup: ``,
     css: ``,
-    javascript: `
-function init() {
+    javascript: `function init() {
   console.log(a);
   var a = 1;
 }
@@ -146,8 +145,7 @@ We just saw that functions can be assigned to variables. This is essentially an 
   initialSnippet={{
     markup: ``,
     css: ``,
-    javascript: `
-function inc(num) {
+    javascript: `function inc(num) {
   return num+1;
 }
 function counter(num, incFun) {
@@ -177,8 +175,7 @@ With the last example, we discussed how we can change the `counter` function by 
   initialSnippet={{
     markup: ``,
     css: ``,
-    javascript: `
-function inc(num) {
+    javascript: `function inc(num) {
   return num+1;
 }
 function incBy2(num) {
@@ -206,8 +203,7 @@ Let us look at the simplest approach first:
   initialSnippet={{
     markup: ``,
     css: ``,
-    javascript: `
-function inc(num, factor) {
+    javascript: `function inc(num, factor) {
   return num+factor;
 }
 function counter(num, factor, incFun) {
@@ -230,8 +226,7 @@ Well, this does the work. But this is breaking the expectation we had set for ou
   initialSnippet={{
     markup: ``,
     css: ``,
-    javascript: `
-function createInc(factor) {
+    javascript: `function createInc(factor) {
   return function(num) {
     return num + factor;
   }
