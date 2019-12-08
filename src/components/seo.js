@@ -3,7 +3,16 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 
-function SEO({ description, lang, meta, keywords, title, filename, type }) {
+function SEO({
+  description,
+  lang,
+  meta,
+  keywords,
+  title,
+  filename,
+  type,
+  date,
+}) {
   const data = useStaticQuery(detailsQuery);
   const metaDescription = description || data.site.siteMetadata.description;
   const [url, setUrl] = useState('');
@@ -20,7 +29,7 @@ function SEO({ description, lang, meta, keywords, title, filename, type }) {
       name: title,
     },
   ];
-  if (type) {
+  if (type === 'post') {
     schemaOrgJSONLD.push(
       {
         '@context': 'http://schema.org',
@@ -48,6 +57,10 @@ function SEO({ description, lang, meta, keywords, title, filename, type }) {
           url: 'https://blog.agney.dev/post-images/${filename}.jpg',
         },
         description,
+        author: data.site.siteMetadata.author,
+        datePublished: date,
+        published: data.siteMetadata.author,
+        dateModified: date,
       }
     );
   }
@@ -135,6 +148,7 @@ SEO.propTypes = {
   title: PropTypes.string.isRequired,
   filename: PropTypes.string,
   type: PropTypes.string,
+  date: PropTypes.string,
 };
 
 export default SEO;
