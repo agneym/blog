@@ -59,7 +59,7 @@ function SEO({
         description,
         author: data.site.siteMetadata.author,
         datePublished: date,
-        published: data.siteMetadata.author,
+        published: data.site.siteMetadata.author,
         dateModified: date,
       }
     );
