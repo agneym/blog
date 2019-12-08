@@ -21,6 +21,9 @@ function SEO({
       setUrl(window.location.href);
     }
   });
+  const featuredImage = filename
+    ? `/post-images/${filename}.jpg`
+    : '/icons/icon-512x512.png';
   const schemaOrgJSONLD = [
     {
       '@context': 'http://schema.org',
@@ -41,7 +44,7 @@ function SEO({
             item: {
               '@id': url,
               name: title,
-              image: `https://blog.agney.dev/post-images/${filename}.jpg`,
+              image: featuredImage,
             },
           },
         ],
@@ -49,12 +52,12 @@ function SEO({
       {
         '@context': 'http://schema.org',
         '@type': 'TechArticle',
-        url: url,
+        url,
         name: title,
         headline: title,
         image: {
           '@type': 'ImageObject',
-          url: `https://blog.agney.dev/post-images/${filename}.jpg`,
+          url: featuredImage,
         },
         description,
         author: {
@@ -66,6 +69,7 @@ function SEO({
           '@type': 'Organization',
           name: data.site.siteMetadata.title,
           logo: '/icons/icon-512x512.png',
+          url,
         },
         dateModified: date,
       }
@@ -117,9 +121,7 @@ function SEO({
         },
         {
           name: 'og:image',
-          content: filename
-            ? `https://blog.agney.dev/post-images/${filename}.jpg`
-            : '/icons/icon-512x512.png',
+          content: featuredImage,
         },
       ]
         .concat(
