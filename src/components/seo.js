@@ -66,10 +66,10 @@ function SEO({
         },
         datePublished: date,
         publisher: {
-          '@type': 'Person',
+          '@type': 'Organization',
           name: data.site.siteMetadata.title,
           logo: '/icons/icon-512x512.png',
-          url,
+          url: url || 'https://blog.agney.dev',
         },
         dateModified: date,
       }
