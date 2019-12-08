@@ -63,8 +63,8 @@ function SEO({
         },
         datePublished: date,
         publisher: {
-          '@type': 'Person',
-          name: data.site.siteMetadata.author,
+          '@type': 'Organisation',
+          name: data.site.siteMetadata.title,
         },
         dateModified: date,
       }
