@@ -41,7 +41,7 @@ function SEO({
             item: {
               '@id': url,
               name: title,
-              image: 'https://blog.agney.dev/post-images/${filename}.jpg',
+              image: `https://blog.agney.dev/post-images/${filename}.jpg`,
             },
           },
         ],
@@ -54,7 +54,7 @@ function SEO({
         headline: title,
         image: {
           '@type': 'ImageObject',
-          url: 'https://blog.agney.dev/post-images/${filename}.jpg',
+          url: `https://blog.agney.dev/post-images/${filename}.jpg`,
         },
         description,
         author: {
@@ -65,6 +65,7 @@ function SEO({
         publisher: {
           '@type': 'Organization',
           name: data.site.siteMetadata.title,
+          logo: '/icons/icon-512x512.png',
         },
         dateModified: date,
       }
