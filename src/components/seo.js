@@ -48,7 +48,7 @@ function SEO({
       },
       {
         '@context': 'http://schema.org',
-        '@type': 'BlogPosting',
+        '@type': 'TechArticle',
         url: url,
         name: title,
         headline: title,
@@ -57,9 +57,15 @@ function SEO({
           url: 'https://blog.agney.dev/post-images/${filename}.jpg',
         },
         description,
-        author: data.site.siteMetadata.author,
+        author: {
+          '@type': 'Person',
+          name: data.site.siteMetadata.author,
+        },
         datePublished: date,
-        publisher: data.site.siteMetadata.author,
+        publisher: {
+          '@type': 'Person',
+          name: data.site.siteMetadata.author,
+        },
         dateModified: date,
       }
     );
