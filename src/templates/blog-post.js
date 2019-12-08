@@ -34,6 +34,7 @@ class BlogPostTemplate extends React.PureComponent {
           description={post.excerpt}
           keywords={tags}
           filename={ogImage ? ogImage.filename : null}
+          type="post"
         />
         <Container ref={this.containerRef}>
           <Header>

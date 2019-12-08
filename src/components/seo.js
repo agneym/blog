@@ -1,78 +1,116 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { StaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
-function SEO({ description, lang, meta, keywords, title, filename }) {
+function SEO({ description, lang, meta, keywords, title, filename, type }) {
+  const data = useStaticQuery(detailsQuery);
+  const metaDescription = description || data.site.siteMetadata.description;
+  const [url, setUrl] = useState('');
+  useEffect(() => {
+    if (window.location) {
+      setUrl(window.location.href);
+    }
+  });
+  const schemaOrgJSONLD = [
+    {
+      '@context': 'http://schema.org',
+      '@type': 'WebSite',
+      url: url,
+      name: title,
+    },
+  ];
+  if (type) {
+    schemaOrgJSONLD.push(
+      {
+        '@context': 'http://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            item: {
+              '@id': url,
+              name: title,
+              image: 'https://blog.agney.dev/post-images/${filename}.jpg',
+            },
+          },
+        ],
+      },
+      {
+        '@context': 'http://schema.org',
+        '@type': 'BlogPosting',
+        url: url,
+        name: title,
+        headline: title,
+        image: {
+          '@type': 'ImageObject',
+          url: 'https://blog.agney.dev/post-images/${filename}.jpg',
+        },
+        description,
+      }
+    );
+  }
   return (
-    <StaticQuery
-      query={detailsQuery}
-      render={data => {
-        const metaDescription =
-          description || data.site.siteMetadata.description;
-        return (
-          <Helmet
-            htmlAttributes={{
-              lang,
-            }}
-            title={title}
-            titleTemplate={`%s | ${data.site.siteMetadata.title}`}
-            meta={[
-              {
-                name: `description`,
-                content: metaDescription,
-              },
-              {
-                name: 'google-site-verification',
-                content: 'z5vpqyTgwWRPzObs2wou_QT2kjtk2a-xF-27nX3Umc4',
-              },
-              {
-                property: `og:title`,
-                content: title,
-              },
-              {
-                property: `og:description`,
-                content: metaDescription,
-              },
-              {
-                property: `og:type`,
-                content: `website`,
-              },
-              {
-                name: `twitter:card`,
-                content: `summary_large_image`,
-              },
-              {
-                name: `twitter:creator`,
-                content: data.site.siteMetadata.author,
-              },
-              {
-                name: `twitter:title`,
-                content: title,
-              },
-              {
-                name: `twitter:description`,
-                content: metaDescription,
-              },
-              {
-                name: 'og:image',
-                content: filename
-                  ? `https://blog.agney.dev/post-images/${filename}.jpg`
-                  : '/icons/icon-72x72.png',
-              },
-            ]
-              .concat(
-                keywords.length > 0
-                  ? {
-                      name: `keywords`,
-                      content: keywords.join(`, `),
-                    }
-                  : []
-              )
-              .concat(meta)}
-          />
-        );
+    <Helmet
+      htmlAttributes={{
+        lang,
       }}
+      title={title}
+      titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+      meta={[
+        {
+          name: `description`,
+          content: metaDescription,
+        },
+        {
+          name: 'google-site-verification',
+          content: 'z5vpqyTgwWRPzObs2wou_QT2kjtk2a-xF-27nX3Umc4',
+        },
+        {
+          property: `og:title`,
+          content: title,
+        },
+        {
+          property: `og:description`,
+          content: metaDescription,
+        },
+        {
+          property: `og:type`,
+          content: `website`,
+        },
+        {
+          name: `twitter:card`,
+          content: `summary_large_image`,
+        },
+        {
+          name: `twitter:creator`,
+          content: data.site.siteMetadata.author,
+        },
+        {
+          name: `twitter:title`,
+          content: title,
+        },
+        {
+          name: `twitter:description`,
+          content: metaDescription,
+        },
+        {
+          name: 'og:image',
+          content: filename
+            ? `https://blog.agney.dev/post-images/${filename}.jpg`
+            : '/icons/icon-512x512.png',
+        },
+      ]
+        .concat(
+          keywords.length > 0
+            ? {
+                name: `keywords`,
+                content: keywords.join(`, `),
+              }
+            : []
+        )
+        .concat(meta)}
     />
   );
 }
@@ -82,6 +120,7 @@ SEO.defaultProps = {
   meta: [],
   keywords: [],
   filename: null,
+  type: null,
 };
 
 SEO.propTypes = {
@@ -91,6 +130,7 @@ SEO.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
   filename: PropTypes.string,
+  type: PropTypes.string,
 };
 
 export default SEO;
