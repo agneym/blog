@@ -99,6 +99,10 @@ export const Container = styled.article`
     display: inline;
   }
 
+  li[role='treeitem'] {
+    margin: 0;
+  }
+
   ol li::before {
     font-size: small;
     color: gray;
