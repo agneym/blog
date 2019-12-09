@@ -68,7 +68,10 @@ function SEO({
         publisher: {
           '@type': 'Organization',
           name: data.site.siteMetadata.title,
-          logo: '/icons/icon-512x512.png',
+          logo: {
+            '@type': 'ImageObject',
+            url: '/icons/icon-512x512.png',
+          },
           url: url || 'https://blog.agney.dev',
         },
         dateModified: date,
