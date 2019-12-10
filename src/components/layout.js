@@ -31,6 +31,11 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.6rem;
   }
 
+  ::selection {
+    background-color: #EE6352;
+    color: #EFE9F4;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Aleo', serif;
   }

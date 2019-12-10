@@ -17,10 +17,10 @@ function SEO({
   const metaDescription = description || data.site.siteMetadata.description;
   const [url, setUrl] = useState('');
   useEffect(() => {
-    if (window.location) {
+    if (typeof window !== `undefined`) {
       setUrl(window.location.href);
     }
-  });
+  }, []);
   const featuredImage = filename
     ? `/post-images/${filename}.jpg`
     : '/icons/icon-512x512.png';
