@@ -32,12 +32,16 @@ const GlobalStyles = createGlobalStyle`
   }
 
   ::selection {
-    background-color: #EE6352;
-    color: #EFE9F4;
+    background-color: #08B2E3;
+    color: #FFFFFF;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Aleo', serif;
+  }
+
+  h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection {
+    background-color: #0092bb;
   }
 
   h2 {
