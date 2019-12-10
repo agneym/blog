@@ -35,11 +35,12 @@ class NewsLetterForm extends PureComponent {
         method="post"
         target="popupwindow"
         onSubmit={this.submitForm}
+        css={`
+          width: 80%;
+          min-width: 300px;
+          margin-top: 2rem;
+        `}
       >
-        <S.SubSection>
-          <S.Subtitle>Newsletter</S.Subtitle>
-          <sub>Prefer a digest of information every week?</sub>
-        </S.SubSection>
         <Label htmlFor="bd-email">Email</Label>
         <EmailInput
           type="email"
