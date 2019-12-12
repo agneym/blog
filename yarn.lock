@@ -29,10 +29,10 @@
     react-use-web-share "^1.0.1"
     styled-components "^4.4.1"
 
-"@agney/playground@^0.2.10":
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/@agney/playground/-/playground-0.2.10.tgz#5a2ce8e3c30b5432f30c262965719ad35b2633b5"
-  integrity sha512-RSQy+CWVt3OwA1UH8bCa0hWiCtwzMfAUaTWhmEqJDKW30M3/u3kvChDPqMPebx42LZEwziKa3ONahwSlsGvUBg==
+"@agney/playground@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@agney/playground/-/playground-0.3.1.tgz#d40e405fcd0f9e5b8b679f7443daea7f2bb4d0f9"
+  integrity sha512-soMd6Deu9cEE6Jens5Cj9BxNd629qRid2X0YtKpHtthsxaNYR5+SI4Jne49UhCgnGOQO2ozvt7wA3edyBhsbZg==
   dependencies:
     "@agney/react-inspector" "^4.0.0"
     "@reach/auto-id" "^0.6.1"
@@ -40,7 +40,6 @@
     lodash "^4.17.15"
     prism-react-renderer "^1.0.2"
     react-simple-code-editor "^0.10.0"
-    styled-components "^4.4.1"
 
 "@agney/react-inspector@^4.0.0":
   version "4.0.0"

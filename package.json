@@ -6,7 +6,7 @@
   "author": "Agney Menon <agney@outlook.in>",
   "dependencies": {
     "@agney/gatsby-theme-advent": "^1.0.3",
-    "@agney/playground": "^0.2.10",
+    "@agney/playground": "^0.3.1",
     "@babel/runtime": "^7.7.2",
     "@mapbox/rehype-prism": "^0.3.1",
     "@mdx-js/mdx": "^0.16.6",

@@ -145,8 +145,12 @@ export const Container = styled.article`
 
   /* Code blocks */
   pre[class*='language-'] {
-    overflow: auto;
+    overflow-x: auto;
     padding: 1.3125rem;
+  }
+
+  pre[aria-hidden='true'] {
+    overflow-x: unset;
   }
 
   pre[class*='language-']::-moz-selection {
