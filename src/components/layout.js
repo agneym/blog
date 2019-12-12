@@ -41,9 +41,9 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection {
-    background-color: #0092bb;
+    background-color: #DA344D;
   }
-
+  
   h2 {
     font-size: 2.5rem;
   }
