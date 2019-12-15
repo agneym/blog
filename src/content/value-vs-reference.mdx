@@ -158,7 +158,7 @@ const developer = person; // John has become a developer.
 
 Let us look at the memory representaion for this change:
 
-![Developer and Person](./value-vs-reference/two-variables.svg)
+![developer and person variable pointing at the same object reference in memory](./value-vs-reference/two-variables.svg)
 
 Now, we have a second variable `developer` pointing at the same memory that `person` did.
 
@@ -262,7 +262,7 @@ doCrazy({...person});
 console.log(person);
 ```
 
-![Everything pointing to one](./value-vs-reference/points.png)
+![person and personClone are still pointing to the same reference internally](./value-vs-reference/points.png)
 
 By building a shallow clone we have only eliminated the possibility of crazy people meddling with the first level of your object. The levels below it are still references and can be manipulated/changed by other functions/entities.
 
