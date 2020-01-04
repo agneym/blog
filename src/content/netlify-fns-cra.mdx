@@ -209,6 +209,42 @@ and we are Done 🥂.
 
 To convert this to a PWA, you can very simply [add the service workers on the `create-react-app`](https://create-react-app.dev/docs/making-a-progressive-web-app/) and adjust the parameters in `manifest.json`.
 
+## Share Target
+
+It's too much of work to actually copy the URL and copy paste into our app, especially on mobile. But for PWAs what we can do is to register the application as a share target. You can do this by specifying the following in `manifest.json`:
+
+```json
+"share_target": {
+  "action": "/",
+  "method": "GET",
+  "params": {
+    "text": "q"
+  }
+}
+```
+
+The important thing here is the `params` object. On the left is what is to be passed, there are different params like `title`, `text` and `url`. For some wierd reason, Chrome sends the URL of the page in the `text` parameter and that is what we are substituting here.
+
+When something is shared to the application, the URL would be:
+
+```
+https://baseurl.com?q=shared-url
+```
+
+To process this, the frontend can:
+
+```
+const location = useLocation();
+
+useEffect(() => {
+  const searchParams = new URLSearchParams(location.search);
+  const url = searchParams.get("q");
+  if (url) {
+    handleView(url);
+  }
+}, [location.search]);
+```
+
 You can find the complete code in the [repository](https://github.com/agneym/the-reader)
 
 [Application Demo](https://competent-nightingale-a5d6b2.netlify.com/)
