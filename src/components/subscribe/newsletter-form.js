@@ -14,9 +14,10 @@ const EmailInput = styled.input`
   padding: 1rem;
   display: block;
   margin: auto;
-  width: 76%;
   font-size: 1.2rem;
+  width: 80%;
   border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 
   &:focus {
     border: 0.1rem solid #000000;
@@ -37,7 +38,7 @@ function NewsLetterForm() {
       css={`
         width: 80%;
         min-width: 300px;
-        margin-top: 2rem;
+        margin-top: 1.5rem;
       `}
     >
       <Label htmlFor="bd-email">Email</Label>
