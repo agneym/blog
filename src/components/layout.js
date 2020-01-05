@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import Header from './header';
 import media from '../utils/media';
 import GlobalStyles from '../utils/global';
+import theme from '../utils/theme';
 
 const Content = styled.div`
   width: 60%;
@@ -28,11 +29,13 @@ function Layout({ children }) {
     }
   `);
   return (
-    <>
-      <Header title={data.site.siteMetadata.title} />
-      <Content>{children}</Content>
-      <GlobalStyles />
-    </>
+    <ThemeProvider theme={theme}>
+      <>
+        <Header title={data.site.siteMetadata.title} />
+        <Content>{children}</Content>
+        <GlobalStyles />
+      </>
+    </ThemeProvider>
   );
 }
 

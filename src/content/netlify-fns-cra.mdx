@@ -233,12 +233,12 @@ https://baseurl.com?q=shared-url
 
 To process this, the frontend can:
 
-```
+```javascript
 const location = useLocation();
 
 useEffect(() => {
   const searchParams = new URLSearchParams(location.search);
-  const url = searchParams.get("q");
+  const url = searchParams.get('q');
   if (url) {
     handleView(url);
   }
