@@ -115,6 +115,7 @@ const Share = ({ post }) => {
           </TwitterShareButton>
           <TelegramShareButton
             title={`Read ${post.title} by ${post.author}`}
+            url={url}
             className="social-icon"
           >
             <TelegramIcon size={32} round />
