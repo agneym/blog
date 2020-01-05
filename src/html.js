@@ -14,10 +14,6 @@ export default class HTML extends React.Component {
           />
           <title>The Mindless - Boy with Silver Wings</title>
           {this.props.headComponents}
-          <script
-            src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
-            async=""
-          />
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
