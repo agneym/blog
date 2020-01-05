@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import * as S from './layout';
 
@@ -24,36 +24,34 @@ const EmailInput = styled.input`
   }
 `;
 
-class NewsLetterForm extends PureComponent {
-  submitForm = () => {
+function NewsLetterForm() {
+  const submitForm = () => {
     window.open('https://buttondown.email/agney', 'popupwindow');
   };
-  render() {
-    return (
-      <form
-        action="https://buttondown.email/api/emails/embed-subscribe/agney"
-        method="post"
-        target="popupwindow"
-        onSubmit={this.submitForm}
-        css={`
-          width: 80%;
-          min-width: 300px;
-          margin-top: 2rem;
-        `}
-      >
-        <Label htmlFor="bd-email">Email</Label>
-        <EmailInput
-          type="email"
-          name="email"
-          id="bd-email"
-          required
-          placeholder="johndoe@gmail.com"
-        />
-        <input type="hidden" value="1" name="embed" />
-        <S.SubmitBtn type="submit" value="Subscribe" />
-      </form>
-    );
-  }
+  return (
+    <form
+      action="https://buttondown.email/api/emails/embed-subscribe/agney"
+      method="post"
+      target="popupwindow"
+      onSubmit={submitForm}
+      css={`
+        width: 80%;
+        min-width: 300px;
+        margin-top: 2rem;
+      `}
+    >
+      <Label htmlFor="bd-email">Email</Label>
+      <EmailInput
+        type="email"
+        name="email"
+        id="bd-email"
+        required
+        placeholder="johndoe@gmail.com"
+      />
+      <input type="hidden" value="1" name="embed" />
+      <S.SubmitBtn type="submit" value="Subscribe" />
+    </form>
+  );
 }
 
-export default NewsLetterForm;
+export default memo(NewsLetterForm);

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
@@ -7,36 +7,34 @@ import Bio from '../components/bio';
 import PostsSection from '../components/posts-section';
 import Subscribe from '../components/subscribe';
 
-class BlogIndex extends Component {
-  render() {
-    const { data } = this.props;
-    const posts = data.allMdx.edges;
-    const { currentPage, numPages } = this.props.pageContext;
-    return (
-      <Layout>
-        <SEO
-          title="All Posts"
-          keywords={[
-            `mindless`,
-            `blog`,
-            `javascript`,
-            `agney`,
-            `boy with silver wings`,
-          ]}
+function BlogIndex({ data, pageContext }) {
+  const posts = data.allMdx.edges;
+  const { currentPage, numPages } = pageContext;
+
+  return (
+    <Layout>
+      <SEO
+        title="All Posts"
+        keywords={[
+          `mindless`,
+          `blog`,
+          `javascript`,
+          `agney`,
+          `boy with silver wings`,
+        ]}
+      />
+      <main>
+        <Bio />
+        <PostsSection
+          title={`Latest Posts`}
+          posts={posts}
+          currentPage={currentPage}
+          numPages={numPages}
         />
-        <main>
-          <Bio />
-          <PostsSection
-            title={`Latest Posts`}
-            posts={posts}
-            currentPage={currentPage}
-            numPages={numPages}
-          />
-          <Subscribe />
-        </main>
-      </Layout>
-    );
-  }
+        <Subscribe />
+      </main>
+    </Layout>
+  );
 }
 
 export default BlogIndex;
