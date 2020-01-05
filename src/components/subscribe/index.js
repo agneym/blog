@@ -18,9 +18,10 @@ const Container = styled.div`
 
 const Title = styled.h2`
   font-weight: 400;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
+  margin-bottom: 0.5rem;
 
   ${media.phone`
     font-size: 1.8rem;
