@@ -36,7 +36,7 @@ const Subtitle = styled.sub`
 function Subscribe() {
   return (
     <Container>
-      <Title>Join the Squad</Title>
+      <Title id="newsletter-title">Join the Squad</Title>
       <Subtitle>No Spam. Just JavaScript.</Subtitle>
       <Subtitle>
         Get a digest of information every month. <br />

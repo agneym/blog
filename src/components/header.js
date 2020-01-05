@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import StyledLink from '../utils/styled-link';
 import media from '../utils/media';
+import mailIcon from '../images/icons/mail.svg';
 
 const Container = styled.nav`
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -11,13 +12,23 @@ const Container = styled.nav`
   height: ${props => props.theme.nav.height};
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   width: 100%;
   left: 0;
   z-index: 50;
   background-color: #ffffff;
+  padding: 0 3rem;
+  box-sizing: border-box;
+`;
+
+const TitleLink = styled(StyledLink)`
+  margin: 0 auto;
+
+  ${media.phone`
+    margin: inherit;
+  `}
 `;
 
 const Title = styled.h1`
@@ -32,11 +43,20 @@ const Title = styled.h1`
   `}
 `;
 
+const Icon = styled.img`
+  height: 2rem;
+`;
+
 const Header = ({ title }) => (
   <Container>
-    <StyledLink to={'/'}>
+    <TitleLink to={'/'} css={``}>
       <Title>{title}</Title>
-    </StyledLink>
+    </TitleLink>
+    <div>
+      <a href="#newsletter-title">
+        <Icon src={mailIcon} alt="mail icon" />
+      </a>
+    </div>
   </Container>
 );
 
