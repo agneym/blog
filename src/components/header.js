@@ -7,14 +7,16 @@ import media from '../utils/media';
 
 const Container = styled.nav`
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
-  padding: 2rem 5rem;
+  height: ${props => props.theme.nav.height};
   display: flex;
   align-items: center;
   justify-content: center;
-
-  ${media.phone`
-    padding: 2rem 0;
-  `}
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  z-index: 50;
+  background-color: #ffffff;
 `;
 
 const Title = styled.h1`

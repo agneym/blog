@@ -12,6 +12,7 @@ const Content = styled.div`
   width: 60%;
   max-width: 728px;
   margin: 0 auto;
+  padding-top: ${props => props.theme.nav.height};
 
   ${media.tablet`
     width: 85%;
