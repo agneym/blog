@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { createGlobalStyle } from 'styled-components';
-import { StaticQuery, graphql } from 'gatsby';
+import { StaticQuery, graphql, useStaticQuery } from 'gatsby';
 
 import Header from './header';
 import media from '../utils/media';
@@ -76,30 +76,23 @@ const Content = styled.div`
   `}
 `;
 
-class Layout extends Component {
-  render() {
-    const { children } = this.props;
-    return (
-      <StaticQuery
-        query={graphql`
-          query SiteTitleQuery {
-            site {
-              siteMetadata {
-                title
-              }
-            }
-          }
-        `}
-        render={data => (
-          <>
-            <Header title={data.site.siteMetadata.title} />
-            <Content>{children}</Content>
-            <GlobalStyles />
-          </>
-        )}
-      />
-    );
-  }
+function Layout({ children }) {
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
+  return (
+    <>
+      <Header title={data.site.siteMetadata.title} />
+      <Content>{children}</Content>
+      <GlobalStyles />
+    </>
+  );
 }
 
 Layout.propTypes = {
