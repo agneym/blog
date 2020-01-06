@@ -3,8 +3,8 @@ const path = require('path');
 module.exports = {
   siteMetadata: {
     title: `The Mindless`,
-    description: `A techxploration.`,
-    author: `Boy with Silver Wings`,
+    description: `A techxploration - Personal blog by Agney`,
+    author: `Agney Menon`,
     authorTagline: 'Engineer. Driven by Passion',
     social: {
       twitter: `agneymenon`,
