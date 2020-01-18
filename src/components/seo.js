@@ -14,7 +14,9 @@ function SEO({
   date,
 }) {
   const data = useStaticQuery(detailsQuery);
-  const metaDescription = description || data.site.siteMetadata.description;
+  const metaDescription =
+    description ||
+    `${data.site.siteMetadata.title} - ${data.site.siteMetadata.description}`;
   const [url, setUrl] = useState('');
   useEffect(() => {
     if (typeof window !== `undefined`) {
@@ -91,12 +93,16 @@ function SEO({
           content: metaDescription,
         },
         {
+          name: 'author',
+          content: data.site.siteMetadata.author,
+        },
+        {
           name: 'google-site-verification',
           content: 'z5vpqyTgwWRPzObs2wou_QT2kjtk2a-xF-27nX3Umc4',
         },
         {
           property: `og:title`,
-          content: title,
+          content: `${title} - ${data.site.siteMetadata.title}`,
         },
         {
           property: `og:description`,
@@ -112,11 +118,11 @@ function SEO({
         },
         {
           name: `twitter:creator`,
-          content: data.site.siteMetadata.author,
+          content: data.site.siteMetadata.social.twitter,
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: `${title} - ${data.site.siteMetadata.title}`,
         },
         {
           name: `twitter:description`,
@@ -172,6 +178,9 @@ const detailsQuery = graphql`
         title
         description
         author
+        social {
+          twitter
+        }
       }
     }
   }
