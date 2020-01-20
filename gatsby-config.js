@@ -31,7 +31,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-mdx`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
           default: path.resolve('./src/templates/blog-post.js'),
@@ -104,7 +104,7 @@ module.exports = {
                   data: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.code }],
+                  custom_elements: [{ 'content:encoded': edge.node.bodys }],
                 });
               });
             },
@@ -122,7 +122,7 @@ module.exports = {
                       title
                       date
                     }
-                    code
+                    body
                   }
                 }
               }

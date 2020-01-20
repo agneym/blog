@@ -37,10 +37,12 @@ export const Container = styled.article`
   h4,
   h5,
   h6 {
+    position: relative;
     margin: 2rem 0 2rem;
   }
 
   h1 {
+    position: relative;
     margin-bottom: 8px;
   }
 
@@ -70,6 +72,18 @@ export const Container = styled.article`
 
   a {
     word-break: break-all;
+  }
+
+  h1 > a,
+  h2 > a,
+  h3 > a,
+  h4 > a,
+  h5 > a,
+  h6 > a {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-150%, -116%);
   }
 
   hr {

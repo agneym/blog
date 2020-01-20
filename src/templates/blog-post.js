@@ -1,12 +1,12 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MDXProvider } from '@mdx-js/react';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { Container, Title, LinkList, Header } from './post-styles';
 import Share from '../components/share';
-import MDXRenderer from 'gatsby-mdx/mdx-renderer';
-import { MDXProvider } from '@mdx-js/tag';
 import Subscribe from '../components/subscribe';
 import AnimatedLink from '../utils/animated-link';
 import 'react-js-live/build/main.css';
@@ -14,10 +14,11 @@ import CodeViewer from '../components/code-viewer';
 import Comments from '../components/comments';
 
 const components = {
+  pre: props => <div {...props} />,
   code: CodeViewer,
 };
 
-function BlogPostTemplate({ data, pageContext, location }) {
+function BlogPostTemplate({ data, pageContext, location, children }) {
   const post = data.mdx;
   const siteTitle = data.site.siteMetadata.title;
   const author = data.site.siteMetadata.author;
@@ -25,6 +26,7 @@ function BlogPostTemplate({ data, pageContext, location }) {
   const {
     frontmatter: { title, ogImage, tags, date },
   } = post;
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
@@ -47,7 +49,7 @@ function BlogPostTemplate({ data, pageContext, location }) {
           </sub>
         </Header>
         <MDXProvider components={components}>
-          <MDXRenderer>{post.code.body}</MDXRenderer>
+          <MDXRenderer>{post.body}</MDXRenderer>
         </MDXProvider>
         <Share
           post={{
@@ -96,9 +98,7 @@ export const pageQuery = graphql`
     mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt
-      code {
-        body
-      }
+      body
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
