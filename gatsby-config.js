@@ -130,6 +130,7 @@ module.exports = {
             `,
             output: '/rss.xml',
             title: `Mindless - Agney's Technical Blog RSS Feed`,
+            site_url: `https://blog.agney.dev`,
           },
         ],
       },
