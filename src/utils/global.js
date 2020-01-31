@@ -14,6 +14,10 @@ const GlobalStyles = createGlobalStyle`
     font-size: 10px;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     font-family: 'system';
     margin: 0;
