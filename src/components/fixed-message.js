@@ -9,7 +9,7 @@ const Container = styled.div`
   background-color: #e74c3c;
   width: 100%;
   text-align: center;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.5rem;
   transform: translateY(-100%);
   transition: transform 450ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
@@ -35,11 +35,15 @@ const StyledAnchor = styled.a`
 const CloseButton = styled.button`
   position: absolute;
   font-size: 2rem;
-  right: 2.5rem;
+  box-sizing: border-box;
+  right: 0rem;
   top: 50%;
-  transform: translateY(-59%);
+  transform: translateY(-50%);
   color: #ffffff;
   z-index: 5;
+  background-color: transparent;
+  border: none;
+  appearance: none;
 `;
 
 function FixedMessage() {
@@ -78,9 +82,7 @@ function FixedMessage() {
   return (
     <Container visible={visible}>
       <StyledAnchor href="#newsletter-title">
-        <span>Join the monthly newsletter</span>
-        <br />
-        <span>to catch up.</span>
+        <span>Join the monthly newsletter to catch up.</span>
       </StyledAnchor>
       <CloseButton
         aria-label="Close Newsletter Info Popover"

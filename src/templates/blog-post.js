@@ -12,7 +12,7 @@ import AnimatedLink from '../utils/animated-link';
 import 'react-js-live/build/main.css';
 import CodeViewer from '../components/code-viewer';
 import Comments from '../components/comments';
-import FixedMessage from '../components/FixedMessage';
+import FixedMessage from '../components/fixed-message';
 
 const components = {
   pre: props => <pre {...props} />,
