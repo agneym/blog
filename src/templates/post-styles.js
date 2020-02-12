@@ -43,14 +43,15 @@ export const Container = styled.article`
 
   h1 {
     position: relative;
-    margin-bottom: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 3rem;
   }
 
   h2 {
-    font-size: 26px;
+    font-size: 2.5rem;
     font-weight: 700;
     padding: 0;
-    margin: 30px 0 -10px -1.883px;
+    margin: 5rem 0 0 -1.883px;
     text-align: left;
     line-height: 34.5px;
     letter-spacing: -0.45px;
@@ -58,6 +59,7 @@ export const Container = styled.article`
 
   h3 {
     margin: 5rem 0 2rem;
+    font-size: 2.2rem;
   }
 
   p,
@@ -66,7 +68,7 @@ export const Container = styled.article`
     margin-top: 21px;
     font-size: 18px;
     letter-spacing: -0.03px;
-    line-height: 1.58;
+    line-height: 1.88;
     color: inherit;
   }
 
@@ -202,7 +204,7 @@ export const Container = styled.article`
 
 export const Pre = styled.pre`
   text-align: left;
-  margin: 1em 0;
+  margin: 0.5em 0;
   overflow-x: auto;
 
   & .token-line {

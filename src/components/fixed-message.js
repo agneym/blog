@@ -9,7 +9,7 @@ const Container = styled.div`
   background-color: #e74c3c;
   width: 100%;
   text-align: center;
-  padding: 0.5rem 1.5rem;
+  padding: 1rem 1.5rem;
   transform: translateY(-100%);
   transition: transform 450ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 

@@ -48,7 +48,7 @@ const Header = ({ title }) => (
       <Title>{title}</Title>
     </TitleLink>
     <div>
-      <a to="#newsletter-title">
+      <a href="#newsletter-title">
         <Icon src={mailIcon} alt="mail icon" />
       </a>
     </div>

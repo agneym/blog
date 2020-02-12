@@ -14,7 +14,7 @@ function BlogIndex({ data, pageContext }) {
   return (
     <Layout>
       <SEO
-        title="All Posts"
+        title="All Posts - A personal blog by Agney Menon"
         keywords={[
           `mindless`,
           `blog`,
