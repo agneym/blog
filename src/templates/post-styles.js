@@ -44,7 +44,7 @@ export const Container = styled.article`
   h1 {
     position: relative;
     margin-bottom: 1.5rem;
-    font-size: 4rem;
+    font-size: 2.8rem;
   }
 
   h2 {
@@ -234,10 +234,15 @@ export const Header = styled.header`
 
 export const Title = styled.h1`
   margin-bottom: 1rem;
-  font-size: 4.2rem;
+
+  && {
+    font-size: 4.2rem;
+  }
 
   ${media.phone`
-    font-size: 2.8rem;
+    && {
+      font-size: 2.8rem;
+    }
     text-align: center;
   `}
 `;
