@@ -48,7 +48,11 @@ const Header = ({ title }) => (
       <Title>{title}</Title>
     </TitleLink>
     <div>
-      <a href="#newsletter-title">
+      <a
+        href="#newsletter-title"
+        title="Subscribe to Newsletter"
+        aria-label="Subscribe to Newsletter"
+      >
         <Icon src={mailIcon} alt="mail icon" />
       </a>
     </div>
