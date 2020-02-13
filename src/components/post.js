@@ -31,7 +31,12 @@ const Post = ({ node }) => (
       <sub>
         <span>on {node.frontmatter.date}</span>
       </sub>
-      <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+      <p
+        css={`
+          line-height: 1.5;
+        `}
+        dangerouslySetInnerHTML={{ __html: node.excerpt }}
+      />
     </Container>
   </StyledLink>
 );
