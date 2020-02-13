@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import media from '../../utils/media';
 import NewsLetterForm from './newsletter-form';
+import StyledLink from '../../utils/styled-link';
 
 const Container = styled.div`
   margin: 2rem 0 4rem;
@@ -33,15 +34,39 @@ const Subtitle = styled.sub`
   line-height: 1.5;
 `;
 
+const Text = styled.p`
+  text-align: center;
+  max-width: 40ch;
+  line-height: 1.4;
+  margin-bottom: 0;
+
+  ${StyledLink} {
+    text-decoration: underline;
+  }
+`;
+
 function Subscribe() {
   return (
     <Container>
       <Title id="newsletter-title">Join the Squad</Title>
       <Subtitle>No Spam. Just JavaScript.</Subtitle>
-      <Subtitle>
-        Get a digest of information every month. <br />
-        Unsubscribe anytime you want.
-      </Subtitle>
+      <Text>
+        <span>
+          I sent out a newsletter every month containing information that I find
+          notable and useful.{' '}
+        </span>
+        <span>
+          {' '}
+          Unsubscribe any time you want & Feel free to browse{' '}
+          <StyledLink
+            href="https://buttondown.email/archives"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Archives
+          </StyledLink>
+        </span>
+      </Text>
       <NewsLetterForm />
     </Container>
   );

@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.8);
+  color: inherit;
 `;
 
 export default StyledLink;

@@ -15,8 +15,8 @@ const EmailInput = styled.input`
   display: block;
   margin: auto;
   font-size: 1.4rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.4);
   width: 80%;
-  border: 0.1rem solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 
   &:focus {
