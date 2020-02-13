@@ -44,7 +44,7 @@ export const Container = styled.article`
   h1 {
     position: relative;
     margin-bottom: 1.5rem;
-    font-size: 3rem;
+    font-size: 4rem;
   }
 
   h2 {
