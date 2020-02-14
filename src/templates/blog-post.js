@@ -12,7 +12,7 @@ import AnimatedLink from '../utils/animated-link';
 import 'react-js-live/build/main.css';
 import CodeViewer from '../components/code-viewer';
 import FixedMessage from '../components/fixed-message';
-import Coffee from '../components/Coffee';
+import Coffee from '../components/ccocoffee';
 import Comments from '../components/comments';
 
 const components = {
