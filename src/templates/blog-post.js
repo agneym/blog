@@ -13,6 +13,7 @@ import 'react-js-live/build/main.css';
 import CodeViewer from '../components/code-viewer';
 import FixedMessage from '../components/fixed-message';
 import Coffee from '../components/Coffee';
+import Comments from '../components/comments';
 
 const components = {
   pre: props => <pre {...props} />,
@@ -80,6 +81,7 @@ function BlogPostTemplate({ data, pageContext, location, children }) {
             )}
           </li>
         </LinkList>
+        <Comments />
       </Container>
       <Coffee />
       <Subscribe />
