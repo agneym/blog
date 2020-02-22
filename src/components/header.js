@@ -8,19 +8,20 @@ import StyledLink from '../utils/styled-link';
 import media from '../utils/media';
 
 const Container = styled.nav`
+  border-bottom: 0.1rem solid ${props => props.theme.colors.border};
+  padding: 2rem 0rem;
+  width: 100%;
+`;
+
+const InnerContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  z-index: 50;
-  border-bottom: 0.1rem solid ${props => props.theme.colors.border};
-  padding: 2rem 3rem;
-  box-sizing: border-box;
+
+  ${props => props.theme.content.width};
 `;
 
 const TitleLink = styled(StyledLink)`
-  margin: 0 auto;
-
   ${media.phone`
     margin: inherit;
   `}
@@ -52,35 +53,44 @@ const IconLink = styled.a`
   color: ${props => props.theme.colors.textColor};
   text-decoration: none;
 
-  &:active,
   &:visited {
     color: inherit;
+  }
+
+  &:hover {
+    color: ${props => props.theme.colors.textColorHover};
   }
 `;
 
 const Header = ({ title, mode }) => {
   return (
     <Container>
-      <TitleLink to={'/'} css={``}>
-        <Title>{title}</Title>
-      </TitleLink>
-      <IconContainer>
-        <IconLink
-          href="#newsletter-title"
-          title="Subscribe to Newsletter"
-          aria-label="Subscribe to Newsletter"
-        >
-          <Mail />
-        </IconLink>
-        <IconLink
-          href="https://blog.agney.dev/rss.xml"
-          title="Subscribe via RSS"
-          aria-label="Subscribe via RSS"
-        >
-          <Rss />
-        </IconLink>
-        <DarkModeToggle onChange={mode.toggle} checked={mode.value} size={50} />
-      </IconContainer>
+      <InnerContainer>
+        <TitleLink to={'/'} css={``}>
+          <Title>{title}</Title>
+        </TitleLink>
+        <IconContainer>
+          <IconLink
+            href="#newsletter-title"
+            title="Subscribe to Newsletter"
+            aria-label="Subscribe to Newsletter"
+          >
+            <Mail />
+          </IconLink>
+          <IconLink
+            href="https://blog.agney.dev/rss.xml"
+            title="Subscribe via RSS"
+            aria-label="Subscribe via RSS"
+          >
+            <Rss />
+          </IconLink>
+          <DarkModeToggle
+            onChange={mode.toggle}
+            checked={mode.value}
+            size={50}
+          />
+        </IconContainer>
+      </InnerContainer>
     </Container>
   );
 };

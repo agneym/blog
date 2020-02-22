@@ -5,18 +5,11 @@ import { graphql, useStaticQuery } from 'gatsby';
 import useDarkMode from 'use-dark-mode';
 
 import Header from './header';
-import media from '../utils/media';
 import GlobalStyles from '../utils/global';
 import getTheme from '../utils/theme';
 
 const Content = styled.div`
-  width: 60%;
-  max-width: 728px;
-  margin: 0 auto;
-
-  ${media.tablet`
-    width: 85%;
-  `}
+  ${props => props.theme.content.width};
 `;
 
 function Layout({ children }) {
