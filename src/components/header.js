@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import DarkModeToggle from 'react-dark-mode-toggle';
 
 import StyledLink from '../utils/styled-link';
 import media from '../utils/media';
@@ -42,22 +43,25 @@ const Icon = styled.img`
   height: 2rem;
 `;
 
-const Header = ({ title }) => (
-  <Container>
-    <TitleLink to={'/'} css={``}>
-      <Title>{title}</Title>
-    </TitleLink>
-    <div>
-      <a
-        href="#newsletter-title"
-        title="Subscribe to Newsletter"
-        aria-label="Subscribe to Newsletter"
-      >
-        <Icon src={mailIcon} alt="mail icon" />
-      </a>
-    </div>
-  </Container>
-);
+const Header = ({ title, mode }) => {
+  return (
+    <Container>
+      <TitleLink to={'/'} css={``}>
+        <Title>{title}</Title>
+      </TitleLink>
+      <div>
+        <a
+          href="#newsletter-title"
+          title="Subscribe to Newsletter"
+          aria-label="Subscribe to Newsletter"
+        >
+          <Icon src={mailIcon} alt="mail icon" />
+        </a>
+        <DarkModeToggle onChange={mode.toggle} checked={mode.value} size={80} />
+      </div>
+    </Container>
+  );
+};
 
 Header.defaultProps = {
   title: '',

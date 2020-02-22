@@ -135,5 +135,6 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-use-dark-mode',
   ],
 };

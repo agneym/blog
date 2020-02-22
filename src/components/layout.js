@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
+import useDarkMode from 'use-dark-mode';
 
 import Header from './header';
 import media from '../utils/media';
 import GlobalStyles from '../utils/global';
-import theme from '../utils/theme';
+import getTheme from '../utils/theme';
 
 const Content = styled.div`
   width: 60%;
@@ -28,10 +29,12 @@ function Layout({ children }) {
       }
     }
   `);
+  const darkMode = useDarkMode(false);
+  const theme = getTheme(darkMode.value ? 'dark' : 'light');
   return (
     <ThemeProvider theme={theme}>
       <>
-        <Header title={data.site.siteMetadata.title} />
+        <Header title={data.site.siteMetadata.title} mode={darkMode} />
         <Content>{children}</Content>
         <GlobalStyles />
       </>

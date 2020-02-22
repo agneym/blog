@@ -22,6 +22,7 @@
     "gatsby-plugin-react-helmet": "^3.0.2",
     "gatsby-plugin-sharp": "^2.4.4",
     "gatsby-plugin-styled-components": "^3.0.4",
+    "gatsby-plugin-use-dark-mode": "^1.1.2",
     "gatsby-remark-autolink-headers": "^2.0.12",
     "gatsby-remark-copy-linked-files": "^2.0.8",
     "gatsby-remark-external-links": "0.0.4",
@@ -35,6 +36,7 @@
     "prism-react-renderer": "^0.1.5",
     "prop-types": "^15.6.2",
     "react": "^16.12.0",
+    "react-dark-mode-toggle": "^0.0.2",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.0",
     "react-js-live": "^2.4.1",
@@ -42,7 +44,8 @@
     "react-use-web-share": "^1.0.1",
     "styled-components": "^5.0.0",
     "styled-theming": "^2.2.0",
-    "typeface-aleo": "0.0.69"
+    "typeface-aleo": "0.0.69",
+    "use-dark-mode": "^2.3.1"
   },
   "license": "MIT",
   "scripts": {
