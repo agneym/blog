@@ -16,7 +16,7 @@ const AnimatedLink = styled(StyledLink)`
     margin: 0.5rem 0 0;
     transition: transform 0.45s ease-in-out, opacity 0.45s ease-out;
     opacity: 0;
-    background-color: black;
+    background-color: ${props => props.theme.colors.textColor};
     transform-origin: ${props =>
       props.direction === 'ltr' ? 'left' : 'right'};
   }
