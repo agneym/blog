@@ -23,7 +23,8 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    color: rgba(0, 0, 0, 0.8);
+    color: ${props => props.theme.colors.textColor};
+    background-color: ${props => props.theme.colors.background};
     min-height: 100vh;
     position: relative;
     font-size: 1.6rem;

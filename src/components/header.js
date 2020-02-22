@@ -5,7 +5,6 @@ import DarkModeToggle from 'react-dark-mode-toggle';
 
 import StyledLink from '../utils/styled-link';
 import media from '../utils/media';
-import mailIcon from '../images/icons/mail.svg';
 
 const Container = styled.nav`
   display: flex;
@@ -13,8 +12,7 @@ const Container = styled.nav`
   justify-content: space-between;
   width: 100%;
   z-index: 50;
-  background-color: #ffffff;
-  border: 0.1rem solid #e0e0e0;
+  border-bottom: 0.1rem solid ${props => props.theme.colors.border};
   padding: 2rem 3rem;
   box-sizing: border-box;
 `;
@@ -39,8 +37,18 @@ const Title = styled.h1`
   `}
 `;
 
-const Icon = styled.img`
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  & > * {
+    margin: 0 1rem;
+  }
+`;
+
+const Icon = styled.svg`
   height: 2rem;
+  color: ${props => props.theme.colors.textColor};
 `;
 
 const Header = ({ title, mode }) => {
@@ -49,16 +57,28 @@ const Header = ({ title, mode }) => {
       <TitleLink to={'/'} css={``}>
         <Title>{title}</Title>
       </TitleLink>
-      <div>
+      <IconContainer>
         <a
           href="#newsletter-title"
           title="Subscribe to Newsletter"
           aria-label="Subscribe to Newsletter"
         >
-          <Icon src={mailIcon} alt="mail icon" />
+          <Icon
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-mail"
+          >
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </Icon>
         </a>
-        <DarkModeToggle onChange={mode.toggle} checked={mode.value} size={80} />
-      </div>
+        <DarkModeToggle onChange={mode.toggle} checked={mode.value} size={50} />
+      </IconContainer>
     </Container>
   );
 };
