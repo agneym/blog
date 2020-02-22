@@ -2,12 +2,14 @@ const darkColors = {
   background: `#121212`,
   textColor: `rgba(255, 255, 255, 0.85)`,
   border: `#6e6e6e`,
+  coffee: `#d24800`,
 };
 
 const lightColors = {
   background: `#FFFFFF`,
   textColor: `rgba(0, 0, 0, 0.8)`,
   border: `#e0e0e0`,
+  coffee: `#ff813f`,
 };
 
 const theme = {

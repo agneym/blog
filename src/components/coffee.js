@@ -8,7 +8,7 @@ const Button = styled.a`
   text-align: center;
   text-decoration: none;
   color: #ffffff;
-  background-color: #ff813f;
+  background-color: ${props => props.theme.colors.coffee};
   border-radius: 5px;
   border: 1px solid transparent;
   padding: 0.7rem 1rem 0.7rem 1rem;

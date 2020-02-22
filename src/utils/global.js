@@ -30,6 +30,12 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.6rem;
   }
 
+  body.dark-mode {
+    img:not([src*=".svg"]) {
+      filter: grayscale(50%);
+    }
+  }
+
   ::selection {
     background-color: #08B2E3;
     color: #FFFFFF;
