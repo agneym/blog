@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const Button = styled.a`
   line-height: 2;
-  height: 5rem;
   display: block;
   text-align: center;
   text-decoration: none;
@@ -11,11 +10,11 @@ const Button = styled.a`
   background-color: ${props => props.theme.colors.coffee};
   border-radius: 5px;
   border: 1px solid transparent;
-  padding: 0.7rem 1rem 0.7rem 1rem;
+  padding: 0.7rem 1rem;
   font-size: 2rem;
   letter-spacing: 0.6px;
   box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5);
-  transition: 0.3s all linear;
+  transition: 0.3s box-shadow linear;
   font-family: cursive;
 
   &:hover,
@@ -23,7 +22,6 @@ const Button = styled.a`
   &:focus {
     text-decoration: none;
     box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5);
-    opacity: 0.85;
     color: #ffffff;
   }
 `;
