@@ -7,9 +7,14 @@ import useDarkMode from 'use-dark-mode';
 import Header from './header';
 import GlobalStyles from '../utils/global';
 import getTheme from '../utils/theme';
+import media from '../utils/media';
 
 const Content = styled.div`
   ${props => props.theme.content.width};
+
+  ${media.tablet`
+    width: 85%;
+  `}
 `;
 
 function Layout({ children }) {

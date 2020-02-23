@@ -36,6 +36,10 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  body * {
+    box-sizing: border-box;
+  }
+
   ::selection {
     background-color: #08B2E3;
     color: #FFFFFF;

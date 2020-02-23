@@ -1,6 +1,5 @@
 import { lighten, darken } from 'polished';
 import { css } from 'styled-components';
-import media from './media';
 
 const darkColors = {
   background: `#121212`,
@@ -27,10 +26,6 @@ const theme = {
       width: 60%;
       max-width: 728px;
       margin: 0 auto;
-
-      ${media.tablet`
-        width: 85%;
-      `}
     `,
   },
 };

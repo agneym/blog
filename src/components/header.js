@@ -9,7 +9,7 @@ import media from '../utils/media';
 
 const Container = styled.nav`
   border-bottom: 0.1rem solid ${props => props.theme.colors.border};
-  padding: 2rem 0rem;
+  padding: 2rem 0;
   width: 100%;
 `;
 
@@ -19,11 +19,16 @@ const InnerContainer = styled.div`
   justify-content: space-between;
 
   ${props => props.theme.content.width};
+
+  ${media.tablet`
+    width: 100%;
+    padding: 0 1.2rem;
+  `}
 `;
 
 const TitleLink = styled(StyledLink)`
-  ${media.phone`
-    margin: inherit;
+  ${media.tablet`
+
   `}
 `;
 
@@ -45,6 +50,10 @@ const IconContainer = styled.div`
 
   & > * {
     margin: 0 1rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 `;
 
