@@ -9,7 +9,7 @@ import media from '../utils/media';
 
 const Container = styled.nav`
   border-bottom: 0.1rem solid ${props => props.theme.colors.border};
-  padding: 2rem 0;
+  padding: 2rem 0 1.4rem;
   width: 100%;
 `;
 
