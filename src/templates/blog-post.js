@@ -81,7 +81,6 @@ function BlogPostTemplate({ data, pageContext, location, children }) {
             )}
           </li>
         </LinkList>
-        <Comments />
       </Container>
       <Coffee />
       <Subscribe />
