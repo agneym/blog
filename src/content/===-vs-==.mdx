@@ -10,9 +10,6 @@ tags:
   ]
 published: true
 ---
-
-import JSLive from 'react-js-live';
-
 This is part of a series where I try to explain through each of [33 JS Concepts](https://github.com/leonardomso/33-js-concepts).
 
 This part corresponds to the Double Equal vs Triple Equal.
@@ -38,12 +35,12 @@ Coercion is defined here follows the rules specified in the Abstract Equality Co
 
 ### Case 1 - Both of the operands are of same types
 
-<JSLive
+<Playground
   id="same-types"
-  snippets={{
-    html: ``,
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `console.log(
+    javascript: `console.log(
   undefined == undefined,
   null == null,
   NaN == 1,
@@ -54,6 +51,8 @@ Coercion is defined here follows the rules specified in the Abstract Equality Co
   -2 == 2
 );`,
   }}
+  defaultResultTab="console"
+  defaultEditorTab="javascript"
 />
 
 Take Aways from here:
@@ -63,16 +62,18 @@ Take Aways from here:
 
 ### Case 2 - The operands are null and undefined
 
-<JSLive
+<Playground
   id="null-undefined"
-  snippets={{
-    html: ``,
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `console.log(
+    javascript: `console.log(
   undefined == null,
   null == undefined,
 )`,
   }}
+  defaultEditorTab="javascript"
+  defaultResultTab="console"
 />
 
 These people are very special and they are coerced to be equal to each other.
@@ -85,32 +86,36 @@ This also means that they are not equal to anything else. If you try `undefined 
 
 ### Case 3 - One is string and the other number
 
-<JSLive
+<Playground
   id="string-number"
-  snippets={{
-    html: ``,
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `console.log(
+    javascript: `console.log(
   12 == "12",
   "12" == 12
 )`,
   }}
+  defaultResultTab="console"
+  defaultEditorTab="javascript"
 />
 
 The string is being converted into a number here. If it is not a number, you will get an `NaN`, which is not equal to anything else anyway (not even itself as we mentioned)
 
 ### Case 4 - Boolean and something else
 
-<JSLive
+<Playground
   id="boolean-and-else"
-  snippets={{
-    html: ``,
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `console.log(
+    javascript: `console.log(
   12 == true,
   true == 12
 )`,
   }}
+  defaultResultTab="console"
+  defaultEditorTab="javascript"
 />
 
 > Huh? Where is the coercion I was promised?
@@ -127,12 +132,12 @@ What if the other side is not a number? Say `"12" == true`, let's break it down:
 
 ### Case 5 - String/Number vs an Object
 
-<JSLive
+<Playground
   id="object-and-else"
-  snippets={{
-    html: ``,
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `console.log(
+    javascript: `console.log(
   {} == false,
   [] == false,  // Okay
   [[]] == false,  // Hmm..
@@ -159,6 +164,8 @@ console.log(
   c == "string", // What?! I was just getting the hang of this.
 );`,
   }}
+  defaultResultTab="console"
+  defaultEditorTab="javascript"
 />
 
 Lots of things here, let's break them down one by one.
@@ -218,12 +225,12 @@ This is how the last one turns out to be false.
 
 With ES6 and some magic with [Symbols](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), yes you can.
 
-<JSLive
+<Playground
   id="to-primitives"
-  snippets={{
-    html: ``,
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `const object1 = {
+    javascript: `const object1 = {
   [Symbol.toPrimitive](hint) {
     if (hint == 'number') {
       return 42;
@@ -232,6 +239,8 @@ With ES6 and some magic with [Symbols](https://developer.mozilla.org/en-US/docs/
   }
 };`,
   }}
+  defaultEditorTab="javascript"
+  defaultResultTab="console"
 />
 
 [See how it works](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toPrimitive)
@@ -242,12 +251,12 @@ If the two objects compared are of same [reference](https://blog.agney.in/value-
 
 This is actually same for both `==` and `===`, just making the point.
 
-<JSLive
+<Playground
   id="references"
-  snippets={{
-    html: ``,
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `const person = {
+    javascript: `const person = {
  name: 'john',
  skills: ['hiking'],
 }
@@ -260,6 +269,8 @@ const anotherPerson = {
 }
 console.log(anotherPerson == person)`,
   }}
+  defaultEditorTab="javascript"
+  defaultResultTab="console"
 />
 
 ## Does this change the way I code?

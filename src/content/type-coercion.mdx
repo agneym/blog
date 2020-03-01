@@ -5,8 +5,6 @@ tags: ['type coercion', 'javascript', 'types', 'must learn javascript concepts']
 published: true
 ---
 
-import JSLive from 'react-js-live';
-
 This is part of a series where I try to explain through each of [33 JS Concepts](https://github.com/leonardomso/33-js-concepts).
 
 This part corresponds to the Type Coercion.
@@ -45,12 +43,12 @@ Here, we discuss how things can turn into `number` types.
 
 ### 1. Unary plus
 
-<JSLive
+<Playground
   id="unary-plus"
-  snippets={{
-    html: ``,
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `const numberOfDays = "365";
+    javascript: `const numberOfDays = "365";
 const booleanType = true;
 const object = {
   a: 1,
@@ -66,18 +64,20 @@ const array2 = [2,4];
  
 console.log(+numberOfDays, +booleanType, +object, +object2, +array, +array2);`,
   }}
+  defaultEditorTab="javascript"
+  defaultResultTab="console"
 />
 
 Unary Plus operator before any string/object/boolean converts it into a number (if possible)
 
 ### 2. Number()
 
-<JSLive
+<Playground
   id="number()"
-  snippets={{
-    html: ``,
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `const numberOfDays = "365";
+    javascript: `const numberOfDays = "365";
 const booleanType = true;
 const object = {
   a: 1,
@@ -94,6 +94,8 @@ const date = new Date();
  
 console.log(Number(numberOfDays), Number(booleanType), Number(object), Number(object2), Number(array), Number(array2), Number(date));`,
   }}
+  defaultEditorTab="javascript"
+  defaultResultTab="console"
 />
 
 **This is as explicit as explicit gets**
@@ -120,12 +122,12 @@ When numerical conversion is used on a `Date()` object, it gives you a timestamp
 
 As in most places + in between two operands is either string concatenation or addition. This is pretty simple when both operands are of the same type. But what happens when it is not?
 
-<JSLive
+<Playground
   id="plus-operator"
-  snippets={{
-    html: ``,
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `console.log(
+    javascript: `console.log(
   365 + "",
   365 + "1",
   "1" + 365,
@@ -142,6 +144,8 @@ const array = [1,2];
 console.log(obj + "", array + "");
 `,
   }}
+  defaultEditorTab="javascript"
+  defaultResultTab="console"
 />
 
 If we add a string to a number, the string always wins. But if the number gets very large, it takes the form of an exponentiation operator as a string.
@@ -184,12 +188,12 @@ That's it. There is no table of values. Just the ones that aren't falsy.
 1. `Boolean()`
 2. `!!`
 
-<JSLive
+<Playground
   id="explicit-boolean"
-  snippets={{
-    html: ``,
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `console.log(
+    javascript: `console.log(
   !!3,
   !!"a",
   !!"",
@@ -199,6 +203,8 @@ That's it. There is no table of values. Just the ones that aren't falsy.
   !![]
 );`,
   }}
+  defaultEditorTab="javascript"
+  defaultResultTab="console"
 />
 
 The `!` operator turns `true` to `false` and `false` to `true`. You can guess what two of those can accomplish.
@@ -215,18 +221,20 @@ What does this do? This operator takes the [2s compliment](https://en.wikipedia.
 
 Well, just remember if you take 2s compliment of `x`, you get `-(x + 1)`
 
-<JSLive
+<Playground
   id="2s-compliment"
-  snippets={{
-    html: ``,
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `console.log(
+    javascript: `console.log(
 ~1,
 ~100,
 ~Infinity,
 ~-1
 )`,
   }}
+  defaultEditorTab="javascript"
+  defaultResultTab="console"
 />
 
 #### Okay, that's cool. Why is this important?
@@ -237,12 +245,12 @@ Well, because of the last one. `~-1 = 0`
 
 To make sense of this we would have to provide:
 
-<JSLive
+<Playground
   id="index-of"
-  snippets={{
-    html: ``,
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `const stringValue = "long string";
+    javascript: `const stringValue = "long string";
  
 if(stringValue.indexOf("o") !== -1) {
   console.log("o is present");
@@ -253,6 +261,8 @@ if(~stringValue.indexOf("o")) {
 }
 `,
   }}
+  defaultEditorTab="javascript"
+  defaultResultTab="console"
 />
 
 Which one is more readable? Jury is still out.
@@ -281,12 +291,12 @@ The `&&` operator converts the first to boolean, If it is a truthy value, it ret
 
 This leads to some interesting applications:
 
-<JSLive
+<Playground
   id="logical-operators"
-  snippets={{
-    html: ``,
+  initialSnippet={{
+    markup: ``,
     css: ``,
-    js: `function someFn(ar) {
+    javascript: `function someFn(ar) {
   const defaultValue = ar || "this";
   return defaultValue;
 }

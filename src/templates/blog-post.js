@@ -9,7 +9,6 @@ import { Container, Title, LinkList, Header } from './post-styles';
 import Share from '../components/share';
 import Subscribe from '../components/subscribe';
 import AnimatedLink from '../utils/animated-link';
-import 'react-js-live/build/main.css';
 import CodeViewer from '../components/code-viewer';
 import FixedMessage from '../components/fixed-message';
 import Coffee from '../components/coffee';

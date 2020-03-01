@@ -5,18 +5,17 @@ tags: ['html', 'concepts', 'mark tag', 'til']
 published: true
 ---
 
-import JSLive from 'react-js-live';
-
 From series - Today I learned. There is a tag in HTML that helps us highlight stuff just using it. And too many times I have used `span`s with a highlight class, Damn it!
 
 Let's look at what the `mark` tag brings in and how to use it.
 
-<JSLive
+<Playground
   id="mark-intro"
-  snippets={{
-    html: `<p>This is a long text that I want you to look very <mark>closely</mark> at</p>`,
+  initialSnippet={{
+    markup: `<p>This is a long text that I want you to look very <mark>closely</mark> at</p>`,
+    css: ``,
+    javascript: ``,
   }}
-  mode="html"
 />
 
 Just embed mark where you want the highlight and you are good to go.
