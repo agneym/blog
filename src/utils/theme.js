@@ -37,6 +37,7 @@ const theme = {
 function getTheme(mode) {
   return {
     ...theme,
+    mode,
     colors: mode === 'light' ? lightColors : darkColors,
   };
 }

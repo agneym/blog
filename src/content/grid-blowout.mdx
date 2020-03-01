@@ -4,9 +4,6 @@ date: '2020-03-01T22:12:03.284Z'
 tags: ['css grid', 'widths wrong', 'width expanding beyond', '1fr']
 published: true
 ---
-
-import Playground from '@agney/playground';
-
 Today I learned that there is a thing named _Grid Blowout_. It's not as bad as sounds though.
 
 One fine day, I had a normal grid going and things were going great.
@@ -25,7 +22,10 @@ markup: `
   </div>
   <div></div>
 </div>`,
-css: `.container{
+css: `body {
+  background-color: white;
+}
+.container{
 display: grid;
 grid-template-columns: repeat(2, 1fr);
 height: 100vh;
@@ -55,7 +55,10 @@ markup: `
   </div>
   <div></div>
 </div>`,
-css: `.container {
+css: `body {
+  background-color: white;
+}
+.container {
 display: grid;
 grid-template-columns: repeat(2, 1fr);
 height: 100vh;
@@ -94,7 +97,10 @@ markup: `
   </div>
   <div></div>
 </div>`,
-css: `.container {
+css: `body {
+  background-color: white;
+}
+.container {
 display: grid;
 grid-template-columns: repeat(2, minmax(0, 1fr));
 height: 100vh;
