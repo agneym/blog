@@ -28,7 +28,6 @@ export const Container = styled.article`
     line-height: 44.4px;
     overflow-wrap: break-word;
     margin: 3rem 0 3rem 0;
-    color: rgba(0, 0, 0, 0.98);
     padding: 0 0 0 2rem;
   }
 
