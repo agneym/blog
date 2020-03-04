@@ -12,6 +12,7 @@ const Container = styled.div`
   padding: 1rem 1.5rem;
   transform: translateY(-100%);
   transition: transform 450ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
 
   ${media.phone`
     ${props =>
