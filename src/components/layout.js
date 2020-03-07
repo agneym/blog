@@ -8,7 +8,7 @@ import Header from './header';
 import GlobalStyles from '../utils/global';
 import getTheme from '../utils/theme';
 import media from '../utils/media';
-import Footer from './Footer';
+import Footer from './footer';
 
 const Content = styled.div`
   ${props => props.theme.content.width};
