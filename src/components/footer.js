@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
 import AnimatedLink from '../utils/animated-link';
 
 const Container = styled.footer`
@@ -8,6 +9,7 @@ const Container = styled.footer`
   width: ${props => props.theme.content.width};
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const ExternalLink = styled(AnimatedLink).attrs(() => ({
@@ -29,15 +31,32 @@ const LinkContainer = styled.p`
   }
 `;
 
+const animateGradient = keyframes`
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+`;
+
+const MainWebsite = styled.p`
+  font-size: 2.8rem;
+  margin: 0;
+  font-weight: bolder;
+  background-image: linear-gradient(45deg, #05eeb2, #0552ee);
+  background-size: 100%;
+  background-size: 400% 400%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  animation: ${animateGradient} 8s ease infinite;
+`;
+
 function Footer() {
   return (
     <Container>
-      <ExternalLink
-        href="https://agney.dev"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <p>agney.dev</p>
+      <ExternalLink href="https://agney.dev" as="a">
+        <MainWebsite>agney.dev</MainWebsite>
       </ExternalLink>
       <div
         css={`
@@ -51,18 +70,6 @@ function Footer() {
         >
           Connect with me
         </p>
-        <LinkContainer>
-          <ExternalLink direction="ltr" as="a" href="https://github.com/agneym">
-            Github
-          </ExternalLink>
-          <ExternalLink
-            direction="ltr"
-            as="a"
-            href="https://stackoverflow.com/users/4374566/agney"
-          >
-            StackOverflow
-          </ExternalLink>
-        </LinkContainer>
         <LinkContainer>
           <ExternalLink
             direction="ltr"
@@ -80,6 +87,21 @@ function Footer() {
             href="https://dev.to/boywithsilverwings"
           >
             Dev.to
+          </ExternalLink>
+        </LinkContainer>
+        <LinkContainer>
+          <ExternalLink direction="ltr" to="/rss.xml">
+            RSS
+          </ExternalLink>
+          <ExternalLink direction="ltr" as="a" href="https://github.com/agneym">
+            Github
+          </ExternalLink>
+          <ExternalLink
+            direction="ltr"
+            as="a"
+            href="https://stackoverflow.com/users/4374566/agney"
+          >
+            StackOverflow
           </ExternalLink>
         </LinkContainer>
       </div>
