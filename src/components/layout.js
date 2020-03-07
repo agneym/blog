@@ -8,6 +8,7 @@ import Header from './header';
 import GlobalStyles from '../utils/global';
 import getTheme from '../utils/theme';
 import media from '../utils/media';
+import Footer from './Footer';
 
 const Content = styled.div`
   ${props => props.theme.content.width};
@@ -34,6 +35,7 @@ function Layout({ children }) {
       <>
         <Header title={data.site.siteMetadata.title} mode={darkMode} />
         <Content>{children}</Content>
+        <Footer />
         <GlobalStyles />
       </>
     </ThemeProvider>
