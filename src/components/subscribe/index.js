@@ -6,7 +6,7 @@ import NewsLetterForm from './newsletter-form';
 import StyledLink from '../../utils/styled-link';
 
 const Container = styled.div`
-  margin: 2rem 0 4rem;
+  margin: 2rem 0 0;
   padding: 2rem;
   display: flex;
   align-items: center;

@@ -1,15 +1,20 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
+import media from '../utils/media';
 import AnimatedLink from '../utils/animated-link';
 
 const Container = styled.footer`
-  margin-top: 2rem auto 0;
-  padding: 2rem 0.5rem;
-  width: ${props => props.theme.content.width};
+  ${props => props.theme.content.width};
+  padding: 2rem 0.5rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  ${media.phone`
+    width: 100%;
+    padding: 1rem 1.5rem;
+  `}
 `;
 
 const ExternalLink = styled(AnimatedLink).attrs(() => ({
@@ -50,6 +55,10 @@ const MainWebsite = styled.p`
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
   animation: ${animateGradient} 8s ease infinite;
+
+  ${media.phone`
+    font-size: 2.2rem;
+  `}
 `;
 
 function Footer() {
