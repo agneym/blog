@@ -83,6 +83,7 @@ function Footer() {
           <ExternalLink
             direction="ltr"
             as="a"
+            rel="me"
             href="https://twitter.com/agneymenon"
           >
             Twitter
@@ -102,7 +103,12 @@ function Footer() {
           <ExternalLink direction="ltr" to="/rss.xml">
             RSS
           </ExternalLink>
-          <ExternalLink direction="ltr" as="a" href="https://github.com/agneym">
+          <ExternalLink
+            rel="me"
+            direction="ltr"
+            as="a"
+            href="https://github.com/agneym"
+          >
             Github
           </ExternalLink>
           <ExternalLink
