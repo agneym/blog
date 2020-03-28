@@ -44,6 +44,7 @@ export const Container = styled.article`
     position: relative;
     margin-bottom: 1.5rem;
     font-size: 2.8rem;
+    font-weight: 400;
   }
 
   h2 {

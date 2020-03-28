@@ -1,1 +1,1 @@
-import 'typeface-aleo';
+import 'typeface-lora';

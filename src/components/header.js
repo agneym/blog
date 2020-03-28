@@ -35,7 +35,7 @@ const TitleLink = styled(StyledLink)`
 const Title = styled.h1`
   font-size: 1.8rem;
   font-weight: 800;
-  letter-spacing: 0.1rem;
+  letter-spacing: -0px;
   text-transform: uppercase;
   margin: 0;
 

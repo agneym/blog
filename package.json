@@ -20,7 +20,7 @@
     "gatsby-plugin-mdx": "^1.0.73",
     "gatsby-plugin-offline": "^3.0.35",
     "gatsby-plugin-react-helmet": "^3.1.22",
-    "gatsby-plugin-sharp": "^2.4.5",
+    "gatsby-plugin-sharp": "^2.5.3",
     "gatsby-plugin-styled-components": "^3.1.19",
     "gatsby-plugin-use-dark-mode": "^1.1.2",
     "gatsby-remark-autolink-headers": "^2.1.24",
@@ -45,7 +45,7 @@
     "react-use-web-share": "^1.0.1",
     "styled-components": "^5.0.1",
     "styled-theming": "^2.2.0",
-    "typeface-aleo": "0.0.69",
+    "typeface-lora": "^0.0.72",
     "use-dark-mode": "^2.3.1"
   },
   "license": "MIT",

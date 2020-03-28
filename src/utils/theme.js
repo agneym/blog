@@ -17,6 +17,10 @@ const lightColors = {
   textColorHover: lighten(0.2, `rgba(0, 0, 0, 0.8)`),
 };
 
+const fonts = {
+  heading: `'Lora', serif`,
+};
+
 const theme = {
   nav: {
     height: '6rem',
@@ -28,6 +32,7 @@ const theme = {
       margin: 0 auto;
     `,
   },
+  fonts,
 };
 
 /**

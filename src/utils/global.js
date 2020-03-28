@@ -46,7 +46,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Aleo', serif;
+    font-family: ${props => props.theme.fonts.heading};
   }
 
   h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection {

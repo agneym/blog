@@ -9,7 +9,6 @@ import AnimatedLink from '../utils/animated-link';
 const Title = styled.h2`
   font-weight: 400;
   font-size: 2.2rem;
-  letter-spacing: 0.1rem;
   margin: 6rem 0 0;
   text-transform: uppercase;
 
