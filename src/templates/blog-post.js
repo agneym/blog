@@ -43,11 +43,7 @@ function BlogPostTemplate({ data, pageContext, location, children }) {
       <Container>
         <Header>
           <Title>{title}</Title>
-          <sub
-            css={`
-              color: rgba(0, 0, 0, 0.8);
-            `}
-          >
+          <sub>
             <span>Posted on {date}</span>
           </sub>
         </Header>
