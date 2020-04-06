@@ -96,6 +96,12 @@ export const Container = styled.article`
     padding: 0;
   }
 
+  figure {
+    margin-left: -5rem;
+    margin-right: -5rem;
+    margin-top: 0;
+  }
+
   ol {
     margin-left: 1rem;
   }
