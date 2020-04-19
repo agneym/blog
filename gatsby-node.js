@@ -33,7 +33,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         // Create blog posts pages.
         const posts = result.data.allMdx.edges;
-        const postsPerPage = 7;
+        const postsPerPage = 8;
         const numPages = Math.ceil(posts.length / postsPerPage);
 
         Array.from({ length: numPages }).forEach((_, i) => {
