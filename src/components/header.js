@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import DarkModeToggle from 'react-dark-mode-toggle';
+import DarkModeToggle from '@agney/react-dark-mode-toggle';
 import { Mail, Rss } from 'react-feather';
 
 import StyledLink from '../utils/styled-link';
