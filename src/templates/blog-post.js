@@ -40,16 +40,18 @@ function BlogPostTemplate({ data, pageContext, location, children }) {
         type="post"
       />
       <FixedMessage />
-      <Container>
+      <Container className="h-entry">
         <Header>
-          <Title>{title}</Title>
+          <Title className="p-name">{title}</Title>
           <sub>
             <span>Posted on {date}</span>
           </sub>
         </Header>
-        <MDXProvider components={components}>
-          <MDXRenderer>{post.body}</MDXRenderer>
-        </MDXProvider>
+        <div className="e-content">
+          <MDXProvider components={components}>
+            <MDXRenderer>{post.body}</MDXRenderer>
+          </MDXProvider>
+        </div>
         <Share
           post={{
             title: post.frontmatter.title,
