@@ -62,20 +62,25 @@ const Bio = () => (
     render={data => {
       const { author, authorTagline, social } = data.site.siteMetadata;
       return (
-        <Container>
+        <Container className="h-card">
           <TextContainer>
-            <Name>{author}</Name>
-            <TagLine>{authorTagline}</TagLine>
+            <Name className="p-name">{author}</Name>
+            <TagLine className="p-note">{authorTagline}</TagLine>
             <a
               href={`https://twitter.com/${social.twitter}`}
               target="_blank"
               rel="noopener noreferrer"
+              className="u-url"
             >
               <TwitterIcon src={Twitter} alt="twitter" />
             </a>
           </TextContainer>
           <ImageContainer>
-            <Image fixed={data.avatar.childImageSharp.fixed} alt={author} />
+            <Image
+              className="u-photo"
+              fixed={data.avatar.childImageSharp.fixed}
+              alt={author}
+            />
           </ImageContainer>
         </Container>
       );
