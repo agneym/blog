@@ -17,9 +17,9 @@ const Container = styled.footer`
   `}
 `;
 
-const ExternalLink = styled(AnimatedLink).attrs(() => ({
+const ExternalLink = styled(AnimatedLink).attrs(props => ({
   target: '_blank',
-  rel: 'noopener noreferrer',
+  rel: `noopener noreferrer ${props.rel || ''}`,
 }))``;
 
 const LinkContainer = styled.p`
