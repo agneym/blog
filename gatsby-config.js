@@ -136,5 +136,19 @@ module.exports = {
       },
     },
     'gatsby-plugin-use-dark-mode',
+    {
+      resolve: `gatsby-plugin-webmention`,
+      options: {
+        username: 'www.blog.agney.dev',
+        identity: {
+          github: 'agneym',
+          twitter: 'agneymenon', // no @
+        },
+        mentions: true,
+        pingbacks: true,
+        domain: 'www.blog.agney.dev',
+        token: 'veBNQ5a4xyCTfs4EYDQJUQ',
+      },
+    },
   ],
 };
