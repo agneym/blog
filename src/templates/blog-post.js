@@ -20,15 +20,13 @@ const components = {
   Playground: PlaygroundWrapper,
 };
 
-function BlogPostTemplate({ data, pageContext, location, children }) {
+function BlogPostTemplate({ data, pageContext, location }) {
   const post = data.mdx;
-  const siteTitle = data.site.siteMetadata.title;
-  const author = data.site.siteMetadata.author;
-  const { previous, next } = pageContext;
+  const { title: siteTitle, author } = data.site.siteMetadata;
+  const { previous, next, permalink } = pageContext;
   const {
     frontmatter: { title, ogImage, tags, date },
   } = post;
-  console.log(data);
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -44,9 +42,17 @@ function BlogPostTemplate({ data, pageContext, location, children }) {
       <Container className="h-entry">
         <Header>
           <Title className="p-name">{title}</Title>
-          <sub>
-            <span>Posted on {date}</span>
-          </sub>
+          <div
+            css={`
+              display: flex;
+              justify-content: space-between;
+            `}
+          >
+            <sub>
+              <span className="dt-published">Posted on {date}</span>
+            </sub>
+            <sub className="u-url">{permalink}</sub>
+          </div>
         </Header>
         <div className="e-content">
           <MDXProvider components={components}>
@@ -95,6 +101,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        siteUrl
       }
     }
     mdx(fields: { slug: { eq: $slug } }) {

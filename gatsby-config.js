@@ -139,7 +139,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-webmention`,
       options: {
-        username: 'www.blog.agney.dev',
+        username: 'https://blog.agney.dev/',
         identity: {
           github: 'agneym',
           twitter: 'agneymenon',
