@@ -18,6 +18,14 @@ export default function HTML({
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <link
+          rel="webmention"
+          href="https://webmention.io/blog.agney.dev/webmention"
+        />
+        <link
+          rel="pingback"
+          href="https://webmention.io/blog.agney.dev/xmlrpc"
+        />
         <title>The Mindless - Boy with Silver Wings</title>
         {headComponents}
       </head>

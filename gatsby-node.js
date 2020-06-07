@@ -10,6 +10,11 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
             allMdx {
               edges {
                 node {
@@ -30,6 +35,8 @@ exports.createPages = ({ graphql, actions }) => {
           console.error(result.errors);
           reject(result.errors);
         }
+
+        const siteUrl = result.data.site.siteMetadata.siteUrl;
 
         // Create blog posts pages.
         const posts = result.data.allMdx.edges;
@@ -62,6 +69,7 @@ exports.createPages = ({ graphql, actions }) => {
               previous,
               next,
               id: post.id,
+              permalink: `${siteUrl}/${path}`,
             },
           });
         });

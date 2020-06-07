@@ -28,6 +28,7 @@ function BlogPostTemplate({ data, pageContext, location, children }) {
   const {
     frontmatter: { title, ogImage, tags, date },
   } = post;
+  console.log(data);
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -89,7 +90,7 @@ function BlogPostTemplate({ data, pageContext, location, children }) {
 export default BlogPostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($slug: String!, $permalink: String!) {
     site {
       siteMetadata {
         title
@@ -106,6 +107,28 @@ export const pageQuery = graphql`
         tags
         ogImage {
           filename
+        }
+      }
+    }
+    allWebMentionEntry(filter: { wmTarget: { eq: $permalink } }) {
+      edges {
+        node {
+          wmTarget
+          wmSource
+          wmProperty
+          wmId
+          type
+          url
+          likeOf
+          author {
+            url
+            type
+            photo
+            name
+          }
+          content {
+            text
+          }
         }
       }
     }

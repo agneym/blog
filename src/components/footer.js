@@ -64,7 +64,7 @@ const MainWebsite = styled.p`
 function Footer() {
   return (
     <Container>
-      <ExternalLink class="h-card" href="https://agney.dev" as="a" rel="me">
+      <ExternalLink className="h-card" href="https://agney.dev" as="a" rel="me">
         <MainWebsite>agney.dev</MainWebsite>
       </ExternalLink>
       <div
@@ -107,7 +107,6 @@ function Footer() {
             rel="me"
             direction="ltr"
             as="a"
-            rel="me"
             href="https://github.com/agneym"
           >
             Github

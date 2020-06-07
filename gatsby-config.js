@@ -142,7 +142,7 @@ module.exports = {
         username: 'www.blog.agney.dev',
         identity: {
           github: 'agneym',
-          twitter: 'agneymenon', // no @
+          twitter: 'agneymenon',
         },
         mentions: true,
         pingbacks: true,
