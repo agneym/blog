@@ -41,14 +41,14 @@ const PostsSection = props => {
       <BottomNav>
         <li>
           {!isFirst && (
-            <AnimatedLink to={prevPage} rel="prev" direction="rtl">
+            <AnimatedLink to={`/${prevPage}`} rel="prev" direction="rtl">
               ← New Posts
             </AnimatedLink>
           )}
         </li>
         <li>
           {!isLast && (
-            <AnimatedLink to={nextPage} rel="next" direction="ltr">
+            <AnimatedLink to={`/${nextPage}`} rel="next" direction="ltr">
               Older Posts →
             </AnimatedLink>
           )}

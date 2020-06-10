@@ -101,7 +101,7 @@ const Share = ({ post }) => {
           color: rgb(0, 0, 0);
         `}
       >
-        Share if you liked it:
+        You can share the article if you found it useful:
       </p>
       {!loading && !isSupported ? (
         <>
