@@ -2,11 +2,11 @@ import { lighten, darken } from 'polished';
 import { css } from 'styled-components';
 
 const darkColors = {
-  background: `#121212`,
-  textColor: `rgba(255, 255, 255, 0.85)`,
+  background: `#1A202C`,
+  textColor: `#EDF2F7`,
   border: `#6e6e6e`,
   coffee: `#d24800`,
-  textColorHover: darken(0.4, `rgba(255, 255, 255, 0.85)`),
+  textColorHover: darken(0.4, `#EDF2F7`),
 };
 
 const lightColors = {
