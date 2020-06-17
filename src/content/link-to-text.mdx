@@ -25,7 +25,7 @@ Here `#:~:` is the part that seperates the text fragment from rest of the URL. `
 
 How can we use this knowledge to scroll to a content using JavaScript?
 
-```javascipt
+```javascript
 // We use getSelection to get string version of text
 const text = window.getSelection().toString();
 
@@ -41,6 +41,8 @@ Here is a bookmarklet to help:
 ```
 javascript:(function()%7Bwindow.location%20%3D%20window.location.href%20%2B%20%22%23%3A~%3Atext%3D%22%20%2B%20encodeURIComponent(window.getSelection().toString())%7D)()
 ```
+
+You can copy the above text and add a bookmark in your browser with this as URL. Next time you click on the bookmark with text selected, you will have the URL with text ready. 
 
 Adding a bookmarklet to Chrome:
 ![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/3d0jkvwizmsx8hyzmfse.gif)
