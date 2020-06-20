@@ -27,6 +27,7 @@ function BlogPostTemplate({ data, pageContext, location }) {
   const {
     frontmatter: { title, ogImage, tags, date },
   } = post;
+  console.log(data);
 
   return (
     <Layout location={location} title={siteTitle}>

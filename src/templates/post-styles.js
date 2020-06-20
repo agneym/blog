@@ -4,6 +4,7 @@ import media from '../utils/media';
 
 export const Container = styled.article`
   margin-top: 6rem;
+  font-size: 2rem;
 
   ${media.phone`
     margin-top: 4rem;
@@ -23,7 +24,7 @@ export const Container = styled.article`
   }
 
   blockquote {
-    font-size: 25px;
+    font-size: 2.2rem;
     font-style: italic;
     line-height: 44.4px;
     overflow-wrap: break-word;
@@ -43,12 +44,12 @@ export const Container = styled.article`
   h1 {
     position: relative;
     margin-bottom: 1.5rem;
-    font-size: 2.8rem;
+    font-size: 3rem;
     font-weight: 400;
   }
 
   h2 {
-    font-size: 2.5rem;
+    font-size: 2.6rem;
     font-weight: 700;
     padding: 0;
     margin: 5rem 0 0 -1.883px;
@@ -66,7 +67,6 @@ export const Container = styled.article`
   i,
   a {
     margin-top: 21px;
-    font-size: 18px;
     letter-spacing: -0.03px;
     line-height: 1.88;
     color: inherit;
@@ -233,6 +233,8 @@ export const LineNo = styled.span`
 `;
 
 export const Header = styled.header`
+  margin-bottom: 8rem;
+
   ${media.tablet`
     text-align: center;
   `};
