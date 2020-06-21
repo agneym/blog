@@ -4,6 +4,7 @@ import { css } from 'styled-components';
 const darkColors = {
   background: `#1A202C`,
   textColor: `#EDF2F7`,
+  textColorLight: darken(0.05, `#EDF2F7`),
   border: `#6e6e6e`,
   coffee: `#d24800`,
   textColorHover: darken(0.4, `#EDF2F7`),

@@ -13,6 +13,7 @@ import CodeViewer from '../components/code-viewer';
 import FixedMessage from '../components/fixed-message';
 import Coffee from '../components/coffee';
 import PlaygroundWrapper from '../components/playground-wrapper';
+import WebMentions from '../components/web-mentions';
 
 const components = {
   pre: props => <pre {...props} />,
@@ -21,13 +22,12 @@ const components = {
 };
 
 function BlogPostTemplate({ data, pageContext, location }) {
-  const post = data.mdx;
-  const { title: siteTitle, author } = data.site.siteMetadata;
+  const { mdx: post, site, allWebMentionEntry } = data;
+  const { title: siteTitle, author } = site.siteMetadata;
   const { previous, next, permalink } = pageContext;
   const {
     frontmatter: { title, ogImage, tags, date },
   } = post;
-  console.log(data);
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -67,27 +67,24 @@ function BlogPostTemplate({ data, pageContext, location }) {
             author: author,
           }}
         />
-        <LinkList>
-          <li>
-            {previous && (
-              <AnimatedLink
-                to={previous.fields.slug}
-                rel="prev"
-                direction="rtl"
-              >
-                ← {previous.frontmatter.title}
-              </AnimatedLink>
-            )}
-          </li>
-          <li>
-            {next && (
-              <AnimatedLink to={next.fields.slug} rel="next" direction="ltr">
-                {next.frontmatter.title} →
-              </AnimatedLink>
-            )}
-          </li>
-        </LinkList>
       </Container>
+      <WebMentions data={allWebMentionEntry} />
+      <LinkList>
+        <li>
+          {previous && (
+            <AnimatedLink to={previous.fields.slug} rel="prev" direction="rtl">
+              ← {previous.frontmatter.title}
+            </AnimatedLink>
+          )}
+        </li>
+        <li>
+          {next && (
+            <AnimatedLink to={next.fields.slug} rel="next" direction="ltr">
+              {next.frontmatter.title} →
+            </AnimatedLink>
+          )}
+        </li>
+      </LinkList>
       <Coffee />
       <Subscribe />
     </Layout>

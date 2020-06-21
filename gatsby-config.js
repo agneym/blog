@@ -146,7 +146,7 @@ module.exports = {
         },
         mentions: true,
         pingbacks: true,
-        domain: 'www.blog.agney.dev',
+        domain: 'blog.agney.dev',
         token: 'veBNQ5a4xyCTfs4EYDQJUQ',
       },
     },
