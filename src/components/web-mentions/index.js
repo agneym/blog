@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Heart } from 'react-feather';
 
+import NumberStat from './number-stat';
+
 const Title = styled.h4`
   text-transform: uppercase;
   letter-spacing: 0.1rem;
@@ -10,19 +12,9 @@ const Title = styled.h4`
 
 const Container = styled.div`
   margin: 1rem 0;
-  padding: 1rem;
+  padding: 2rem 1rem;
   border-top: 0.1rem solid ${props => props.theme.colors.border};
   border-bottom: 0.1rem solid ${props => props.theme.colors.border};
-`;
-
-const NumberStat = styled.div`
-  display: flex;
-  align-items: center;
-  color: ${props => props.theme.colors.textColorLight};
-
-  svg {
-    margin-right: 1rem;
-  }
 `;
 
 const AuthorImage = styled.img`
@@ -45,10 +37,7 @@ function WebMentions({ data }) {
           display: flex;
         `}
       >
-        <NumberStat>
-          <Heart />
-          <span>{likes.length} Likes</span>
-        </NumberStat>
+        <NumberStat icon={Heart}>{likes.length} Likes</NumberStat>
         <div>
           {likeAuthors.map(author => (
             <AuthorImage
