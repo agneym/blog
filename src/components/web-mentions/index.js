@@ -18,10 +18,12 @@ const Container = styled.div`
 `;
 
 const AuthorImage = styled.img`
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
-  object-fit: contain;
+  object-fit: cover;
+  flex: none;
+  vertical-align: middle;
 `;
 
 function WebMentions({ data }) {
@@ -35,10 +37,15 @@ function WebMentions({ data }) {
       <div
         css={`
           display: flex;
+          align-items: center;
         `}
       >
         <NumberStat icon={Heart}>{likes.length} Likes</NumberStat>
-        <div>
+        <div
+          css={`
+            margin-left: 2rem;
+          `}
+        >
           {likeAuthors.map(author => (
             <AuthorImage
               src={author.photo}
