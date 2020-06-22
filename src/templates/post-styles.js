@@ -261,4 +261,5 @@ export const LinkList = styled.ul`
   justify-content: space-between;
   list-style: none;
   padding: 0px;
+  margin-bottom: 4rem;
 `;
