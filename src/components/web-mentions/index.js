@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Heart } from 'react-feather';
+import { Heart, MessageSquare } from 'react-feather';
 
 import NumberStat from './number-stat';
 
@@ -28,9 +28,13 @@ const AuthorImage = styled.img`
 
 function WebMentions({ data }) {
   const likes = data.edges.filter(({ node }) => node.wmProperty === 'like-of');
+  const reposts = data.edges.filter(
+    ({ node }) => node.wmProperty === 'repost-of'
+  );
   const likeAuthors = likes.map(
     ({ node }) => node.author && { wmId: node.wmId, ...node.author }
   );
+  console.log(data);
   return (
     <Container>
       <Title>WebMentions</Title>
@@ -38,12 +42,15 @@ function WebMentions({ data }) {
         css={`
           display: flex;
           align-items: center;
+          flex-wrap: wrap;
         `}
       >
-        <NumberStat icon={Heart}>{likes.length} Likes</NumberStat>
+        <NumberStat icon={Heart} color="red">
+          {likes.length} Likes
+        </NumberStat>
         <div
           css={`
-            margin-left: 2rem;
+            margin: 0 2rem;
           `}
         >
           {likeAuthors.map(author => (
@@ -54,6 +61,7 @@ function WebMentions({ data }) {
             />
           ))}
         </div>
+        <NumberStat icon={MessageSquare}>{reposts.length} Reposts</NumberStat>
       </div>
     </Container>
   );

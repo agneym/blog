@@ -15,10 +15,10 @@ const Text = styled.span`
   font-weight: 500;
 `;
 
-function NumberStat({ icon: Icon, children }) {
+function NumberStat({ icon: Icon, children, color = '#FFFFFF' }) {
   return (
     <Stat>
-      <Icon color="red" />
+      <Icon color={color} />
       <Text>{children}</Text>
     </Stat>
   );
