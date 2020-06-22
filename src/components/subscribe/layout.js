@@ -7,7 +7,7 @@ export const SubmitBtn = styled.input`
   padding: 1rem 1rem 1.2rem;
   text-transform: uppercase;
   width: 80%;
-  margin: 2rem auto;
+  margin: 3rem auto 2rem;
   display: block;
   text-align: center;
   cursor: pointer;

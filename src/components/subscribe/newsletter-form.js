@@ -11,16 +11,17 @@ const Label = styled.label`
 `;
 
 const EmailInput = styled.input`
-  padding: 1rem;
+  padding: 1.2rem 1rem;
   display: block;
   margin: auto;
   font-size: 1.4rem;
-  border: 0.1rem solid rgba(0, 0, 0, 0.4);
+  border: 0.1rem solid ${props => props.theme.colors.border};
+  background-color: inherit;
   width: 80%;
   box-sizing: border-box;
 
   &:focus {
-    border: 0.1rem solid #000000;
+    border: 0.1rem solid rgba(255, 255, 255, 0.6);
     outline: none;
   }
 `;
