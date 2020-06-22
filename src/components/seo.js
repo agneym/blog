@@ -23,9 +23,10 @@ function SEO({
       setUrl(window.location.href);
     }
   }, []);
-  const featuredImage = filename
-    ? `/post-images/${filename}.jpg`
-    : '/icons/icon-512x512.png';
+  const featuredImage =
+    data.site.siteMetadata.siteUrl + filename
+      ? `/post-images/${filename}.jpg`
+      : '/icons/icon-512x512.png';
   const schemaOrgJSONLD = [
     {
       '@context': 'http://schema.org',
@@ -178,6 +179,7 @@ const detailsQuery = graphql`
         title
         description
         author
+        siteUrl
         social {
           twitter
         }
