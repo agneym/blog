@@ -28,7 +28,6 @@ function SEO({
     data.site.siteMetadata.siteUrl +
     (filename ? `/post-images/${filename}.jpg` : '/icons/icon-512x512.png');
 
-  console.log(featuredImage);
   const schemaOrgJSONLD = [
     {
       '@context': 'http://schema.org',

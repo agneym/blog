@@ -50,6 +50,8 @@ function NewsLetterForm() {
         required
         placeholder="johndoe@gmail.com"
       />
+      {/* Hidden input */}
+      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
       <input type="hidden" value="1" name="embed" />
       <S.SubmitBtn type="submit" value="Subscribe" />
     </form>
