@@ -8,6 +8,7 @@ export const Container = styled.article`
 
   ${media.phone`
     margin-top: 4rem;
+    font-size: 1.6rem;
   `}
 
   p {
