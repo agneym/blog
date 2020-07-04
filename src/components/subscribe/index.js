@@ -60,7 +60,7 @@ function Subscribe() {
           Unsubscribe any time you want & Feel free to browse{' '}
           <StyledLink
             as="a"
-            href="https://buttondown.email/archives"
+            href="https://buttondown.email/agney/archive"
             target="_blank"
             rel="noopener noreferrer"
           >
