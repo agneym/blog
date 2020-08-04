@@ -23,7 +23,7 @@ function SEO({
       setUrl(window.location.href);
     }
   }, []);
-  console.log(filename ? 'one' : 'two');
+
   const featuredImage =
     data.site.siteMetadata.siteUrl +
     (filename ? `/post-images/${filename}.jpg` : '/icons/icon-512x512.png');
@@ -83,68 +83,35 @@ function SEO({
     );
   }
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${data.site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          name: 'author',
-          content: data.site.siteMetadata.author,
-        },
-        {
-          name: 'google-site-verification',
-          content: 'z5vpqyTgwWRPzObs2wou_QT2kjtk2a-xF-27nX3Umc4',
-        },
-        {
-          property: `og:title`,
-          content: `${title} - ${data.site.siteMetadata.title}`,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary_large_image`,
-        },
-        {
-          name: `twitter:creator`,
-          content: data.site.siteMetadata.social.twitter,
-        },
-        {
-          name: `twitter:title`,
-          content: `${title} - ${data.site.siteMetadata.title}`,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-        {
-          name: 'og:image',
-          content: featuredImage,
-        },
-      ]
-        .concat(
-          keywords.length > 0
-            ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
-            : []
-        )
-        .concat(meta)}
-    >
+    <Helmet titleTemplate={`%s | ${data.site.siteMetadata.title}`}>
+      <html lang={lang} />
+      <title>{title}</title>
+      <meta name="description" content={metaDescription} />
+      <meta name="author" content={data.site.siteMetadata.author} />
+      <meta
+        name="google-site-verification"
+        content="z5vpqyTgwWRPzObs2wou_QT2kjtk2a-xF-27nX3Umc4"
+      />
+
+      <meta
+        name="og:title"
+        content={`${title} - ${data.site.siteMetadata.title}`}
+      />
+      <meta name="og:description" content={metaDescription} />
+      <meta name="og:type" content="website" />
+      <meta name="og:image" content={featuredImage} />
+
+      <meta
+        name="twitter:title"
+        content={`${title} - ${data.site.siteMetadata.title}`}
+      />
+      <meta name="twitter:description" content={metaDescription} />
+      <meta
+        name="twitter:creator"
+        content={data.site.siteMetadata.social.twitter}
+      />
+      <meta name="twitter:card" content="summary_large_image" />
+
       <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}
       </script>
