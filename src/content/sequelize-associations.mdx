@@ -1,0 +1,38 @@
+---
+title: 'Sequelize Associations - Creating Associations'
+date: '2020-08-16T22:12:03.284Z'
+tags:
+  ['javascript', 'sequelize', 'associations']
+published: true
+---
+[Sequelize](https://sequelize.org/) is an Object relational library (ORM) that helps to communicate between database (Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server) and programming models on the NodeJS end. 
+
+This blog exclusively deals with how to setup associations in sequelize. Primary knowledge of NodeJS, Express and SequelizeJS is recommended.
+
+## Associations
+
+An association (also called a relationship) models the way two classes are connected to each other. 
+
+Sequelize supports three types of associations between their models:
+* One to One relationship
+* One to Many relationship
+* Many to Many relationship
+
+### One to One relationship
+
+![Example of one to one relationship with User and Profile connected to each other](./sequelize-associations/one-to-one.png)
+
+Here, User and Profile share a one to one relationship. A user has a profile and profile has a user associated with it.
+
+## One to Many relationship
+
+![Example of one to many relationship with User and Commments connected to each other](./sequelize-associations/one-to-many.png)
+
+Here user and comments share a one to many relationship. Each user can make multiple comments while each comment is associated with only a single user.
+
+## Many to Many
+
+![Example of many to many relationship with User and Books connected to each other](./sequelize-associations/many-to-many.png)
+
+Here User is marking down Books that he has read. Each user can mark as many books as they want, creating a many to many association between User and Books. Contrary to the earlier scenario with comments, a Book also can be connected to many number of Users.
+
