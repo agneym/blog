@@ -16,7 +16,7 @@ import PlaygroundWrapper from '../components/playground-wrapper';
 import WebMentions from '../components/web-mentions';
 
 const components = {
-  pre: props => <pre {...props} />,
+  pre: (props) => <pre {...props} />,
   code: CodeViewer,
   Playground: PlaygroundWrapper,
 };
@@ -52,7 +52,14 @@ function BlogPostTemplate({ data, pageContext, location }) {
             <sub>
               <span className="dt-published">Posted on {date}</span>
             </sub>
-            <sub className="u-url">{permalink}</sub>
+            <sub
+              className="u-url"
+              css={`
+                visibility: hidden;
+              `}
+            >
+              {permalink}
+            </sub>
           </div>
         </Header>
         <div className="e-content">
