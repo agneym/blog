@@ -4,7 +4,7 @@ import media from '../utils/media';
 
 export const Container = styled.article`
   margin-top: 6rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
 
   ${media.phone`
     margin-top: 4rem;
@@ -234,7 +234,7 @@ export const LineNo = styled.span`
 `;
 
 export const Header = styled.header`
-  margin-bottom: 8rem;
+  margin-bottom: 5rem;
 
   ${media.tablet`
     text-align: center;
