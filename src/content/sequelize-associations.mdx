@@ -149,6 +149,33 @@ Book.belongsToMany(User, {
 });
 ```
 
+## Aliasing an association 
+
+Sometimes, you end up having multiple relationships between entities, for example what if our Users could favorite Books too? As you can guess from the title, you can alias the relationship giving it a unique name.
+
+```javascript
+User.belongsToMany(Book, {
+  through: FavBooks,
+  as: 'favorites',
+})
+Book.belongsToMany(User, {
+  through: FavBooks,
+  as: 'favorites',
+});
+User.belongsToMany(Book, {
+  through: ReadBooks,
+  as: 'read',
+})
+Book.belongsToMany(User, {
+  through: ReadBooks,
+  as: 'read',
+});
+```
+
+This is same in the case of all types of relationships.
+
+---
+
 There is a lot more to cover on creating these relationships like customising keys or changing how update or delete affects these relationships. I do plan to cover them, but [documentation](https://sequelize.org/master/manual/assocs.html) should be your best guide if you understand these relationships better.
 
 Have fun 🎉
