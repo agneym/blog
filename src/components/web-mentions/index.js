@@ -13,8 +13,8 @@ const Title = styled.h4`
 const Container = styled.div`
   margin: 1rem 0;
   padding: 2rem 1rem;
-  border-top: 0.1rem solid ${props => props.theme.colors.border};
-  border-bottom: 0.1rem solid ${props => props.theme.colors.border};
+  border-top: 0.1rem solid ${(props) => props.theme.colors.border};
+  border-bottom: 0.1rem solid ${(props) => props.theme.colors.border};
 `;
 
 const AuthorImage = styled.img`
@@ -34,7 +34,7 @@ function WebMentions({ data }) {
   const likeAuthors = likes.map(
     ({ node }) => node.author && { wmId: node.wmId, ...node.author }
   );
-  console.log(data);
+
   return (
     <Container>
       <Title>WebMentions</Title>
@@ -53,7 +53,7 @@ function WebMentions({ data }) {
             margin: 0 2rem;
           `}
         >
-          {likeAuthors.map(author => (
+          {likeAuthors.map((author) => (
             <AuthorImage
               src={author.photo}
               alt={author.name}
