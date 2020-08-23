@@ -183,6 +183,27 @@ const user = User.find({
 });
 ```
 
+### Lazy Loading
+
+Lazy Loading makes use of Sequelize's ability to add functions to Models with it's associations. 
+
+For eg. If `User` and `Profile` are connected with 1-1 association, Sequelize automatically adds a function called `getProfile` to `User` and `getUser` to `Profile` (There are several functions like this, `addProfile`, `updateProfile` etc.)
+
+```javascript
+const user = User.findOne({
+  where: {
+    id: 1
+  }
+});
+let profile = null;
+if(user.active) {
+  profile = user.getProfile();
+}
+```
+Note that it makes two database requests here, but the `Profile` information is fetched only if `User` found is active.
+
+---
+
 There is a lot more to cover on creating these relationships like customising keys or changing how update or delete affects these relationships. I do plan to cover them, but [documentation](https://sequelize.org/master/manual/assocs.html) should be your best guide if you understand these relationships better.
 
 Have fun 🎉
