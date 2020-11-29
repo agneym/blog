@@ -4,6 +4,13 @@
   "description": "A simple minimal Gatsby powered blog",
   "version": "0.0.1",
   "author": "Agney Menon <agney@outlook.in>",
+  "scripts": {
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "serve": "gatsby serve",
+    "start": "npm run dev",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+  },
   "dependencies": {
     "@agney/playground": "^0.4.0",
     "@agney/react-dark-mode-toggle": "0.0.4-4",
@@ -50,13 +57,6 @@
     "use-dark-mode": "^2.3.1"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "dev": "gatsby develop",
-    "serve": "gatsby serve",
-    "start": "npm run dev",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
-  },
   "devDependencies": {
     "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.5",
